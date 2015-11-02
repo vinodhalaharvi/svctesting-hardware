@@ -16,11 +16,6 @@
 #define SVC_PriorityShift 4
 
 // Implemented SVC numbers
-#define SVC_ENDIVE 0
-#define SVC_BROCCOLIRABE 1
-#define SVC_JICAMA 2
-#define SVC_ARTICHOKE 3
-
 #define SVC_LED_INIT 4
 #define SVC_LED_WRITE 5
 
@@ -33,7 +28,6 @@
 
 #define SVC_LCDC_INIT 11 
 #define SVC_LCDC_WRITE 12 
-
 
 #define SVC_POTENTIOMETER_INIT 13
 #define SVC_POTENTIOMETER_READ 14
@@ -62,6 +56,7 @@ int SVCLcdcWrite(int minor_num);
 
 void SVCCapacitivePadInit(int minor_num); 
 int SVCCapacitivePadRead(int minor_num); 
+
 void SVCPotentiometerInit(int minor_num); 
 int SVCPotentiometerRead(int minor_num); 
 #endif /* ifndef _SVC_H */

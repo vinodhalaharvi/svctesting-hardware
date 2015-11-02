@@ -63,7 +63,7 @@
  *   +104		 Possible Reserved Word for Alignment on 8 Byte Boundary
  */
 
-#include <derivative.h>
+#include "derivative.h"
 #include <stdio.h>
 #include "svc.h"
 #include "led.h"
@@ -155,13 +155,13 @@ void __attribute__((never_inline)) SVCCapacitivePadInit(int arg0) {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wreturn-type"
 int __attribute__((naked)) __attribute__((noinline)) SVCCapacitivePadRead(int arg0) {
-	__asm("svc %0" : : "I" (SVC_CAPACITIVE_PAD_READ));
+	__asm("svc %0" : : "I" (SVC_CAPACITIVEPAD_READ));
 	__asm("bx lr");
 }
 #pragma GCC diagnostic pop
 #else
 int __attribute__((never_inline)) SVCCapacitivePadRead(int arg0) {
-	__asm("svc %0" : : "I" (SVC_CAPACITIVE_PAD_READ));
+	__asm("svc %0" : : "I" (SVC_CAPACITIVEPAD_READ));
 }
 #endif
 
@@ -183,18 +183,15 @@ void __attribute__((never_inline)) SVCPotentiometerInit(int arg0) {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wreturn-type"
 int __attribute__((naked)) __attribute__((noinline)) SVCPotentiometerRead(int arg0) {
-	__asm("svc %0" : : "I" (SVC_CAPACITIVE_PAD_READ));
+	__asm("svc %0" : : "I" (SVC_POTENTIOMETER_READ));
 	__asm("bx lr");
 }
 #pragma GCC diagnostic pop
 #else
 int __attribute__((never_inline)) SVCPotentiometerRead(int arg0) {
-	__asm("svc %0" : : "I" (SVC_CAPACITIVE_PAD_READ));
+	__asm("svc %0" : : "I" (SVC_POTENTIOMETER_READ));
 }
 #endif
-
-
-
 
 
 
@@ -370,7 +367,7 @@ void svcHandlerInC(struct frame *framePtr) {
 	case SVC_LED_WRITE:
 		printf("SVC LED WRITE has been called\n");
 		printf("parameters: %d %d\n", framePtr->arg0, framePtr->arg1);
-        int ch = (unsigned) framePtr->arg0; 
+        ch = (unsigned) framePtr->arg0; 
         minor_num = framePtr->arg1;
         framePtr->returnVal = ledwrite(ch, minor_num); 
 		break;
