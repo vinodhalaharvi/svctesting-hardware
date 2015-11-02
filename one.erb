@@ -1,0 +1,19 @@
+<% 
+    @svcs = [
+            { 
+                name: "potentiometer", 
+                args: ["arg0"], 
+                functions: ["init", "read"], 
+            }, 
+        ]
+%>
+
+<% for @svc in @svcs %>
+    <%= @svc.name %>
+    <% for @arg in @svc.args %>
+        <%= @arg %>
+    <% end %>
+    <% for @function in @functions %>
+        <%= @function %>
+    <% end %>
+<% end %>

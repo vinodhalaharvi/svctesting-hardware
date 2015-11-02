@@ -1,0 +1,45 @@
+@svcs = { 
+    name: "potentiometer", 
+    args: ["arg0"], 
+    functions: ["init", "read"], 
+}
+
+
+
+
+
+<% @svcs = %w({name: potentiometer, }) %>
+<% for @svc in @svcs %>
+#ifdef __GNUC__
+<% if @return_value? %>
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wreturn-type"
+<% end %>
+int __attribute__((naked)) __attribute__((noinline)) SVC<% @svc.capitalize%>(int arg0, int arg1, int arg2, int arg3) {
+	__asm("svc %0" : : "I" (SVC_<% @svc.upcase %>));
+	__asm("bx lr");
+}
+<% if @return_value? %>
+#pragma GCC diagnostic pop
+<% end %>
+#else
+int __attribute__((never_inline)) SVC <%= @svc.capitalize %>  (<%= @args.join(", int") %>) {
+	__asm("svc %0" : : "I" (<%= @svc.upcase %>));
+}
+#endif
+<% end %>
+	case SVC_<%= @svc.upcase %>_<%= @svc.function %>:
+		printf(" <%= @svc.upcase %>  has been called\n");
+		printf("Only parameter is %d\n", framePtr-><%= args[0]%>);
+        minor_num = (unsigned) framePtr-> <%= args[0] %> ; 
+        framePtr->returnVal = <%= @svc.name %>_<%= @svc.function %>(minor_num); 
+		break;
+    <% if @return_value? %>
+    <% end %>
+<% end %>
+void SVCPushButtonInit(int minor_num); 
+int SVCPushButtonRead(int minor_num); 
+
+#include "pushbutton.h"
+int verify_pushbutton(void) {
+} 
