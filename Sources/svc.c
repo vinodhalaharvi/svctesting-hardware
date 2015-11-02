@@ -67,6 +67,7 @@
 #include <stdio.h>
 #include "svc.h"
 #include "led.h"
+#include "pushbutton.h"
 
 #define XPSR_FRAME_ALIGNED_BIT 9
 #define XPSR_FRAME_ALIGNED_MASK (1<<XPSR_FRAME_ALIGNED_BIT)
@@ -130,6 +131,32 @@ void __attribute__((naked)) __attribute__((noinline)) SVCLedInit(int arg0) {
 #else
 void __attribute__((never_inline)) SVCLedInit(int arg0) {
 	__asm("svc %0" : : "I" (SVC_LED_INIT));
+}
+#endif
+
+
+#ifdef __GNUC__
+void __attribute__((naked)) __attribute__((noinline)) SVCPushButtonInit(int arg0) {
+	__asm("svc %0" : : "I" (SVC_PUSHBUTTON_INIT));
+	__asm("bx lr");
+}
+#else
+void __attribute__((never_inline)) SVCPushButtonInit(int arg0) {
+	__asm("svc %0" : : "I" (SVC_PUSHBUTTON_INIT));
+}
+#endif
+
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wreturn-type"
+int __attribute__((naked)) __attribute__((noinline)) SVCPushButtonRead(int arg0) {
+	__asm("svc %0" : : "I" (SVC_PUSHBUTTON_READ));
+	__asm("bx lr");
+}
+#pragma GCC diagnostic pop
+#else
+int __attribute__((never_inline)) SVCPushButtonRead(int arg0) {
+	__asm("svc %0" : : "I" (SVC_PUSHBUTTON_READ));
 }
 #endif
 
@@ -300,6 +327,18 @@ void svcHandlerInC(struct frame *framePtr) {
         int ch = (unsigned) framePtr->arg0; 
         minor_num = framePtr->arg1;
         framePtr->returnVal = ledwrite(ch, minor_num); 
+		break;
+	case SVC_PUSHBUTTON_INIT:
+		printf("SVC PUSHBUTTON INIT has been called\n");
+		printf("Only parameter is %d\n", framePtr->arg0);
+        minor_num = (unsigned) framePtr->arg0; 
+        framePtr->returnVal = pushbutton_init(minor_num); 
+		break;
+	case SVC_PUSHBUTTON_READ:
+		printf("SVC PUSHBUTTON WRITE has been called\n");
+		printf("parameters: %d\n", framePtr->arg0);
+        minor_num = (unsigned) framePtr->arg0; 
+        framePtr->returnVal = pushbutton_read(minor_num); 
 		break;
 	case SVC_BROCCOLIRABE:
 		printf("SVC BROCCOLIRABE has been called\n");

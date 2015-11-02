@@ -1,4 +1,5 @@
-add #define for new svc call
-add __asm call signature for svc
-add login in the svc handlerC
-write code to call the svc system call
+add #define for new svc call svc.h
+add prototype in svc.h
+add __asm call signature for svc.c 
+add to switch statement in the svc handlerC in svc.c
+write code to call the svc system call main.c

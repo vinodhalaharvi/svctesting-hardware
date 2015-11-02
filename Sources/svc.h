@@ -23,6 +23,8 @@
 #define SVC_ARTICHOKE 3
 #define SVC_LED_INIT 4
 #define SVC_LED_WRITE 5
+#define SVC_PUSHBUTTON_INIT 6
+#define SVC_PUSHBUTTON_READ 7 
 
 void svcInit_SetSVCPriority(unsigned char priority);
 void svcHandler(void);
@@ -35,4 +37,7 @@ int SVCArtichoke(int arg0, int arg1, int arg2, int arg3);
 
 void SVCLedWrite(int ch, int minor_num); 
 void SVCLedInit(int minor_num); 
+
+void SVCPushButtonInit(int minor_num); 
+int SVCPushButtonRead(int minor_num); 
 #endif /* ifndef _SVC_H */
