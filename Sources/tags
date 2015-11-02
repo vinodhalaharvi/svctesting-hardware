@@ -3,7 +3,14 @@
 !_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
-!_TAG_PROGRAM_VERSION	5.8	//
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+LED_BLUE_PORTA_BIT	led.h	8;"	d
+LED_GREEN_PORTA_BIT	led.h	7;"	d
+LED_ORANGE_PORTA_BIT	led.h	5;"	d
+LED_YELLOW_PORTA_BIT	led.h	6;"	d
+NUM_OF_LEDS	led.h	3;"	d
+PORT_PCR_MUX_ANALOG	led.h	11;"	d
+PORT_PCR_MUX_GPIO	led.h	14;"	d
 SVCArtichoke	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCArtichoke(int arg0, int arg1, int arg2, int arg3) {$/;"	f
 SVCArtichoke	svc.c	/^int __attribute__((never_inline)) SVCArtichoke(int arg0, int arg1, int arg2, int arg3) {$/;"	f
 SVCArtichokeImpl	svc.c	/^int SVCArtichokeImpl(int arg0, int arg1, int arg2, int arg3) {$/;"	f
@@ -21,12 +28,36 @@ SVC_MaxPriority	svc.h	15;"	d
 SVC_PriorityShift	svc.h	16;"	d
 XPSR_FRAME_ALIGNED_BIT	svc.c	70;"	d	file:
 XPSR_FRAME_ALIGNED_MASK	svc.c	71;"	d	file:
+_LED_H	led.h	2;"	d
 _SVC_H	svc.h	13;"	d
+_led_t	led.h	/^typedef struct _led_t {$/;"	s
 arg0	svc.c	/^		int arg0;$/;"	m	union:frame::__anon1	file:
 arg1	svc.c	/^		int arg1;$/;"	m	union:frame::__anon2	file:
 arg2	svc.c	/^		int arg2;$/;"	m	union:frame::__anon3	file:
 arg3	svc.c	/^		int arg3;$/;"	m	union:frame::__anon4	file:
 frame	svc.c	/^struct frame {$/;"	s	file:
+init	led.h	/^    void (*init)(void); $/;"	m	struct:_led_t
+ledBlueConfig	led.c	/^void ledBlueConfig(void) {$/;"	f
+ledBlueOff	led.c	/^void ledBlueOff(void) {$/;"	f
+ledBlueOn	led.c	/^void ledBlueOn(void) {$/;"	f
+ledBlueWrite	led.c	/^void ledBlueWrite(int ch){$/;"	f
+ledGreenConfig	led.c	/^void ledGreenConfig(void) {$/;"	f
+ledGreenOff	led.c	/^void ledGreenOff(void) {$/;"	f
+ledGreenOn	led.c	/^void ledGreenOn(void) {$/;"	f
+ledGreenWrite	led.c	/^void ledGreenWrite(int ch){$/;"	f
+ledInit	led.c	/^void ledInit(){ $/;"	f
+ledOrangeConfig	led.c	/^void ledOrangeConfig(void) {$/;"	f
+ledOrangeOff	led.c	/^void ledOrangeOff(void) {$/;"	f
+ledOrangeOn	led.c	/^void ledOrangeOn(void) {$/;"	f
+ledOrangeWrite	led.c	/^void ledOrangeWrite(int ch){$/;"	f
+ledYellowConfig	led.c	/^void ledYellowConfig(void) {$/;"	f
+ledYellowOff	led.c	/^void ledYellowOff(void) {$/;"	f
+ledYellowOn	led.c	/^void ledYellowOn(void) {$/;"	f
+ledYellowWrite	led.c	/^void ledYellowWrite(int ch){$/;"	f
+led_t	led.h	/^} led_t;$/;"	t	typeref:struct:_led_t
+ledinit	led.c	/^int ledinit(void * minor_num){ $/;"	f
+leds	led.c	/^led_t leds[NUM_OF_LEDS] = { $/;"	v
+ledwrite	led.c	/^int ledwrite(int ch, void *minor_num){ $/;"	f
 lr	svc.c	/^		int lr;$/;"	m	union:frame::__anon5	file:
 main	main.c	/^int main(void) {$/;"	f
 pushFourBytesThenSVCEndive	main.c	/^__asm void pushFourBytesThenSVCEndive(void) {$/;"	f
@@ -39,8 +70,7 @@ r2	svc.c	/^		int r2;$/;"	m	union:frame::__anon3	file:
 r3	svc.c	/^		int r3;$/;"	m	union:frame::__anon4	file:
 returnAddr	svc.c	/^	int returnAddr;$/;"	m	struct:frame	file:
 returnVal	svc.c	/^		int returnVal;$/;"	m	union:frame::__anon1	file:
-svcHandler	svc.c	/^__asm void svcHandler(void) {$/;"	f
-svcHandler	svc.c	/^void __attribute__((naked)) svcHandler(void) {$/;"	f
 svcHandlerInC	svc.c	/^void svcHandlerInC(struct frame *framePtr) {$/;"	f
 svcInit_SetSVCPriority	svc.c	/^void svcInit_SetSVCPriority(unsigned char priority) {$/;"	f
+write	led.h	/^    void (*write)(int ch); $/;"	m	struct:_led_t
 xPSR	svc.c	/^	int xPSR;$/;"	m	struct:frame	file:

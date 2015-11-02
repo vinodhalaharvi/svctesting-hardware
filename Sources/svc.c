@@ -66,6 +66,7 @@
 #include <derivative.h>
 #include <stdio.h>
 #include "svc.h"
+#include "led.h"
 
 #define XPSR_FRAME_ALIGNED_BIT 9
 #define XPSR_FRAME_ALIGNED_MASK (1<<XPSR_FRAME_ALIGNED_BIT)
@@ -120,6 +121,31 @@ void __attribute__((never_inline)) SVCBroccoliRabe(int arg0) {
 	__asm("svc %0" : : "I" (SVC_BROCCOLIRABE));
 }
 #endif
+
+#ifdef __GNUC__
+void __attribute__((naked)) __attribute__((noinline)) SVCLedInit(int arg0) {
+	__asm("svc %0" : : "I" (SVC_LED_INIT));
+	__asm("bx lr");
+}
+#else
+void __attribute__((never_inline)) SVCLedInit(int arg0) {
+	__asm("svc %0" : : "I" (SVC_LED_INIT));
+}
+#endif
+
+
+#ifdef __GNUC__
+void __attribute__((naked)) __attribute__((noinline)) SVCLedWrite(int argo, int arg1) {
+	__asm("svc %0" : : "I" (SVC_LED_WRITE));
+	__asm("bx lr");
+}
+#else
+void __attribute__((never_inline)) SVCLedWrite(int arg0, int arg1) {
+	__asm("svc %0" : : "I" (SVC_LED_WRITE));
+}
+#endif
+
+
 
 #ifdef __GNUC__
 #pragma GCC diagnostic push
@@ -240,6 +266,7 @@ void svcHandlerInC(struct frame *framePtr);
 
 
 void svcHandlerInC(struct frame *framePtr) {
+    unsigned minor_num; 
 	printf("Entering svcHandlerInC\n");
 
 	printf("framePtr = 0x%08x\n", (unsigned int)framePtr);
@@ -260,6 +287,19 @@ void svcHandlerInC(struct frame *framePtr) {
 		} else {
 			printf("No padding added to frame\n");
 		}
+		break;
+	case SVC_LED_INIT:
+		printf("SVC LED INIT has been called\n");
+		printf("Only parameter is %d\n", framePtr->arg0);
+        minor_num = (unsigned) framePtr->arg0; 
+        framePtr->returnVal = ledinit(minor_num); 
+		break;
+	case SVC_LED_WRITE:
+		printf("SVC LED WRITE has been called\n");
+		printf("parameters: %d %d\n", framePtr->arg0, framePtr->arg1);
+        minor_num = (unsigned) framePtr->arg0; 
+        int ch = framePtr->arg1;
+        framePtr->returnVal = ledwrite(ch, minor_num); 
 		break;
 	case SVC_BROCCOLIRABE:
 		printf("SVC BROCCOLIRABE has been called\n");

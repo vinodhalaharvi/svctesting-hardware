@@ -1,0 +1,4 @@
+add #define for new svc call
+add __asm call signature for svc
+add login in the svc handlerC
+write code to call the svc system call
