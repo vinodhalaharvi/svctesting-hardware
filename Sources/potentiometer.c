@@ -11,7 +11,7 @@
 #include "potentiometer.h"
 
 potentiometer_t potentiometers[NUM_OF_POTENTIOMETERS] = { 
-    {potentiometer_deriver_init, potentiometer_driver_read}
+    {potentiometer_driver_init, potentiometer_driver_read}
 };
 
 int potentiometer_init(void * minor_num){ 

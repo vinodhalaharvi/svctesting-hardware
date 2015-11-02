@@ -1,6 +1,6 @@
 CFLAGS=-ggdb -Wall -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast
 
-all: shell
+all: main
 
 debug: shell
 	gdb ./shell
@@ -15,7 +15,7 @@ lcdc: lcdc.o
 
 lcdcConsole: lcdcConsole.o lcdcdriver.o 
 
-lcdcdriver: lcdcdriver.o
+lcdcdriver: lcdcdriver.o mcg.o sdram.o lcdcConsole.o  uartdriver.o profont.o 
 
 led: led.o
 
@@ -25,7 +25,7 @@ main: main.o
 
 mcg: mcg.o
 
-potentiometer: potentiometer.o
+potentiometer: potentiometer.o potentiometerdriver.o
 
 potentiometerdriver: potentiometerdriver.o
 
@@ -53,7 +53,7 @@ mymalloc: common.o mymalloc.o
 
 file: file.o mymalloc.o common.o stringutils.o  
 
-led: led.o ledriver.o
+led: led.o leddriver.o 
 
 io: io.o led.o pushbutton.o file.o mymalloc.o common.o stringutils.o
 
