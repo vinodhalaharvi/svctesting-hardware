@@ -37,6 +37,7 @@ int verify_pushbutton(void) {
     for (i = 0; i < NUM_OF_LEDS; ++i) {
         SVCLedInit(i); 
         SVCPushButtonInit(i); 
+    
     }
 	while(1) {
 		if(SVCPushButtonRead(0)) {
