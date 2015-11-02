@@ -1,0 +1,55 @@
+#ifdef __GNUC__
+void __attribute__((naked)) __attribute__((noinline)) SVCLcdcInit(int arg0) {
+	__asm("svc %0" : : "I" (SVC_LCDC_INIT));
+	__asm("bx lr");
+}
+#else
+void __attribute__((never_inline)) SVCLcdcInit(int arg0) {
+	__asm("svc %0" : : "I" (SVC_LCDC_INIT));
+}
+#endif
+
+#ifdef __GNUC__
+void __attribute__((naked)) __attribute__((noinline)) SVCLcdcWrite(int argo, int arg1) {
+	__asm("svc %0" : : "I" (SVC_LCDC_WRITE));
+	__asm("bx lr");
+}
+#else
+void __attribute__((never_inline)) SVCLcdcWrite(int arg0, int arg1) {
+	__asm("svc %0" : : "I" (SVC_LCDC_WRITE));
+}
+#endif
+
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wreturn-type"
+int __attribute__((naked)) __attribute__((noinline)) SVCUartRead(int arg0) {
+	__asm("svc %0" : : "I" (SVC_UART_READ));
+	__asm("bx lr");
+}
+#pragma GCC diagnostic pop
+#else
+int __attribute__((never_inline)) SVCUartRead(int arg0) {
+	__asm("svc %0" : : "I" (SVC_UART_READ));
+}
+#endif
+
+case SVC_LCDC_INIT:
+    printf("SVC LCDC INIT has been called\n");
+    printf("Only parameter is %d\n", framePtr->arg0);
+    minor_num = (unsigned) framePtr->arg0; 
+    framePtr->returnVal = lcdc_init(minor_num); 
+    break;
+case SVC_LCDC_WRITE:
+    printf("SVC LCDC WRITE has been called\n");
+    printf("parameters: %d %d\n", framePtr->arg0, framePtr->arg1);
+    int ch = (unsigned) framePtr->arg0; 
+    minor_num = framePtr->arg1;
+    framePtr->returnVal = lcdc_write(ch, minor_num); 
+    break;
+case SVC_LCDC_READ:
+    printf("SVC lcdc WRITE has been called\n");
+    printf("parameters: %d\n", framePtr->arg0);
+    minor_num = (unsigned) framePtr->arg0; 
+    framePtr->returnVal = lcdc_read(minor_num); 
+    break;

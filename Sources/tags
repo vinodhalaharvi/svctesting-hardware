@@ -4,39 +4,122 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+LCDCCONSOLE_TAB_STOP_SPACING	lcdcConsole.h	19;"	d
+LCDC_ALT2	lcdcdriver.h	61;"	d
+LCDC_ALT5	lcdcdriver.h	62;"	d
+LCDC_ALT7	lcdcdriver.h	63;"	d
+LCDC_BLUE_MASK	lcdcdriver.h	33;"	d
+LCDC_BLUE_SHIFT	lcdcdriver.h	36;"	d
+LCDC_BYTES_PER_PIXEL	lcdcdriver.h	28;"	d
+LCDC_FRAME_BUFFER_SIZE	lcdcdriver.h	55;"	d
+LCDC_FRAME_START_ADDRESS	lcdcdriver.h	54;"	d
+LCDC_GREEN_MASK	lcdcdriver.h	32;"	d
+LCDC_GREEN_SHIFT	lcdcdriver.h	35;"	d
+LCDC_GW_BUFFER_SIZE	lcdcdriver.h	58;"	d
+LCDC_GW_START_ADDRESS	lcdcdriver.h	57;"	d
+LCDC_GW_XSIZE	lcdcdriver.h	24;"	d
+LCDC_GW_YSIZE	lcdcdriver.h	25;"	d
+LCDC_PIXEL_BLUE	lcdcdriver.h	42;"	d
+LCDC_PIXEL_GREEN	lcdcdriver.h	40;"	d
+LCDC_PIXEL_RED	lcdcdriver.h	38;"	d
+LCDC_RED_MASK	lcdcdriver.h	31;"	d
+LCDC_RED_SHIFT	lcdcdriver.h	34;"	d
+LCDC_SCREEN_BACKGROUND_COLOR	lcdcdriver.h	52;"	d
+LCDC_SCREEN_FOREGROUND_COLOR	lcdcdriver.h	50;"	d
+LCDC_SCREEN_XSIZE	lcdcdriver.h	20;"	d
+LCDC_SCREEN_YSIZE	lcdcdriver.h	21;"	d
 LED_BLUE_PORTA_BIT	led.h	8;"	d
 LED_GREEN_PORTA_BIT	led.h	7;"	d
 LED_ORANGE_PORTA_BIT	led.h	5;"	d
 LED_YELLOW_PORTA_BIT	led.h	6;"	d
+NUM_OF_LCDCS	lcdc.h	4;"	d
 NUM_OF_LEDS	led.h	3;"	d
+NUM_OF_PUSHBUTTONS	pushbutton.h	3;"	d
+NUM_OF_UARTS	uart.h	4;"	d
 PORT_PCR_MUX_ANALOG	led.h	11;"	d
+PORT_PCR_MUX_ANALOG	pushbuttondriver.h	19;"	d
 PORT_PCR_MUX_GPIO	led.h	14;"	d
-SVCArtichoke	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCArtichoke(int arg0, int arg1, int arg2, int arg3) {$/;"	f
-SVCArtichoke	svc.c	/^int __attribute__((never_inline)) SVCArtichoke(int arg0, int arg1, int arg2, int arg3) {$/;"	f
-SVCArtichokeImpl	svc.c	/^int SVCArtichokeImpl(int arg0, int arg1, int arg2, int arg3) {$/;"	f
-SVCBroccoliRabe	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCBroccoliRabe(int arg0) {$/;"	f
-SVCBroccoliRabe	svc.c	/^void __attribute__((never_inline)) SVCBroccoliRabe(int arg0) {$/;"	f
-SVCEndive	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCEndive(void) {$/;"	f
-SVCEndive	svc.c	/^void __attribute__((never_inline)) SVCEndive(void) {$/;"	f
-SVCJicama	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCJicama(int arg0) {$/;"	f
-SVCJicama	svc.c	/^int __attribute__((never_inline)) SVCJicama(int arg0) {$/;"	f
-SVC_ARTICHOKE	svc.h	23;"	d
-SVC_BROCCOLIRABE	svc.h	21;"	d
-SVC_ENDIVE	svc.h	20;"	d
-SVC_JICAMA	svc.h	22;"	d
+PORT_PCR_MUX_GPIO	pushbuttondriver.h	22;"	d
+PUSHBUTTON_SW1_PORTD_BIT	pushbuttondriver.h	15;"	d
+PUSHBUTTON_SW2_PORTE_BIT	pushbuttondriver.h	16;"	d
+REVE	lcdcdriver.h	17;"	d
+SVCLcdcInit	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLcdcInit(int arg0) {$/;"	f
+SVCLcdcInit	svc.c	/^void __attribute__((never_inline)) SVCLcdcInit(int arg0) {$/;"	f
+SVCLcdcWrite	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLcdcWrite(int argo, int arg1) {$/;"	f
+SVCLcdcWrite	svc.c	/^void __attribute__((never_inline)) SVCLcdcWrite(int arg0, int arg1) {$/;"	f
+SVCLedInit	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLedInit(int arg0) {$/;"	f
+SVCLedInit	svc.c	/^void __attribute__((never_inline)) SVCLedInit(int arg0) {$/;"	f
+SVCLedWrite	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLedWrite(int argo, int arg1) {$/;"	f
+SVCLedWrite	svc.c	/^void __attribute__((never_inline)) SVCLedWrite(int arg0, int arg1) {$/;"	f
+SVCPushButtonInit	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCPushButtonInit(int arg0) {$/;"	f
+SVCPushButtonInit	svc.c	/^void __attribute__((never_inline)) SVCPushButtonInit(int arg0) {$/;"	f
+SVCPushButtonRead	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCPushButtonRead(int arg0) {$/;"	f
+SVCPushButtonRead	svc.c	/^int __attribute__((never_inline)) SVCPushButtonRead(int arg0) {$/;"	f
+SVCUartInit	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCUartInit(int arg0) {$/;"	f
+SVCUartInit	svc.c	/^void __attribute__((never_inline)) SVCUartInit(int arg0) {$/;"	f
+SVCUartRead	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCUartRead(int arg0) {$/;"	f
+SVCUartRead	svc.c	/^int __attribute__((never_inline)) SVCUartRead(int arg0) {$/;"	f
+SVCUartWrite	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCUartWrite(int argo, int arg1) {$/;"	f
+SVCUartWrite	svc.c	/^void __attribute__((never_inline)) SVCUartWrite(int arg0, int arg1) {$/;"	f
+SVC_ARTICHOKE	svc.h	22;"	d
+SVC_BROCCOLIRABE	svc.h	20;"	d
+SVC_ENDIVE	svc.h	19;"	d
+SVC_JICAMA	svc.h	21;"	d
+SVC_LCDC_INIT	svc.h	34;"	d
+SVC_LCDC_WRITE	svc.h	35;"	d
+SVC_LED_INIT	svc.h	24;"	d
+SVC_LED_WRITE	svc.h	25;"	d
 SVC_MaxPriority	svc.h	15;"	d
+SVC_PUSHBUTTON_INIT	svc.h	27;"	d
+SVC_PUSHBUTTON_READ	svc.h	28;"	d
 SVC_PriorityShift	svc.h	16;"	d
-XPSR_FRAME_ALIGNED_BIT	svc.c	70;"	d	file:
-XPSR_FRAME_ALIGNED_MASK	svc.c	71;"	d	file:
+SVC_UART_INIT	svc.h	30;"	d
+SVC_UART_READ	svc.h	32;"	d
+SVC_UART_WRITE	svc.h	31;"	d
+UART2_ERROR_INTERRUPT_PRIORITY	uartdriver.h	25;"	d
+UART2_ERROR_IRQ_NUMBER	uartdriver.h	23;"	d
+UART2_STATUS_INTERRUPT_PRIORITY	uartdriver.h	20;"	d
+UART2_STATUS_IRQ_NUMBER	uartdriver.h	18;"	d
+XPSR_FRAME_ALIGNED_BIT	svc.c	72;"	d	file:
+XPSR_FRAME_ALIGNED_MASK	svc.c	73;"	d	file:
+_DELAY_H	delay.h	13;"	d
+_LCDCCONSOLE_H	lcdcConsole.h	13;"	d
+_LCDCDRIVER_H	lcdcdriver.h	13;"	d
+_LCDC_H	lcdc.h	3;"	d
 _LED_H	led.h	2;"	d
+_PUSHBUTTONDRIVER_H	pushbuttondriver.h	13;"	d
+_PUSHBUTTON_H	pushbutton.h	2;"	d
 _SVC_H	svc.h	13;"	d
+_UARTDRIVER_H	uartdriver.h	13;"	d
+_UART_H	uart.h	3;"	d
+_lcdcd_t	lcdc.h	/^typedef struct _lcdcd_t {$/;"	s
 _led_t	led.h	/^typedef struct _led_t {$/;"	s
+_pushbutton_t	pushbutton.h	/^typedef struct _pushbutton_t {$/;"	s
+_uart_t	uart.h	/^typedef struct _uart_t {$/;"	s
 arg0	svc.c	/^		int arg0;$/;"	m	union:frame::__anon1	file:
 arg1	svc.c	/^		int arg1;$/;"	m	union:frame::__anon2	file:
 arg2	svc.c	/^		int arg2;$/;"	m	union:frame::__anon3	file:
 arg3	svc.c	/^		int arg3;$/;"	m	union:frame::__anon4	file:
+console	lcdcConsole.h	/^struct console {$/;"	s
+delay	delay.c	/^void delay(unsigned long int limit) {$/;"	f
 frame	svc.c	/^struct frame {$/;"	s	file:
+framebuffer	lcdcConsole.h	/^  uint32_t *framebuffer;	\/\/ Starting address of frame buffer in memory$/;"	m	struct:console
+height	lcdcConsole.h	/^  uint16_t width, height;	\/\/ Screen width & height (in pixels)$/;"	m	struct:console
+init	lcdc.h	/^    void (*init)(void); $/;"	m	struct:_lcdcd_t
 init	led.h	/^    void (*init)(void); $/;"	m	struct:_led_t
+init	pushbutton.h	/^    void (*init)(void); $/;"	m	struct:_pushbutton_t
+init	uart.h	/^    void (*init)(void); $/;"	m	struct:_uart_t
+lcdcConsoleClear	lcdcConsole.c	/^void lcdcConsoleClear(struct console *console) {$/;"	f
+lcdcConsoleInit	lcdcConsole.c	/^void lcdcConsoleInit(struct console *console) {$/;"	f
+lcdcConsolePutc	lcdcConsole.c	/^void lcdcConsolePutc(struct console *console, int ch) {$/;"	f
+lcdcConsoleScroll	lcdcConsole.c	/^void lcdcConsoleScroll(struct console *console) {$/;"	f
+lcdcInit	lcdcdriver.c	/^void lcdcInit(void) {$/;"	f
+lcdcInitPins	lcdcdriver.c	/^void lcdcInitPins() {$/;"	f
+lcdcInitScreen	lcdcdriver.c	/^void lcdcInitScreen() {$/;"	f
+lcdc_init	lcdc.c	/^int lcdc_init(void * minor_num){ $/;"	f
+lcdc_t	lcdc.h	/^} lcdc_t;$/;"	t	typeref:struct:_lcdcd_t
+lcdc_write	lcdc.c	/^int lcdc_write(int ch, void *minor_num){ $/;"	f
+lcdcs	lcdc.c	/^lcdc_t lcdcs[NUM_OF_LCDCS] = { $/;"	v
 ledBlueConfig	led.c	/^void ledBlueConfig(void) {$/;"	f
 ledBlueOff	led.c	/^void ledBlueOff(void) {$/;"	f
 ledBlueOn	led.c	/^void ledBlueOn(void) {$/;"	f
@@ -59,18 +142,52 @@ ledinit	led.c	/^int ledinit(void * minor_num){ $/;"	f
 leds	led.c	/^led_t leds[NUM_OF_LEDS] = { $/;"	v
 ledwrite	led.c	/^int ledwrite(int ch, void *minor_num){ $/;"	f
 lr	svc.c	/^		int lr;$/;"	m	union:frame::__anon5	file:
-main	main.c	/^int main(void) {$/;"	f
-pushFourBytesThenSVCEndive	main.c	/^__asm void pushFourBytesThenSVCEndive(void) {$/;"	f
-pushFourBytesThenSVCEndive	main.c	/^void __attribute__((naked)) pushFourBytesThenSVCEndive(void) {$/;"	f
+main	main.c	/^int main(int argc, char *argv[])$/;"	f
+pushbuttonInitAll	pushbuttondriver.c	/^void pushbuttonInitAll(void) {$/;"	f
+pushbuttonSW1Config	pushbuttondriver.c	/^void pushbuttonSW1Config(void) {$/;"	f
+pushbuttonSW2Config	pushbuttondriver.c	/^void pushbuttonSW2Config(void) {$/;"	f
+pushbutton_init	pushbutton.c	/^int pushbutton_init(void * minor_num){$/;"	f
+pushbutton_read	pushbutton.c	/^int pushbutton_read(void * minor_num){$/;"	f
+pushbutton_t	pushbutton.h	/^} pushbutton_t;$/;"	t	typeref:struct:_pushbutton_t
+pushbuttoninit	pushbuttondriver.c	/^void pushbuttoninit(void){ $/;"	f
+pushbuttons	pushbutton.c	/^pushbutton_t pushbuttons[NUM_OF_PUSHBUTTONS] = { $/;"	v
 r0	svc.c	/^		int r0;$/;"	m	union:frame::__anon1	file:
 r1	svc.c	/^		int r1;$/;"	m	union:frame::__anon2	file:
 r12	svc.c	/^	int r12;$/;"	m	struct:frame	file:
 r14	svc.c	/^		int r14;$/;"	m	union:frame::__anon5	file:
 r2	svc.c	/^		int r2;$/;"	m	union:frame::__anon3	file:
 r3	svc.c	/^		int r3;$/;"	m	union:frame::__anon4	file:
+read	pushbutton.h	/^    int (*read)(void); $/;"	m	struct:_pushbutton_t
+read	uart.h	/^    int (*read)(); $/;"	m	struct:_uart_t
 returnAddr	svc.c	/^	int returnAddr;$/;"	m	struct:frame	file:
 returnVal	svc.c	/^		int returnVal;$/;"	m	union:frame::__anon1	file:
 svcHandlerInC	svc.c	/^void svcHandlerInC(struct frame *framePtr) {$/;"	f
 svcInit_SetSVCPriority	svc.c	/^void svcInit_SetSVCPriority(unsigned char priority) {$/;"	f
+sw1In	pushbuttondriver.c	/^int sw1In(void) {$/;"	f
+sw2In	pushbuttondriver.c	/^int sw2In(void) {$/;"	f
+uartGetchar	uartdriver.c	/^char uartGetchar(UART_MemMapPtr uartChannel) {$/;"	f
+uartGetcharPresent	uartdriver.c	/^int uartGetcharPresent(UART_MemMapPtr uartChannel) {$/;"	f
+uartInit	uartdriver.c	/^void uartInit(UART_MemMapPtr uartChannel, int clockInKHz, int baud) {$/;"	f
+uartPutchar	uartdriver.c	/^void uartPutchar(UART_MemMapPtr uartChannel, char ch) {$/;"	f
+uartPuts	uartdriver.c	/^void uartPuts(UART_MemMapPtr uartChannel, char *p) {$/;"	f
+uart_driver_init	uartdriver.c	/^void uart_driver_init(void){$/;"	f
+uart_driver_read	uartdriver.c	/^int uart_driver_read(){$/;"	f
+uart_driver_write	uartdriver.c	/^int uart_driver_write(int ch){$/;"	f
+uart_driver_writestring	uartdriver.c	/^void uart_driver_writestring(char *string){ $/;"	f
+uart_init	uart.c	/^int uart_init(void * minor_num){ $/;"	f
+uart_read	uart.c	/^int uart_read(void *minor_num){ $/;"	f
+uart_t	uart.h	/^} uart_t;$/;"	t	typeref:struct:_uart_t
+uart_write	uart.c	/^int uart_write(int ch, void *minor_num){ $/;"	f
+uart_write_string	main.c	/^void uart_write_string(char *p) {$/;"	f
+uarts	uart.c	/^uart_t uarts[NUM_OF_UARTS] = { $/;"	v
+verify_lcdc	main.c	/^int verify_lcdc(void){ $/;"	f
+verify_led	main.c	/^int verify_led(void) {$/;"	f
+verify_pushbutton	main.c	/^int verify_pushbutton(void) {$/;"	f
+verify_uart	main.c	/^int verify_uart(void){$/;"	f
+width	lcdcConsole.h	/^  uint16_t width, height;	\/\/ Screen width & height (in pixels)$/;"	m	struct:console
+write	lcdc.h	/^    int (*write)(int ch); $/;"	m	struct:_lcdcd_t
 write	led.h	/^    void (*write)(int ch); $/;"	m	struct:_led_t
+write	uart.h	/^    int (*write)(int ch); $/;"	m	struct:_uart_t
+x	lcdcConsole.h	/^  uint16_t x, y;			\/\/ Current console output position x & y (in pixels)$/;"	m	struct:console
 xPSR	svc.c	/^	int xPSR;$/;"	m	struct:frame	file:
+y	lcdcConsole.h	/^  uint16_t x, y;			\/\/ Current console output position x & y (in pixels)$/;"	m	struct:console

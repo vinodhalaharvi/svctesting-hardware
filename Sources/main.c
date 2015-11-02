@@ -55,6 +55,31 @@ int verify_pushbutton(void) {
 	return 0;
 }
 
+void uart_write_string(char *p) {
+	while(*p) {
+		uart_writer(*p++);
+	}
+}
+
+
+int verify_uart(void){
+	const unsigned long int delayCount = 0x7ffff;
+	printf("SerialIO Project Starting\n");
+	uart_write_string("SerialIO Project Starting\r\n");
+	uart_write_string("Waiting for character from UART2");
+	while(!uartGetcharPresent(UART2_BASE_PTR)) {
+		uart_write('.');
+		delay(delayCount);
+	}
+	uart_write_string("\r\nReceived character from UART2: '");
+	uart_write_string("'\r\n");
+	uart_write_string("SerialIO Project Completed\r\n");
+	printf("SerialIO Project Completed\n");
+	return 0;
+}
+
+int verify_lcdc(void){ 
+}
 
 int main(int argc, char *argv[])
 {

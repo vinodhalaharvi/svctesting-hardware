@@ -99,30 +99,6 @@ struct frame {
 	int xPSR;
 };
 
-/* Issue the SVC (Supervisor Call) instruction (See A7.7.175 on page A7-503 of the
- * ARM®v7-M Architecture Reference Manual, ARM DDI 0403Derrata 2010_Q3 (ID100710)) */
-#ifdef __GNUC__
-void __attribute__((naked)) __attribute__((noinline)) SVCEndive(void) {
-	__asm("svc %0" : : "I" (SVC_ENDIVE));
-	__asm("bx lr");
-}
-#else
-void __attribute__((never_inline)) SVCEndive(void) {
-	__asm("svc %0" : : "I" (SVC_ENDIVE));
-}
-#endif
-
-#ifdef __GNUC__
-void __attribute__((naked)) __attribute__((noinline)) SVCBroccoliRabe(int arg0) {
-	__asm("svc %0" : : "I" (SVC_BROCCOLIRABE));
-	__asm("bx lr");
-}
-#else
-void __attribute__((never_inline)) SVCBroccoliRabe(int arg0) {
-	__asm("svc %0" : : "I" (SVC_BROCCOLIRABE));
-}
-#endif
-
 #ifdef __GNUC__
 void __attribute__((naked)) __attribute__((noinline)) SVCLedInit(int arg0) {
 	__asm("svc %0" : : "I" (SVC_LED_INIT));
@@ -175,48 +151,66 @@ void __attribute__((never_inline)) SVCLedWrite(int arg0, int arg1) {
 
 
 #ifdef __GNUC__
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wreturn-type"
-int __attribute__((naked)) __attribute__((noinline)) SVCJicama(int arg0) {
-	__asm("svc %0" : : "I" (SVC_JICAMA));
+void __attribute__((naked)) __attribute__((noinline)) SVCUartInit(int arg0) {
+	__asm("svc %0" : : "I" (SVC_UART_INIT));
 	__asm("bx lr");
 }
-#pragma GCC diagnostic pop
 #else
-int __attribute__((never_inline)) SVCJicama(int arg0) {
-	__asm("svc %0" : : "I" (SVC_JICAMA));
+void __attribute__((never_inline)) SVCUartInit(int arg0) {
+	__asm("svc %0" : : "I" (SVC_UART_INIT));
 }
 #endif
 
 #ifdef __GNUC__
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wreturn-type"
-int __attribute__((naked)) __attribute__((noinline)) SVCArtichoke(int arg0, int arg1, int arg2, int arg3) {
-	__asm("svc %0" : : "I" (SVC_ARTICHOKE));
+int __attribute__((naked)) __attribute__((noinline)) SVCUartRead(int arg0) {
+	__asm("svc %0" : : "I" (SVC_UART_READ));
 	__asm("bx lr");
 }
 #pragma GCC diagnostic pop
 #else
-int __attribute__((never_inline)) SVCArtichoke(int arg0, int arg1, int arg2, int arg3) {
-	__asm("svc %0" : : "I" (SVC_ARTICHOKE));
+int __attribute__((never_inline)) SVCUartRead(int arg0) {
+	__asm("svc %0" : : "I" (SVC_UART_READ));
 }
 #endif
 
-int SVCArtichokeImpl(int arg0, int arg1, int arg2, int arg3) {
-	int sum;
-	
-	printf("SVC ARTICHOKE has been called\n");
 
-	printf("First parameter is %d\n", arg0);
-	printf("Second parameter is %d\n", arg1);
-	printf("Third parameter is %d\n", arg2);
-	printf("Fourth parameter is %d\n", arg3);
-
-	sum = arg0+arg1+arg2+arg3;
-	printf("Returning %d\n", sum);
-
-	return sum;
+#ifdef __GNUC__
+void __attribute__((naked)) __attribute__((noinline)) SVCUartWrite(int argo, int arg1) {
+	__asm("svc %0" : : "I" (SVC_UART_WRITE));
+	__asm("bx lr");
 }
+#else
+void __attribute__((never_inline)) SVCUartWrite(int arg0, int arg1) {
+	__asm("svc %0" : : "I" (SVC_UART_WRITE));
+}
+#endif
+
+
+#ifdef __GNUC__
+void __attribute__((naked)) __attribute__((noinline)) SVCLcdcInit(int arg0) {
+	__asm("svc %0" : : "I" (SVC_LCDC_INIT));
+	__asm("bx lr");
+}
+#else
+void __attribute__((never_inline)) SVCLcdcInit(int arg0) {
+	__asm("svc %0" : : "I" (SVC_LCDC_INIT));
+}
+#endif
+
+
+#ifdef __GNUC__
+void __attribute__((naked)) __attribute__((noinline)) SVCLcdcWrite(int argo, int arg1) {
+	__asm("svc %0" : : "I" (SVC_LCDC_WRITE));
+	__asm("bx lr");
+}
+#else
+void __attribute__((never_inline)) SVCLcdcWrite(int arg0, int arg1) {
+	__asm("svc %0" : : "I" (SVC_LCDC_WRITE));
+}
+#endif
+
 
 /* This function sets the priority at which the SVCall handler runs (See
  * B3.2.11, System Handler Priority Register 2, SHPR2 on page B3-723 of
@@ -305,16 +299,6 @@ void svcHandlerInC(struct frame *framePtr) {
 			((unsigned char *)framePtr->returnAddr)[-2]);
 
 	switch(((unsigned char *)framePtr->returnAddr)[-2]) {
-	case SVC_ENDIVE:
-		printf("SVC ENDIVE has been called\n");
-
-		printf("xPSR = 0x%08x\n", framePtr->xPSR);
-		if(framePtr->xPSR & XPSR_FRAME_ALIGNED_MASK) {
-			printf("Padding added to frame\n");
-		} else {
-			printf("No padding added to frame\n");
-		}
-		break;
 	case SVC_LED_INIT:
 		printf("SVC LED INIT has been called\n");
 		printf("Only parameter is %d\n", framePtr->arg0);
@@ -340,19 +324,38 @@ void svcHandlerInC(struct frame *framePtr) {
         minor_num = (unsigned) framePtr->arg0; 
         framePtr->returnVal = pushbutton_read(minor_num); 
 		break;
-	case SVC_BROCCOLIRABE:
-		printf("SVC BROCCOLIRABE has been called\n");
+	case SVC_UART_INIT:
+		printf("SVC UART INIT has been called\n");
 		printf("Only parameter is %d\n", framePtr->arg0);
+        minor_num = (unsigned) framePtr->arg0; 
+        framePtr->returnVal = uart_init(minor_num); 
 		break;
-	case SVC_JICAMA:
-		printf("SVC JICAMA has been called\n");
+	case SVC_UART_WRITE:
+		printf("SVC UART WRITE has been called\n");
+		printf("parameters: %d %d\n", framePtr->arg0, framePtr->arg1);
+        int ch = (unsigned) framePtr->arg0; 
+        minor_num = framePtr->arg1;
+        framePtr->returnVal = uart_write(ch, minor_num); 
+		break;
+	case SVC_UART_READ:
+		printf("SVC UART WRITE has been called\n");
+		printf("parameters: %d\n", framePtr->arg0);
+        minor_num = (unsigned) framePtr->arg0; 
+        framePtr->returnVal = uart_read(minor_num); 
+		break;
+
+	case SVC_LCDC_INIT:
+		printf("SVC LCDC INIT has been called\n");
 		printf("Only parameter is %d\n", framePtr->arg0);
-		framePtr->returnVal = framePtr->arg0*2;
-		printf("Returning %d\n", framePtr->returnVal);
+        minor_num = (unsigned) framePtr->arg0; 
+        framePtr->returnVal = lcdc_init(minor_num); 
 		break;
-	case SVC_ARTICHOKE:
-		framePtr->returnVal = SVCArtichokeImpl(framePtr->arg0,
-				framePtr->arg1, framePtr->arg2, framePtr->arg3);
+	case SVC_LCDC_WRITE:
+		printf("SVC LCDC WRITE has been called\n");
+		printf("parameters: %d %d\n", framePtr->arg0, framePtr->arg1);
+        int ch = (unsigned) framePtr->arg0; 
+        minor_num = framePtr->arg1;
+        framePtr->returnVal = lcdc_write(ch, minor_num); 
 		break;
 	default:
 		printf("Unknown SVC has been called\n");

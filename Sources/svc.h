@@ -16,28 +16,37 @@
 #define SVC_PriorityShift 4
 
 // Implemented SVC numbers
-
 #define SVC_ENDIVE 0
 #define SVC_BROCCOLIRABE 1
 #define SVC_JICAMA 2
 #define SVC_ARTICHOKE 3
+
 #define SVC_LED_INIT 4
 #define SVC_LED_WRITE 5
+
 #define SVC_PUSHBUTTON_INIT 6
 #define SVC_PUSHBUTTON_READ 7 
 
+#define SVC_UART_INIT 8 
+#define SVC_UART_WRITE 9 
+#define SVC_UART_READ 10 
+
+#define SVC_LCDC_INIT 11 
+#define SVC_LCDC_WRITE 12 
+
 void svcInit_SetSVCPriority(unsigned char priority);
 void svcHandler(void);
-
-void SVCEndive(void);
-void SVCBroccoliRabe(int arg0);
-int SVCJicama(int arg0);
-int SVCArtichoke(int arg0, int arg1, int arg2, int arg3);
-
 
 void SVCLedWrite(int ch, int minor_num); 
 void SVCLedInit(int minor_num); 
 
 void SVCPushButtonInit(int minor_num); 
 int SVCPushButtonRead(int minor_num); 
+
+void SVCUartInit(int minor_num); 
+int SVCUartRead(int minor_num); 
+int SVCUartWriter(int minor_num); 
+
+void SVCLcdcInit(int minor_num); 
+int SVCLcdcWrite(int minor_num); 
 #endif /* ifndef _SVC_H */
