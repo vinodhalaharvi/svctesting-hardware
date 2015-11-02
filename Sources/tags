@@ -2707,6 +2707,9 @@ DDR_BASE_PTR	derivative.h	4408;"	d
 DDR_BASE_PTRS	derivative.h	4410;"	d
 DDR_CR00	derivative.h	4424;"	d
 DDR_CR00_DDRCLS	derivative.h	3832;"	d
+DDR_CR00_DDRCLS_DDR	sdram.h	36;"	d
+DDR_CR00_DDRCLS_DDR2	sdram.h	38;"	d
+DDR_CR00_DDRCLS_LPDDR	sdram.h	37;"	d
 DDR_CR00_DDRCLS_MASK	derivative.h	3830;"	d
 DDR_CR00_DDRCLS_SHIFT	derivative.h	3831;"	d
 DDR_CR00_REG	derivative.h	3746;"	d
@@ -2813,6 +2816,9 @@ DDR_CR08_TWR_MASK	derivative.h	3918;"	d
 DDR_CR08_TWR_SHIFT	derivative.h	3919;"	d
 DDR_CR09	derivative.h	4433;"	d
 DDR_CR09_BSTLEN	derivative.h	3932;"	d
+DDR_CR09_BSTLEN_2_WORDS	sdram.h	40;"	d
+DDR_CR09_BSTLEN_4_WORDS	sdram.h	41;"	d
+DDR_CR09_BSTLEN_8_WORDS	sdram.h	42;"	d
 DDR_CR09_BSTLEN_MASK	derivative.h	3930;"	d
 DDR_CR09_BSTLEN_SHIFT	derivative.h	3931;"	d
 DDR_CR09_NOCMD_MASK	derivative.h	3928;"	d
@@ -3008,8 +3014,26 @@ DDR_CR30_INTACK	derivative.h	4102;"	d
 DDR_CR30_INTACK_MASK	derivative.h	4100;"	d
 DDR_CR30_INTACK_SHIFT	derivative.h	4101;"	d
 DDR_CR30_INTSTAT	derivative.h	4099;"	d
+DDR_CR30_INTSTAT_ANY_MASK	sdram.h	61;"	d
+DDR_CR30_INTSTAT_ANY_SHIFT	sdram.h	60;"	d
+DDR_CR30_INTSTAT_CAS_3_ERROR_MASK	sdram.h	53;"	d
+DDR_CR30_INTSTAT_CAS_3_ERROR_SHIFT	sdram.h	52;"	d
+DDR_CR30_INTSTAT_DDR2_AND_MOBILE_EN_MASK	sdram.h	51;"	d
+DDR_CR30_INTSTAT_DDR2_AND_MOBILE_EN_SHIFT	sdram.h	50;"	d
+DDR_CR30_INTSTAT_DFI_INT_COMPLETE_CHANGE_MASK	sdram.h	57;"	d
+DDR_CR30_INTSTAT_DFI_INT_COMPLETE_CHANGE_SHIFT	sdram.h	56;"	d
+DDR_CR30_INTSTAT_DLL_RESYNC_FINISH_MASK	sdram.h	59;"	d
+DDR_CR30_INTSTAT_DLL_RESYNC_FINISH_SHIFT	sdram.h	58;"	d
+DDR_CR30_INTSTAT_DRAM_INIT_COMPLETE_MASK	sdram.h	49;"	d
+DDR_CR30_INTSTAT_DRAM_INIT_COMPLETE_SHIFT	sdram.h	48;"	d
 DDR_CR30_INTSTAT_MASK	derivative.h	4097;"	d
+DDR_CR30_INTSTAT_MULTIPLE_OUTSIDE_MASK	sdram.h	47;"	d
+DDR_CR30_INTSTAT_MULTIPLE_OUTSIDE_SHIFT	sdram.h	46;"	d
 DDR_CR30_INTSTAT_SHIFT	derivative.h	4098;"	d
+DDR_CR30_INTSTAT_SINGLE_OUTSIDE_MASK	sdram.h	45;"	d
+DDR_CR30_INTSTAT_SINGLE_OUTSIDE_SHIFT	sdram.h	44;"	d
+DDR_CR30_INTSTAT_WRITE_FINISH_MASK	sdram.h	55;"	d
+DDR_CR30_INTSTAT_WRITE_FINISH_SHIFT	sdram.h	54;"	d
 DDR_CR30_REG	derivative.h	3776;"	d
 DDR_CR30_RSYNCRF_MASK	derivative.h	4095;"	d
 DDR_CR30_RSYNCRF_SHIFT	derivative.h	4096;"	d
@@ -3337,11 +3361,19 @@ DDR_MemMap	derivative.h	/^typedef struct DDR_MemMap {$/;"	s
 DDR_MemMapPtr	derivative.h	/^} volatile *DDR_MemMapPtr;$/;"	t
 DDR_PAD_CTRL	derivative.h	4489;"	d
 DDR_PAD_CTRL_PAD_ODT_CS0	derivative.h	4399;"	d
+DDR_PAD_CTRL_PAD_ODT_CS0_150_OHMS	sdram.h	28;"	d
+DDR_PAD_CTRL_PAD_ODT_CS0_50_OHMS	sdram.h	29;"	d
+DDR_PAD_CTRL_PAD_ODT_CS0_75_OHMS	sdram.h	27;"	d
 DDR_PAD_CTRL_PAD_ODT_CS0_MASK	derivative.h	4397;"	d
+DDR_PAD_CTRL_PAD_ODT_CS0_ODT_DISABLED	sdram.h	26;"	d
 DDR_PAD_CTRL_PAD_ODT_CS0_SHIFT	derivative.h	4398;"	d
 DDR_PAD_CTRL_REG	derivative.h	3811;"	d
 DDR_PAD_CTRL_SPARE_DLY_CTRL	derivative.h	4396;"	d
+DDR_PAD_CTRL_SPARE_DLY_CTRL_10_BUFFERS	sdram.h	34;"	d
+DDR_PAD_CTRL_SPARE_DLY_CTRL_4_BUFFERS	sdram.h	32;"	d
+DDR_PAD_CTRL_SPARE_DLY_CTRL_7_BUFFERS	sdram.h	33;"	d
 DDR_PAD_CTRL_SPARE_DLY_CTRL_MASK	derivative.h	4394;"	d
+DDR_PAD_CTRL_SPARE_DLY_CTRL_NO_BUFFER	sdram.h	31;"	d
 DDR_PAD_CTRL_SPARE_DLY_CTRL_SHIFT	derivative.h	4395;"	d
 DDR_RCR	derivative.h	4488;"	d
 DDR_RCR_REG	derivative.h	3810;"	d
@@ -7949,9 +7981,13 @@ LDR_CAA	derivative.h	/^  uint32_t LDR_CAA;                                \/**< 
 LDR_CASR	derivative.h	/^  uint32_t LDR_CASR;                               \/**< Status register  - Load Register command, offset: 0x840 *\/$/;"	m	struct:CAU_MemMap
 LDVAL	derivative.h	/^    uint32_t LDVAL;                                  \/**< Timer Load Value Register, array offset: 0x100, array step: 0x10 *\/$/;"	m	struct:PIT_MemMap::__anon27
 LED_BLUE_PORTA_BIT	led.h	8;"	d
+LED_BLUE_PORTA_BIT	leddriver.h	18;"	d
 LED_GREEN_PORTA_BIT	led.h	7;"	d
+LED_GREEN_PORTA_BIT	leddriver.h	17;"	d
 LED_ORANGE_PORTA_BIT	led.h	5;"	d
+LED_ORANGE_PORTA_BIT	leddriver.h	15;"	d
 LED_YELLOW_PORTA_BIT	led.h	6;"	d
+LED_YELLOW_PORTA_BIT	leddriver.h	16;"	d
 LGWCR	derivative.h	/^  uint32_t LGWCR;                                  \/**< LCDC graphic window control register, offset: 0x64 *\/$/;"	m	struct:LCDC_MemMap
 LGWDCR	derivative.h	/^  uint32_t LGWDCR;                                 \/**< LCDC graphic window DMA control register, offset: 0x68 *\/$/;"	m	struct:LCDC_MemMap
 LGWPOR	derivative.h	/^  uint32_t LGWPOR;                                 \/**< LCDC graphic window panning offset register, offset: 0x5C *\/$/;"	m	struct:LCDC_MemMap
@@ -8567,6 +8603,10 @@ MCM_BASE_PTR	derivative.h	11900;"	d
 MCM_BASE_PTRS	derivative.h	11902;"	d
 MCM_CR	derivative.h	11918;"	d
 MCM_CR_DDRSIZE	derivative.h	11799;"	d
+MCM_CR_DDRSIZE_128_MBYTES	sdram.h	22;"	d
+MCM_CR_DDRSIZE_256_MBYTES	sdram.h	23;"	d
+MCM_CR_DDRSIZE_512_MBYTES	sdram.h	24;"	d
+MCM_CR_DDRSIZE_ADDRESS_TRANSLATION_DISABLED	sdram.h	21;"	d
 MCM_CR_DDRSIZE_MASK	derivative.h	11797;"	d
 MCM_CR_DDRSIZE_SHIFT	derivative.h	11798;"	d
 MCM_CR_REG	derivative.h	11764;"	d
@@ -10388,9 +10428,11 @@ PORT_PCR_LK_SHIFT	derivative.h	13984;"	d
 PORT_PCR_MUX	derivative.h	13982;"	d
 PORT_PCR_MUX_ANALOG	capacitivepadsdriver.c	19;"	d	file:
 PORT_PCR_MUX_ANALOG	led.h	11;"	d
+PORT_PCR_MUX_ANALOG	leddriver.h	21;"	d
 PORT_PCR_MUX_ANALOG	pushbuttondriver.h	19;"	d
 PORT_PCR_MUX_GPIO	capacitivepadsdriver.c	20;"	d	file:
 PORT_PCR_MUX_GPIO	led.h	14;"	d
+PORT_PCR_MUX_GPIO	leddriver.h	24;"	d
 PORT_PCR_MUX_GPIO	pushbuttondriver.h	22;"	d
 PORT_PCR_MUX_MASK	derivative.h	13980;"	d
 PORT_PCR_MUX_SHIFT	derivative.h	13981;"	d
@@ -10409,6 +10451,9 @@ PPS	derivative.h	/^  uint8_t PPS;                                     \/**< CMT 
 PRE	derivative.h	/^  uint8_t PRE;                                     \/**< UART CEA709.1-B Preamble, offset: 0x27 *\/$/;"	m	struct:UART_MemMap
 PRESC	derivative.h	/^  uint16_t PRESC;                                  \/**< Watchdog Prescaler Register, offset: 0x16 *\/$/;"	m	struct:WDOG_MemMap
 PROCTL	derivative.h	/^  uint32_t PROCTL;                                 \/**< Protocol Control Register, offset: 0x28 *\/$/;"	m	struct:SDHC_MemMap
+PROFONT_CHARS_IN_FONT	profont.h	15;"	d
+PROFONT_FONT_HEIGHT	profont.h	16;"	d
+PROFONT_FONT_WIDTH	profont.h	17;"	d
 PRS	derivative.h	/^    uint32_t PRS;                                    \/**< Priority Registers Slave, array offset: 0x0, array step: 0x100 *\/$/;"	m	struct:AXBS_MemMap::__anon2
 PRSSTAT	derivative.h	/^  uint32_t PRSSTAT;                                \/**< Present State Register, offset: 0x24 *\/$/;"	m	struct:SDHC_MemMap
 PSCCR	derivative.h	/^  uint32_t PSCCR;                                  \/**< Cache control register, offset: 0x800 *\/$/;"	m	struct:LMEM_MemMap
@@ -11698,6 +11743,9 @@ SDHC_XFERTYP_RSPTYP	derivative.h	15477;"	d
 SDHC_XFERTYP_RSPTYP_MASK	derivative.h	15475;"	d
 SDHC_XFERTYP_RSPTYP_SHIFT	derivative.h	15476;"	d
 SDID	derivative.h	/^  uint32_t SDID;                                   \/**< System Device Identification Register, offset: 0x1024 *\/$/;"	m	struct:SIM_MemMap
+SDRAM_END	sdram.h	70;"	d
+SDRAM_SIZE	sdram.h	64;"	d
+SDRAM_START	sdram.h	67;"	d
 SDTH	derivative.h	/^  uint8_t SDTH;                                    \/**< UART CEA709.1-B Secondary Delay Timer High, offset: 0x25 *\/$/;"	m	struct:UART_MemMap
 SDTL	derivative.h	/^  uint8_t SDTL;                                    \/**< UART CEA709.1-B Secondary Delay Timer Low, offset: 0x26 *\/$/;"	m	struct:UART_MemMap
 SECSZ	derivative.h	/^  uint32_t SECSZ;                                  \/**< Sector size, offset: 0x3F2C *\/$/;"	m	struct:NFC_MemMap
@@ -11785,6 +11833,11 @@ SIM_FCFG2_MAXADDR23_SHIFT	derivative.h	16303;"	d
 SIM_FCFG2_REG	derivative.h	15957;"	d
 SIM_MCR	derivative.h	16416;"	d
 SIM_MCR_DDRCFG	derivative.h	16354;"	d
+SIM_MCR_DDRCFG_DDR1	sdram.h	18;"	d
+SIM_MCR_DDRCFG_DDR2_FULL_STRENGTH	sdram.h	19;"	d
+SIM_MCR_DDRCFG_DDR2_HALF_STRENGTH	sdram.h	17;"	d
+SIM_MCR_DDRCFG_LPDDR_FULL_STRENGTH	sdram.h	16;"	d
+SIM_MCR_DDRCFG_LPDDR_HALF_STRENGTH	sdram.h	15;"	d
 SIM_MCR_DDRCFG_MASK	derivative.h	16352;"	d
 SIM_MCR_DDRCFG_SHIFT	derivative.h	16353;"	d
 SIM_MCR_DDRDQSDIS_MASK	derivative.h	16350;"	d
@@ -12495,25 +12548,21 @@ SVCUartRead	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCUart
 SVCUartRead	svc.c	/^int __attribute__((never_inline)) SVCUartRead(int arg0) {$/;"	f
 SVCUartWrite	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCUartWrite(int argo, int arg1) {$/;"	f
 SVCUartWrite	svc.c	/^void __attribute__((never_inline)) SVCUartWrite(int arg0, int arg1) {$/;"	f
-SVC_ARTICHOKE	svc.h	22;"	d
-SVC_BROCCOLIRABE	svc.h	20;"	d
-SVC_CAPACITIVEPAD_INIT	svc.h	41;"	d
-SVC_CAPACITIVEPAD_READ	svc.h	42;"	d
-SVC_ENDIVE	svc.h	19;"	d
-SVC_JICAMA	svc.h	21;"	d
-SVC_LCDC_INIT	svc.h	34;"	d
-SVC_LCDC_WRITE	svc.h	35;"	d
-SVC_LED_INIT	svc.h	24;"	d
-SVC_LED_WRITE	svc.h	25;"	d
+SVC_CAPACITIVEPAD_INIT	svc.h	35;"	d
+SVC_CAPACITIVEPAD_READ	svc.h	36;"	d
+SVC_LCDC_INIT	svc.h	29;"	d
+SVC_LCDC_WRITE	svc.h	30;"	d
+SVC_LED_INIT	svc.h	19;"	d
+SVC_LED_WRITE	svc.h	20;"	d
 SVC_MaxPriority	svc.h	15;"	d
-SVC_POTENTIOMETER_INIT	svc.h	38;"	d
-SVC_POTENTIOMETER_READ	svc.h	39;"	d
-SVC_PUSHBUTTON_INIT	svc.h	27;"	d
-SVC_PUSHBUTTON_READ	svc.h	28;"	d
+SVC_POTENTIOMETER_INIT	svc.h	32;"	d
+SVC_POTENTIOMETER_READ	svc.h	33;"	d
+SVC_PUSHBUTTON_INIT	svc.h	22;"	d
+SVC_PUSHBUTTON_READ	svc.h	23;"	d
 SVC_PriorityShift	svc.h	16;"	d
-SVC_UART_INIT	svc.h	30;"	d
-SVC_UART_READ	svc.h	32;"	d
-SVC_UART_WRITE	svc.h	31;"	d
+SVC_UART_INIT	svc.h	25;"	d
+SVC_UART_READ	svc.h	27;"	d
+SVC_UART_WRITE	svc.h	26;"	d
 SWAP	derivative.h	/^  uint32_t SWAP;                                   \/**< Cach swap, offset: 0x3F28 *\/$/;"	m	struct:NFC_MemMap
 SWOCTRL	derivative.h	/^  uint32_t SWOCTRL;                                \/**< FTM Software Output Control, offset: 0x94 *\/$/;"	m	struct:FTM_MemMap
 SYNC	derivative.h	/^  uint32_t SYNC;                                   \/**< Synchronization, offset: 0x58 *\/$/;"	m	struct:FTM_MemMap
@@ -14471,11 +14520,14 @@ _DELAY_H	delay.h	13;"	d
 _LCDCCONSOLE_H	lcdcConsole.h	13;"	d
 _LCDCDRIVER_H	lcdcdriver.h	13;"	d
 _LCDC_H	lcdc.h	3;"	d
+_LEDDRIVER_H	leddriver.h	13;"	d
 _LED_H	led.h	2;"	d
 _POTENTIAMETERDRIVER_H	potentiometerdriver.h	2;"	d
 _POTENTIOMETER_H	potentiometer.h	4;"	d
+_PROFONT_H	profont.h	13;"	d
 _PUSHBUTTONDRIVER_H	pushbuttondriver.h	13;"	d
 _PUSHBUTTON_H	pushbutton.h	2;"	d
+_SDRAM_H	sdram.h	13;"	d
 _SVC_H	svc.h	13;"	d
 _UARTDRIVER_H	uartdriver.h	13;"	d
 _UART_H	uart.h	3;"	d
@@ -14523,27 +14575,47 @@ lcdcConsoleScroll	lcdcConsole.c	/^void lcdcConsoleScroll(struct console *console
 lcdcInit	lcdcdriver.c	/^void lcdcInit(void) {$/;"	f
 lcdcInitPins	lcdcdriver.c	/^void lcdcInitPins() {$/;"	f
 lcdcInitScreen	lcdcdriver.c	/^void lcdcInitScreen() {$/;"	f
+lcdc_driver_init	lcdcdriver.c	/^void lcdc_driver_init(void) {$/;"	f
+lcdc_driver_write	lcdcdriver.c	/^int lcdc_driver_write(int ch){ $/;"	f
 lcdc_init	lcdc.c	/^int lcdc_init(void * minor_num){ $/;"	f
 lcdc_t	lcdc.h	/^} lcdc_t;$/;"	t	typeref:struct:_lcdcd_t
 lcdc_write	lcdc.c	/^int lcdc_write(int ch, void *minor_num){ $/;"	f
 lcdcs	lcdc.c	/^lcdc_t lcdcs[NUM_OF_LCDCS] = { $/;"	v
 ledBlueConfig	led.c	/^void ledBlueConfig(void) {$/;"	f
+ledBlueConfig	leddriver.c	/^void ledBlueConfig(void) {$/;"	f
 ledBlueOff	led.c	/^void ledBlueOff(void) {$/;"	f
+ledBlueOff	leddriver.c	/^void ledBlueOff(void) {$/;"	f
 ledBlueOn	led.c	/^void ledBlueOn(void) {$/;"	f
+ledBlueOn	leddriver.c	/^void ledBlueOn(void) {$/;"	f
 ledBlueWrite	led.c	/^void ledBlueWrite(int ch){$/;"	f
+ledBlueWrite	leddriver.c	/^void ledBlueWrite(int ch){$/;"	f
 ledGreenConfig	led.c	/^void ledGreenConfig(void) {$/;"	f
+ledGreenConfig	leddriver.c	/^void ledGreenConfig(void) {$/;"	f
 ledGreenOff	led.c	/^void ledGreenOff(void) {$/;"	f
+ledGreenOff	leddriver.c	/^void ledGreenOff(void) {$/;"	f
 ledGreenOn	led.c	/^void ledGreenOn(void) {$/;"	f
+ledGreenOn	leddriver.c	/^void ledGreenOn(void) {$/;"	f
 ledGreenWrite	led.c	/^void ledGreenWrite(int ch){$/;"	f
+ledGreenWrite	leddriver.c	/^void ledGreenWrite(int ch){$/;"	f
 ledInit	led.c	/^void ledInit(){ $/;"	f
+ledInit	leddriver.c	/^void ledInit(){ $/;"	f
+ledInitAll	leddriver.c	/^void ledInitAll(void) {$/;"	f
 ledOrangeConfig	led.c	/^void ledOrangeConfig(void) {$/;"	f
+ledOrangeConfig	leddriver.c	/^void ledOrangeConfig(void) {$/;"	f
 ledOrangeOff	led.c	/^void ledOrangeOff(void) {$/;"	f
+ledOrangeOff	leddriver.c	/^void ledOrangeOff(void) {$/;"	f
 ledOrangeOn	led.c	/^void ledOrangeOn(void) {$/;"	f
+ledOrangeOn	leddriver.c	/^void ledOrangeOn(void) {$/;"	f
 ledOrangeWrite	led.c	/^void ledOrangeWrite(int ch){$/;"	f
+ledOrangeWrite	leddriver.c	/^void ledOrangeWrite(int ch){$/;"	f
 ledYellowConfig	led.c	/^void ledYellowConfig(void) {$/;"	f
+ledYellowConfig	leddriver.c	/^void ledYellowConfig(void) {$/;"	f
 ledYellowOff	led.c	/^void ledYellowOff(void) {$/;"	f
+ledYellowOff	leddriver.c	/^void ledYellowOff(void) {$/;"	f
 ledYellowOn	led.c	/^void ledYellowOn(void) {$/;"	f
+ledYellowOn	leddriver.c	/^void ledYellowOn(void) {$/;"	f
 ledYellowWrite	led.c	/^void ledYellowWrite(int ch){$/;"	f
+ledYellowWrite	leddriver.c	/^void ledYellowWrite(int ch){$/;"	f
 led_t	led.h	/^} led_t;$/;"	t	typeref:struct:_led_t
 ledinit	led.c	/^int ledinit(void * minor_num){ $/;"	f
 leds	led.c	/^led_t leds[NUM_OF_LEDS] = { $/;"	v
@@ -14557,6 +14629,7 @@ potentiometer_init	potentiometer.c	/^int potentiometer_init(void * minor_num){ $
 potentiometer_read	potentiometer.c	/^int potentiometer_read(void *minor_num){ $/;"	f
 potentiometer_t	potentiometer.h	/^} potentiometer_t;$/;"	t	typeref:struct:_potentiometer_t
 potentiometers	potentiometer.c	/^potentiometer_t potentiometers[NUM_OF_POTENTIOMETERS] = { $/;"	v
+profont	profont.c	/^uint8_t profont[PROFONT_CHARS_IN_FONT][PROFONT_FONT_HEIGHT][PROFONT_FONT_WIDTH] = {$/;"	v
 pushbuttonInitAll	pushbuttondriver.c	/^void pushbuttonInitAll(void) {$/;"	f
 pushbuttonSW1Config	pushbuttondriver.c	/^void pushbuttonSW1Config(void) {$/;"	f
 pushbuttonSW2Config	pushbuttondriver.c	/^void pushbuttonSW2Config(void) {$/;"	f
@@ -14577,6 +14650,7 @@ read	pushbutton.h	/^    int (*read)(void); $/;"	m	struct:_pushbutton_t
 read	uart.h	/^    int (*read)(); $/;"	m	struct:_uart_t
 returnAddr	svc.c	/^	int returnAddr;$/;"	m	struct:frame	file:
 returnVal	svc.c	/^		int returnVal;$/;"	m	union:frame::__anon34	file:
+sdramInit	sdram.c	/^void sdramInit(void) {$/;"	f
 svcHandlerInC	svc.c	/^void svcHandlerInC(struct frame *framePtr) {$/;"	f
 svcInit_SetSVCPriority	svc.c	/^void svcInit_SetSVCPriority(unsigned char priority) {$/;"	f
 sw1In	pushbuttondriver.c	/^int sw1In(void) {$/;"	f

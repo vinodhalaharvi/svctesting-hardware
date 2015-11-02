@@ -9,8 +9,8 @@ typedef struct _capacitivepad_t {
     int  (*read)(int); 
 } capacitivepad_t;
 
-void capacitivepad_init(); 
-void capacitivepad_calibrate(void); 
-int capacitivepad_read(void); 
+int capacitivepad_init(void * minor_num); 
+void capacitivepad_calibrate(void *minor_num); 
+int capacitivepad_read(void *minor_num); 
 #endif
 

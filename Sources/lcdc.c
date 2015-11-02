@@ -7,6 +7,7 @@
 #include "lcdc.h"
 #include "lcdcdriver.h"
 
+
 lcdc_t lcdcs[NUM_OF_LCDCS] = { 
     {lcdc_driver_init, lcdc_driver_write}, 
 };

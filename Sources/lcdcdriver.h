@@ -67,4 +67,7 @@ void lcdcInit();
 void lcdcInitScreen();
 void lcdcInitPins();
 
+
+void lcdc_driver_init(void); 
+int lcdc_driver_write(int ch); 
 #endif /* ifndef _LCDC_H */

@@ -8,7 +8,6 @@ typedef struct _lcdcd_t {
     int (*write)(int ch); 
 } lcdc_t;
 
-void lcdcInitAll(void);
 int lcdc_init(void *minorno); 
 int lcdc_write(int ch, void *minorno);
 #endif

@@ -11,7 +11,7 @@
 
 #include <stdint.h>
 #include <string.h>
-#include "lcdc.h"
+#include "lcdcdriver.h"
 #include "profont.h"
 #include "lcdcConsole.h"
 
