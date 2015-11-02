@@ -22,12 +22,11 @@ int potentiometer_init(void * minor_num){
 
 int potentiometer_read(void *minor_num){ 
     int fd = (int) (unsigned) minor_num; 
-    //still have to fix this
-    potentiometers[fd].read(); 
+    potentiometers[fd].read(ADC_CHANNEL_POTENTIOMETER); 
     return 0; 
 }
 
-int verify(void) {
+int verify_potentiometer(void) {
    potentiometer_driver_init();
    while(TRUE) { 
       printf("pot: %4u\ttemp: %4u\n",
@@ -36,3 +35,9 @@ int verify(void) {
    }
    return 0;
 }
+
+/*int main(int argc, char *argv[])
+{
+    verify_potentiometer();
+    return 0;
+}*/

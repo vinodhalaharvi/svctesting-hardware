@@ -49,10 +49,7 @@ int SVCUartRead(int minor_num);
 int SVCUartWriter(int minor_num); 
 
 void SVCLcdcInit(int minor_num); 
-int SVCLcdcWrite(int minor_num); 
-
-void SVCLcdcInit(int minor_num); 
-int SVCLcdcWrite(int minor_num); 
+int SVCLcdcWrite(int ch, int minor_num); 
 
 void SVCCapacitivePadInit(int minor_num); 
 int SVCCapacitivePadRead(int minor_num); 

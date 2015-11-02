@@ -2031,6 +2031,7 @@ CGL2	derivative.h	/^  uint8_t CGL2;                                    \/**< CMT
 CH	derivative.h	/^  } CH[4];$/;"	m	struct:PDB_MemMap	typeref:struct:PDB_MemMap::__anon25
 CHANNEL	derivative.h	/^  } CHANNEL[4];$/;"	m	struct:ENET_MemMap	typeref:struct:ENET_MemMap::__anon19
 CHANNEL	derivative.h	/^  } CHANNEL[4];$/;"	m	struct:PIT_MemMap	typeref:struct:PIT_MemMap::__anon27
+CHAR_EOF	lcdcdriver.c	22;"	d	file:
 CHCFG	derivative.h	/^  uint8_t CHCFG[16];                               \/**< Channel Configuration Register, array offset: 0x0, array step: 0x1 *\/$/;"	m	struct:DMAMUX_MemMap
 CID0	derivative.h	/^  uint32_t CID0;                                   \/**< Component Identification Register 0., offset: 0xFF0 *\/$/;"	m	struct:DWT_MemMap
 CID0	derivative.h	/^  uint32_t CID0;                                   \/**< Component Identification Register 0., offset: 0xFF0 *\/$/;"	m	struct:FPB_MemMap
@@ -11773,6 +11774,22 @@ SIM_CLKDIV1_OUTDIV3_SHIFT	derivative.h	16267;"	d
 SIM_CLKDIV1_OUTDIV4	derivative.h	16265;"	d
 SIM_CLKDIV1_OUTDIV4_MASK	derivative.h	16263;"	d
 SIM_CLKDIV1_OUTDIV4_SHIFT	derivative.h	16264;"	d
+SIM_CLKDIV1_OUTDIV_DIVIDE_BY_1	mcg.h	18;"	d
+SIM_CLKDIV1_OUTDIV_DIVIDE_BY_10	mcg.h	27;"	d
+SIM_CLKDIV1_OUTDIV_DIVIDE_BY_11	mcg.h	28;"	d
+SIM_CLKDIV1_OUTDIV_DIVIDE_BY_12	mcg.h	29;"	d
+SIM_CLKDIV1_OUTDIV_DIVIDE_BY_13	mcg.h	30;"	d
+SIM_CLKDIV1_OUTDIV_DIVIDE_BY_14	mcg.h	31;"	d
+SIM_CLKDIV1_OUTDIV_DIVIDE_BY_15	mcg.h	32;"	d
+SIM_CLKDIV1_OUTDIV_DIVIDE_BY_16	mcg.h	33;"	d
+SIM_CLKDIV1_OUTDIV_DIVIDE_BY_2	mcg.h	19;"	d
+SIM_CLKDIV1_OUTDIV_DIVIDE_BY_3	mcg.h	20;"	d
+SIM_CLKDIV1_OUTDIV_DIVIDE_BY_4	mcg.h	21;"	d
+SIM_CLKDIV1_OUTDIV_DIVIDE_BY_5	mcg.h	22;"	d
+SIM_CLKDIV1_OUTDIV_DIVIDE_BY_6	mcg.h	23;"	d
+SIM_CLKDIV1_OUTDIV_DIVIDE_BY_7	mcg.h	24;"	d
+SIM_CLKDIV1_OUTDIV_DIVIDE_BY_8	mcg.h	25;"	d
+SIM_CLKDIV1_OUTDIV_DIVIDE_BY_9	mcg.h	26;"	d
 SIM_CLKDIV1_REG	derivative.h	15954;"	d
 SIM_CLKDIV2	derivative.h	16407;"	d
 SIM_CLKDIV2_REG	derivative.h	15955;"	d
@@ -12528,11 +12545,11 @@ SVCCapacitivePadRead	svc.c	/^int __attribute__((naked)) __attribute__((noinline)
 SVCCapacitivePadRead	svc.c	/^int __attribute__((never_inline)) SVCCapacitivePadRead(int arg0) {$/;"	f
 SVCLcdcInit	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLcdcInit(int arg0) {$/;"	f
 SVCLcdcInit	svc.c	/^void __attribute__((never_inline)) SVCLcdcInit(int arg0) {$/;"	f
-SVCLcdcWrite	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLcdcWrite(int argo, int arg1) {$/;"	f
+SVCLcdcWrite	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLcdcWrite(int arg0, int arg1) {$/;"	f
 SVCLcdcWrite	svc.c	/^void __attribute__((never_inline)) SVCLcdcWrite(int arg0, int arg1) {$/;"	f
 SVCLedInit	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLedInit(int arg0) {$/;"	f
 SVCLedInit	svc.c	/^void __attribute__((never_inline)) SVCLedInit(int arg0) {$/;"	f
-SVCLedWrite	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLedWrite(int argo, int arg1) {$/;"	f
+SVCLedWrite	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLedWrite(int arg0, int arg1) {$/;"	f
 SVCLedWrite	svc.c	/^void __attribute__((never_inline)) SVCLedWrite(int arg0, int arg1) {$/;"	f
 SVCPotentiometerInit	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCPotentiometerInit(int arg0) {$/;"	f
 SVCPotentiometerInit	svc.c	/^void __attribute__((never_inline)) SVCPotentiometerInit(int arg0) {$/;"	f
@@ -12546,7 +12563,7 @@ SVCUartInit	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCUar
 SVCUartInit	svc.c	/^void __attribute__((never_inline)) SVCUartInit(int arg0) {$/;"	f
 SVCUartRead	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCUartRead(int arg0) {$/;"	f
 SVCUartRead	svc.c	/^int __attribute__((never_inline)) SVCUartRead(int arg0) {$/;"	f
-SVCUartWrite	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCUartWrite(int argo, int arg1) {$/;"	f
+SVCUartWrite	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCUartWrite(int arg0, int arg1) {$/;"	f
 SVCUartWrite	svc.c	/^void __attribute__((never_inline)) SVCUartWrite(int arg0, int arg1) {$/;"	f
 SVC_CAPACITIVEPAD_INIT	svc.h	35;"	d
 SVC_CAPACITIVEPAD_READ	svc.h	36;"	d
@@ -14522,6 +14539,7 @@ _LCDCDRIVER_H	lcdcdriver.h	13;"	d
 _LCDC_H	lcdc.h	3;"	d
 _LEDDRIVER_H	leddriver.h	13;"	d
 _LED_H	led.h	2;"	d
+_MCG_H	mcg.h	13;"	d
 _POTENTIAMETERDRIVER_H	potentiometerdriver.h	2;"	d
 _POTENTIOMETER_H	potentiometer.h	4;"	d
 _PROFONT_H	profont.h	13;"	d
@@ -14554,6 +14572,7 @@ capacitivepad_t	capacitivepads.h	/^} capacitivepad_t;$/;"	t	typeref:struct:_capa
 capacitivepads	capacitivepads.c	/^capacitivepad_t capacitivepads[NUM_OF_CAPACITIVEPADS] = { $/;"	v
 channel	capacitivepadsdriver.c	/^	int channel;$/;"	m	struct:electrodeHW	file:
 console	lcdcConsole.h	/^struct console {$/;"	s
+console	lcdcdriver.c	/^static struct console console;$/;"	v	typeref:struct:console	file:
 counterRegister	capacitivepadsdriver.c	/^	uint16_t *counterRegister;$/;"	m	struct:electrodeHW	file:
 delay	delay.c	/^void delay(unsigned long int limit) {$/;"	f
 electrodeHW	capacitivepadsdriver.c	/^struct electrodeHW {$/;"	s	file:
@@ -14623,6 +14642,7 @@ ledwrite	led.c	/^int ledwrite(int ch, void *minor_num){ $/;"	f
 lr	svc.c	/^		int lr;$/;"	m	union:frame::__anon38	file:
 main	main.c	/^int main(int argc, char *argv[])$/;"	f
 mask	capacitivepadsdriver.c	/^	uint32_t mask;$/;"	m	struct:electrodeHW	file:
+mcgInit	mcg.c	/^void mcgInit(void) {$/;"	f
 potentiometer_driver_init	potentiometerdriver.c	/^void potentiometer_driver_init(void) {$/;"	f
 potentiometer_driver_read	potentiometerdriver.c	/^unsigned int potentiometer_driver_read(uint8_t channel) {$/;"	f
 potentiometer_init	potentiometer.c	/^int potentiometer_init(void * minor_num){ $/;"	f
@@ -14672,9 +14692,9 @@ uart_write	uart.c	/^int uart_write(int ch, void *minor_num){ $/;"	f
 uart_write_string	main.c	/^void uart_write_string(char *p) {$/;"	f
 uarts	uart.c	/^uart_t uarts[NUM_OF_UARTS] = { $/;"	v
 verify	capacitivepadsdriver.c	/^int verify(void) {$/;"	f
-verify	potentiometer.c	/^int verify(void) {$/;"	f
 verify_lcdc	main.c	/^int verify_lcdc(void){ $/;"	f
 verify_led	main.c	/^int verify_led(void) {$/;"	f
+verify_potentiometer	potentiometer.c	/^int verify_potentiometer(void) {$/;"	f
 verify_pushbutton	main.c	/^int verify_pushbutton(void) {$/;"	f
 verify_uart	main.c	/^int verify_uart(void){$/;"	f
 width	lcdcConsole.h	/^  uint16_t width, height;	\/\/ Screen width & height (in pixels)$/;"	m	struct:console

@@ -70,6 +70,8 @@
 #include "pushbutton.h"
 #include "capacitivepads.h"
 #include "potentiometer.h"
+#include "uart.h"
+#include "lcdc.h"
 
 
 #define XPSR_FRAME_ALIGNED_BIT 9
@@ -197,7 +199,7 @@ int __attribute__((never_inline)) SVCPotentiometerRead(int arg0) {
 
 
 #ifdef __GNUC__
-void __attribute__((naked)) __attribute__((noinline)) SVCLedWrite(int argo, int arg1) {
+void __attribute__((naked)) __attribute__((noinline)) SVCLedWrite(int arg0, int arg1) {
 	__asm("svc %0" : : "I" (SVC_LED_WRITE));
 	__asm("bx lr");
 }
@@ -236,7 +238,7 @@ int __attribute__((never_inline)) SVCUartRead(int arg0) {
 
 
 #ifdef __GNUC__
-void __attribute__((naked)) __attribute__((noinline)) SVCUartWrite(int argo, int arg1) {
+void __attribute__((naked)) __attribute__((noinline)) SVCUartWrite(int arg0, int arg1) {
 	__asm("svc %0" : : "I" (SVC_UART_WRITE));
 	__asm("bx lr");
 }
@@ -257,15 +259,13 @@ void __attribute__((never_inline)) SVCLcdcInit(int arg0) {
 	__asm("svc %0" : : "I" (SVC_LCDC_INIT));
 }
 #endif
-
-
 #ifdef __GNUC__
-void __attribute__((naked)) __attribute__((noinline)) SVCLcdcWrite(int argo, int arg1) {
+int __attribute__((naked)) __attribute__((noinline)) SVCLcdcWrite(int arg0, int arg1) {
 	__asm("svc %0" : : "I" (SVC_LCDC_WRITE));
 	__asm("bx lr");
 }
 #else
-void __attribute__((never_inline)) SVCLcdcWrite(int arg0, int arg1) {
+int __attribute__((never_inline)) SVCLcdcWrite(int arg0, int arg1) {
 	__asm("svc %0" : : "I" (SVC_LCDC_WRITE));
 }
 #endif
@@ -273,7 +273,7 @@ void __attribute__((never_inline)) SVCLcdcWrite(int arg0, int arg1) {
 
 /* This function sets the priority at which the SVCall handler runs (See
  * B3.2.11, System Handler Priority Register 2, SHPR2 on page B3-723 of
- * the ARM®v7-M Architecture Reference Manual, ARM DDI 0403Derrata
+ * the ARM®v8-M Architecture Reference Manual, ARM DDI 0403Derrata
  * 2010_Q3 (ID100710)).
  * 
  * If priority parameter is invalid, this function performs no action.
@@ -346,10 +346,10 @@ void svcHandlerInC(struct frame *framePtr);
 
 
 void svcHandlerInC(struct frame *framePtr) {
-    unsigned minor_num; 
+    void * minor_num; 
+    int ch;
 	printf("Entering svcHandlerInC\n");
-
-	printf("framePtr = 0x%08x\n", (unsigned int)framePtr);
+	printf("framePtr = 2x%08x\n", (unsigned int)framePtr);
 
 	/* framePtr->returnAddr is the return address for the SVC interrupt
 	 * service routine.  ((unsigned char *)framePtr->returnAddr)[-2]
@@ -361,83 +361,83 @@ void svcHandlerInC(struct frame *framePtr) {
 	case SVC_LED_INIT:
 		printf("SVC LED INIT has been called\n");
 		printf("Only parameter is %d\n", framePtr->arg0);
-        minor_num = (unsigned) framePtr->arg0; 
+        minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = ledinit(minor_num); 
 		break;
 	case SVC_LED_WRITE:
 		printf("SVC LED WRITE has been called\n");
 		printf("parameters: %d %d\n", framePtr->arg0, framePtr->arg1);
-        ch = (unsigned) framePtr->arg0; 
-        minor_num = framePtr->arg1;
+        ch = framePtr->arg0; 
+        minor_num = (void *) framePtr->arg1;
         framePtr->returnVal = ledwrite(ch, minor_num); 
 		break;
 	case SVC_PUSHBUTTON_INIT:
 		printf("SVC PUSHBUTTON INIT has been called\n");
 		printf("Only parameter is %d\n", framePtr->arg0);
-        minor_num = (unsigned) framePtr->arg0; 
+        minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = pushbutton_init(minor_num); 
 		break;
 	case SVC_PUSHBUTTON_READ:
 		printf("SVC PUSHBUTTON WRITE has been called\n");
 		printf("parameters: %d\n", framePtr->arg0);
-        minor_num = (unsigned) framePtr->arg0; 
+        minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = pushbutton_read(minor_num); 
 		break;
 	case SVC_CAPACITIVEPAD_INIT:
 		printf("SVC CAPACITIVEPAD INIT has been called\n");
 		printf("Only parameter is %d\n", framePtr->arg0);
-        minor_num = (unsigned) framePtr->arg0; 
+        minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = capacitivepad_init(minor_num); 
 		break;
 	case SVC_CAPACITIVEPAD_READ:
 		printf("SVC CAPACITIVEPAD WRITE has been called\n");
 		printf("parameters: %d\n", framePtr->arg0);
-        minor_num = (unsigned) framePtr->arg0; 
+        minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = capacitivepad_read(minor_num); 
 		break;
 	case SVC_POTENTIOMETER_INIT:
 		printf("SVC POTENTIOMETER INIT has been called\n");
 		printf("Only parameter is %d\n", framePtr->arg0);
-        minor_num = (unsigned) framePtr->arg0; 
-        framePtr->returnVal = potentiometerpad_init(minor_num); 
+        minor_num = (void *) framePtr->arg0; 
+        framePtr->returnVal = potentiometer_init(minor_num); 
 		break;
 	case SVC_POTENTIOMETER_READ:
 		printf("SVC POTENTIOMETER WRITE has been called\n");
 		printf("parameters: %d\n", framePtr->arg0);
-        minor_num = (unsigned) framePtr->arg0; 
-        framePtr->returnVal = potentiometerpad_read(minor_num); 
+        minor_num = (void *) framePtr->arg0; 
+        framePtr->returnVal = potentiometer_read(minor_num); 
 		break;
 	case SVC_UART_INIT:
 		printf("SVC UART INIT has been called\n");
 		printf("Only parameter is %d\n", framePtr->arg0);
-        minor_num = (unsigned) framePtr->arg0; 
+        minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = uart_init(minor_num); 
 		break;
 	case SVC_UART_WRITE:
 		printf("SVC UART WRITE has been called\n");
 		printf("parameters: %d %d\n", framePtr->arg0, framePtr->arg1);
-        int ch = (unsigned) framePtr->arg0; 
-        minor_num = framePtr->arg1;
+        ch = (unsigned) framePtr->arg0; 
+        minor_num = (void *) framePtr->arg1;
         framePtr->returnVal = uart_write(ch, minor_num); 
 		break;
 	case SVC_UART_READ:
 		printf("SVC UART WRITE has been called\n");
 		printf("parameters: %d\n", framePtr->arg0);
-        minor_num = (unsigned) framePtr->arg0; 
+        minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = uart_read(minor_num); 
 		break;
 
 	case SVC_LCDC_INIT:
 		printf("SVC LCDC INIT has been called\n");
 		printf("Only parameter is %d\n", framePtr->arg0);
-        minor_num = (unsigned) framePtr->arg0; 
+        minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = lcdc_init(minor_num); 
 		break;
 	case SVC_LCDC_WRITE:
 		printf("SVC LCDC WRITE has been called\n");
 		printf("parameters: %d %d\n", framePtr->arg0, framePtr->arg1);
-        int ch = (unsigned) framePtr->arg0; 
-        minor_num = framePtr->arg1;
+        ch = (unsigned) framePtr->arg0; 
+        minor_num = (void *) framePtr->arg1;
         framePtr->returnVal = lcdc_write(ch, minor_num); 
 		break;
 

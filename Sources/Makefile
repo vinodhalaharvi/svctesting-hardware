@@ -37,7 +37,7 @@ pushbuttondriver: pushbuttondriver.o
 
 sdram: sdram.o
 
-svc: svc.o
+svc: svc.o uart.o led.o pushbutton.o potentiometer.o  capacitivepads.o lcdc.o
 
 uart: uart.o
 
