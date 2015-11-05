@@ -17,9 +17,6 @@
 typedef struct _led_t {
     void (*init)(void); 
     void (*write)(int ch); 
-    /*void * baseptr; 
-    //int pinno; 
-    int clockcontrol; */
 } led_t;
 
 void ledOrangeConfig(void);

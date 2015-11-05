@@ -297,8 +297,8 @@ void svcHandlerInC(struct frame *framePtr) {
 	case SVC_LED_WRITE:
 		printf("SVC LED WRITE has been called\n");
 		printf("parameters: %d %d\n", framePtr->arg0, framePtr->arg1);
-        minor_num = (unsigned) framePtr->arg0; 
-        int ch = framePtr->arg1;
+        int ch = (unsigned) framePtr->arg0; 
+        minor_num = framePtr->arg1;
         framePtr->returnVal = ledwrite(ch, minor_num); 
 		break;
 	case SVC_BROCCOLIRABE:

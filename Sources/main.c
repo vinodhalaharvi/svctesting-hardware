@@ -13,9 +13,9 @@ int main(void) {
 	printf("FlashLED Project Starting\n");
 	SVCLedInit(0);
 	while(1) {
-		delay(delayCount);	
+		delay(delayCount * 3);	
 		SVCLedWrite(1, 0);
-		delay(delayCount);	
+		delay(delayCount * 3);	
 		SVCLedWrite(0, 0);
 	}
 	printf("FlashLED Project Completed\n");

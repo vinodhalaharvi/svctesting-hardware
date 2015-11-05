@@ -73,6 +73,7 @@ void ledBlueOn(void) {
 }
 
 void ledOrangeWrite(int ch){
+    printf("ledOrangeWrite ch = %d\n", ch);
     ch == 0? ledOrangeOn(): ledOrangeOff(); 
 }
 void ledYellowWrite(int ch){
@@ -101,6 +102,7 @@ int ledinit(void * minor_num){
 
 int ledwrite(int ch, void *minor_num){ 
     int fd = (int) (unsigned) minor_num; 
+    printf("ledwrite ch = %d\n", ch);
     leds[fd].write(ch); 
     return 0; 
 }
