@@ -1,0 +1,46 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+SVCArtichoke	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCArtichoke(int arg0, int arg1, int arg2, int arg3) {$/;"	f
+SVCArtichoke	svc.c	/^int __attribute__((never_inline)) SVCArtichoke(int arg0, int arg1, int arg2, int arg3) {$/;"	f
+SVCArtichokeImpl	svc.c	/^int SVCArtichokeImpl(int arg0, int arg1, int arg2, int arg3) {$/;"	f
+SVCBroccoliRabe	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCBroccoliRabe(int arg0) {$/;"	f
+SVCBroccoliRabe	svc.c	/^void __attribute__((never_inline)) SVCBroccoliRabe(int arg0) {$/;"	f
+SVCEndive	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCEndive(void) {$/;"	f
+SVCEndive	svc.c	/^void __attribute__((never_inline)) SVCEndive(void) {$/;"	f
+SVCJicama	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCJicama(int arg0) {$/;"	f
+SVCJicama	svc.c	/^int __attribute__((never_inline)) SVCJicama(int arg0) {$/;"	f
+SVC_ARTICHOKE	svc.h	23;"	d
+SVC_BROCCOLIRABE	svc.h	21;"	d
+SVC_ENDIVE	svc.h	20;"	d
+SVC_JICAMA	svc.h	22;"	d
+SVC_MaxPriority	svc.h	15;"	d
+SVC_PriorityShift	svc.h	16;"	d
+XPSR_FRAME_ALIGNED_BIT	svc.c	70;"	d	file:
+XPSR_FRAME_ALIGNED_MASK	svc.c	71;"	d	file:
+_SVC_H	svc.h	13;"	d
+arg0	svc.c	/^		int arg0;$/;"	m	union:frame::__anon1	file:
+arg1	svc.c	/^		int arg1;$/;"	m	union:frame::__anon2	file:
+arg2	svc.c	/^		int arg2;$/;"	m	union:frame::__anon3	file:
+arg3	svc.c	/^		int arg3;$/;"	m	union:frame::__anon4	file:
+frame	svc.c	/^struct frame {$/;"	s	file:
+lr	svc.c	/^		int lr;$/;"	m	union:frame::__anon5	file:
+main	main.c	/^int main(void) {$/;"	f
+pushFourBytesThenSVCEndive	main.c	/^__asm void pushFourBytesThenSVCEndive(void) {$/;"	f
+pushFourBytesThenSVCEndive	main.c	/^void __attribute__((naked)) pushFourBytesThenSVCEndive(void) {$/;"	f
+r0	svc.c	/^		int r0;$/;"	m	union:frame::__anon1	file:
+r1	svc.c	/^		int r1;$/;"	m	union:frame::__anon2	file:
+r12	svc.c	/^	int r12;$/;"	m	struct:frame	file:
+r14	svc.c	/^		int r14;$/;"	m	union:frame::__anon5	file:
+r2	svc.c	/^		int r2;$/;"	m	union:frame::__anon3	file:
+r3	svc.c	/^		int r3;$/;"	m	union:frame::__anon4	file:
+returnAddr	svc.c	/^	int returnAddr;$/;"	m	struct:frame	file:
+returnVal	svc.c	/^		int returnVal;$/;"	m	union:frame::__anon1	file:
+svcHandler	svc.c	/^__asm void svcHandler(void) {$/;"	f
+svcHandler	svc.c	/^void __attribute__((naked)) svcHandler(void) {$/;"	f
+svcHandlerInC	svc.c	/^void svcHandlerInC(struct frame *framePtr) {$/;"	f
+svcInit_SetSVCPriority	svc.c	/^void svcInit_SetSVCPriority(unsigned char priority) {$/;"	f
+xPSR	svc.c	/^	int xPSR;$/;"	m	struct:frame	file:
