@@ -34,6 +34,13 @@
 #define SVC_LCDC_INIT 11 
 #define SVC_LCDC_WRITE 12 
 
+
+#define SVC_POTENTIOMETER_INIT 13
+#define SVC_POTENTIOMETER_READ 14
+
+#define SVC_CAPACITIVEPAD_INIT 15
+#define SVC_CAPACITIVEPAD_READ 16
+
 void svcInit_SetSVCPriority(unsigned char priority);
 void svcHandler(void);
 
@@ -49,4 +56,12 @@ int SVCUartWriter(int minor_num);
 
 void SVCLcdcInit(int minor_num); 
 int SVCLcdcWrite(int minor_num); 
+
+void SVCLcdcInit(int minor_num); 
+int SVCLcdcWrite(int minor_num); 
+
+void SVCCapacitivePadInit(int minor_num); 
+int SVCCapacitivePadRead(int minor_num); 
+void SVCPotentiometerInit(int minor_num); 
+int SVCPotentiometerRead(int minor_num); 
 #endif /* ifndef _SVC_H */

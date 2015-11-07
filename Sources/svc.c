@@ -68,6 +68,9 @@
 #include "svc.h"
 #include "led.h"
 #include "pushbutton.h"
+#include "capacitivepads.h"
+#include "potentiometer.h"
+
 
 #define XPSR_FRAME_ALIGNED_BIT 9
 #define XPSR_FRAME_ALIGNED_MASK (1<<XPSR_FRAME_ALIGNED_BIT)
@@ -122,6 +125,7 @@ void __attribute__((never_inline)) SVCPushButtonInit(int arg0) {
 }
 #endif
 
+
 #ifdef __GNUC__
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wreturn-type"
@@ -135,6 +139,64 @@ int __attribute__((never_inline)) SVCPushButtonRead(int arg0) {
 	__asm("svc %0" : : "I" (SVC_PUSHBUTTON_READ));
 }
 #endif
+
+
+#ifdef __GNUC__
+void __attribute__((naked)) __attribute__((noinline)) SVCCapacitivePadInit(int arg0) {
+	__asm("svc %0" : : "I" (SVC_CAPACITIVEPAD_INIT));
+	__asm("bx lr");
+}
+#else
+void __attribute__((never_inline)) SVCCapacitivePadInit(int arg0) {
+	__asm("svc %0" : : "I" (SVC_CAPACITIVEPAD_INIT));
+}
+#endif
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wreturn-type"
+int __attribute__((naked)) __attribute__((noinline)) SVCCapacitivePadRead(int arg0) {
+	__asm("svc %0" : : "I" (SVC_CAPACITIVE_PAD_READ));
+	__asm("bx lr");
+}
+#pragma GCC diagnostic pop
+#else
+int __attribute__((never_inline)) SVCCapacitivePadRead(int arg0) {
+	__asm("svc %0" : : "I" (SVC_CAPACITIVE_PAD_READ));
+}
+#endif
+
+
+
+
+
+#ifdef __GNUC__
+void __attribute__((naked)) __attribute__((noinline)) SVCPotentiometerInit(int arg0) {
+	__asm("svc %0" : : "I" (SVC_POTENTIOMETER_INIT));
+	__asm("bx lr");
+}
+#else
+void __attribute__((never_inline)) SVCPotentiometerInit(int arg0) {
+	__asm("svc %0" : : "I" (SVC_POTENTIOMETER_INIT));
+}
+#endif
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wreturn-type"
+int __attribute__((naked)) __attribute__((noinline)) SVCPotentiometerRead(int arg0) {
+	__asm("svc %0" : : "I" (SVC_CAPACITIVE_PAD_READ));
+	__asm("bx lr");
+}
+#pragma GCC diagnostic pop
+#else
+int __attribute__((never_inline)) SVCPotentiometerRead(int arg0) {
+	__asm("svc %0" : : "I" (SVC_CAPACITIVE_PAD_READ));
+}
+#endif
+
+
+
+
+
 
 
 #ifdef __GNUC__
@@ -324,6 +386,30 @@ void svcHandlerInC(struct frame *framePtr) {
         minor_num = (unsigned) framePtr->arg0; 
         framePtr->returnVal = pushbutton_read(minor_num); 
 		break;
+	case SVC_CAPACITIVEPAD_INIT:
+		printf("SVC CAPACITIVEPAD INIT has been called\n");
+		printf("Only parameter is %d\n", framePtr->arg0);
+        minor_num = (unsigned) framePtr->arg0; 
+        framePtr->returnVal = capacitivepad_init(minor_num); 
+		break;
+	case SVC_CAPACITIVEPAD_READ:
+		printf("SVC CAPACITIVEPAD WRITE has been called\n");
+		printf("parameters: %d\n", framePtr->arg0);
+        minor_num = (unsigned) framePtr->arg0; 
+        framePtr->returnVal = capacitivepad_read(minor_num); 
+		break;
+	case SVC_POTENTIOMETER_INIT:
+		printf("SVC POTENTIOMETER INIT has been called\n");
+		printf("Only parameter is %d\n", framePtr->arg0);
+        minor_num = (unsigned) framePtr->arg0; 
+        framePtr->returnVal = potentiometerpad_init(minor_num); 
+		break;
+	case SVC_POTENTIOMETER_READ:
+		printf("SVC POTENTIOMETER WRITE has been called\n");
+		printf("parameters: %d\n", framePtr->arg0);
+        minor_num = (unsigned) framePtr->arg0; 
+        framePtr->returnVal = potentiometerpad_read(minor_num); 
+		break;
 	case SVC_UART_INIT:
 		printf("SVC UART INIT has been called\n");
 		printf("Only parameter is %d\n", framePtr->arg0);
@@ -357,6 +443,7 @@ void svcHandlerInC(struct frame *framePtr) {
         minor_num = framePtr->arg1;
         framePtr->returnVal = lcdc_write(ch, minor_num); 
 		break;
+
 	default:
 		printf("Unknown SVC has been called\n");
 	}
