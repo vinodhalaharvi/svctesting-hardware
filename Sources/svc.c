@@ -153,6 +153,8 @@ int __attribute__((naked)) __attribute__((noinline)) SVCPushButtonRead(int arg0)
 	__asm("svc %0" : : "I" (SVC_PUSHBUTTON_READ));
 	__asm("bx lr");
 }
+
+
 #pragma GCC diagnostic pop
 #else
 int __attribute__((never_inline)) SVCPushButtonRead(int arg0) {
