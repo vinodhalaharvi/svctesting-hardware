@@ -426,7 +426,6 @@ void svcHandlerInC(struct frame *framePtr) {
         minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = uart_read(minor_num); 
 		break;
-
 	case SVC_LCDC_INIT:
 		printf("SVC LCDC INIT has been called\n");
 		printf("Only parameter is %d\n", framePtr->arg0);
@@ -440,7 +439,6 @@ void svcHandlerInC(struct frame *framePtr) {
         minor_num = (void *) framePtr->arg1;
         framePtr->returnVal = lcdc_write(ch, minor_num); 
 		break;
-
 	default:
 		printf("Unknown SVC has been called\n");
 	}

@@ -33,5 +33,6 @@ void uartPuts(UART_MemMapPtr uartChannel, char *p);
 void uart_driver_init(void);
 int uart_driver_write(int ch);
 int uart_driver_read();
+int uart_driver_input_present();
 void uart_driver_writestring(char *string); 
 #endif /* ifndef _UARTDRIVER_H */

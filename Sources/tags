@@ -2032,6 +2032,7 @@ CH	derivative.h	/^  } CH[4];$/;"	m	struct:PDB_MemMap	typeref:struct:PDB_MemMap::
 CHANNEL	derivative.h	/^  } CHANNEL[4];$/;"	m	struct:ENET_MemMap	typeref:struct:ENET_MemMap::__anon19
 CHANNEL	derivative.h	/^  } CHANNEL[4];$/;"	m	struct:PIT_MemMap	typeref:struct:PIT_MemMap::__anon27
 CHAR_EOF	lcdcdriver.c	22;"	d	file:
+CHAR_EOF	main.c	11;"	d	file:
 CHCFG	derivative.h	/^  uint8_t CHCFG[16];                               \/**< Channel Configuration Register, array offset: 0x0, array step: 0x1 *\/$/;"	m	struct:DMAMUX_MemMap
 CID0	derivative.h	/^  uint32_t CID0;                                   \/**< Component Identification Register 0., offset: 0xFF0 *\/$/;"	m	struct:DWT_MemMap
 CID0	derivative.h	/^  uint32_t CID0;                                   \/**< Component Identification Register 0., offset: 0xFF0 *\/$/;"	m	struct:FPB_MemMap
@@ -12545,8 +12546,8 @@ SVCCapacitivePadRead	svc.c	/^int __attribute__((naked)) __attribute__((noinline)
 SVCCapacitivePadRead	svc.c	/^int __attribute__((never_inline)) SVCCapacitivePadRead(int arg0) {$/;"	f
 SVCLcdcInit	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLcdcInit(int arg0) {$/;"	f
 SVCLcdcInit	svc.c	/^void __attribute__((never_inline)) SVCLcdcInit(int arg0) {$/;"	f
-SVCLcdcWrite	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLcdcWrite(int arg0, int arg1) {$/;"	f
-SVCLcdcWrite	svc.c	/^void __attribute__((never_inline)) SVCLcdcWrite(int arg0, int arg1) {$/;"	f
+SVCLcdcWrite	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCLcdcWrite(int arg0, int arg1) {$/;"	f
+SVCLcdcWrite	svc.c	/^int __attribute__((never_inline)) SVCLcdcWrite(int arg0, int arg1) {$/;"	f
 SVCLedInit	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLedInit(int arg0) {$/;"	f
 SVCLedInit	svc.c	/^void __attribute__((never_inline)) SVCLedInit(int arg0) {$/;"	f
 SVCLedWrite	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLedWrite(int arg0, int arg1) {$/;"	f
@@ -14529,8 +14530,8 @@ XFERTYP	derivative.h	/^  uint32_t XFERTYP;                                \/**< 
 XOR_CA	derivative.h	/^  uint32_t XOR_CA[9];                              \/**< General Purpose Register 0 - Exclusive Or command..General Purpose Register 8 - Exclusive Or command, array offset: 0x988, array step: 0x4 *\/$/;"	m	struct:CAU_MemMap
 XOR_CAA	derivative.h	/^  uint32_t XOR_CAA;                                \/**< Accumulator register - Exclusive Or command, offset: 0x984 *\/$/;"	m	struct:CAU_MemMap
 XOR_CASR	derivative.h	/^  uint32_t XOR_CASR;                               \/**< Status register  - Exclusive Or command, offset: 0x980 *\/$/;"	m	struct:CAU_MemMap
-XPSR_FRAME_ALIGNED_BIT	svc.c	75;"	d	file:
-XPSR_FRAME_ALIGNED_MASK	svc.c	76;"	d	file:
+XPSR_FRAME_ALIGNED_BIT	svc.c	77;"	d	file:
+XPSR_FRAME_ALIGNED_MASK	svc.c	78;"	d	file:
 _CAPACITIVEPADDRIVER_H	capacitivepadsdriver.h	2;"	d
 _CAPACITIVEPAD_H	capacitivepads.h	4;"	d
 _DELAY_H	delay.h	13;"	d
@@ -14573,6 +14574,8 @@ capacitivepads	capacitivepads.c	/^capacitivepad_t capacitivepads[NUM_OF_CAPACITI
 channel	capacitivepadsdriver.c	/^	int channel;$/;"	m	struct:electrodeHW	file:
 console	lcdcConsole.h	/^struct console {$/;"	s
 console	lcdcdriver.c	/^static struct console console;$/;"	v	typeref:struct:console	file:
+console	main.c	/^static struct console console;$/;"	v	typeref:struct:console	file:
+consoleDemo	main.c	/^void consoleDemo(struct console *console) {$/;"	f
 counterRegister	capacitivepadsdriver.c	/^	uint16_t *counterRegister;$/;"	m	struct:electrodeHW	file:
 delay	delay.c	/^void delay(unsigned long int limit) {$/;"	f
 electrodeHW	capacitivepadsdriver.c	/^struct electrodeHW {$/;"	s	file:
@@ -14587,6 +14590,7 @@ init	led.h	/^    void (*init)(void); $/;"	m	struct:_led_t
 init	potentiometer.h	/^    void (*init)(void); $/;"	m	struct:_potentiometer_t
 init	pushbutton.h	/^    void (*init)(void); $/;"	m	struct:_pushbutton_t
 init	uart.h	/^    void (*init)(void); $/;"	m	struct:_uart_t
+input_present	uart.h	/^    int (*input_present)(void); $/;"	m	struct:_uart_t
 lcdcConsoleClear	lcdcConsole.c	/^void lcdcConsoleClear(struct console *console) {$/;"	f
 lcdcConsoleInit	lcdcConsole.c	/^void lcdcConsoleInit(struct console *console) {$/;"	f
 lcdcConsolePutc	lcdcConsole.c	/^void lcdcConsolePutc(struct console *console, int ch) {$/;"	f
@@ -14600,47 +14604,30 @@ lcdc_init	lcdc.c	/^int lcdc_init(void * minor_num){ $/;"	f
 lcdc_t	lcdc.h	/^} lcdc_t;$/;"	t	typeref:struct:_lcdcd_t
 lcdc_write	lcdc.c	/^int lcdc_write(int ch, void *minor_num){ $/;"	f
 lcdcs	lcdc.c	/^lcdc_t lcdcs[NUM_OF_LCDCS] = { $/;"	v
-ledBlueConfig	led.c	/^void ledBlueConfig(void) {$/;"	f
 ledBlueConfig	leddriver.c	/^void ledBlueConfig(void) {$/;"	f
-ledBlueOff	led.c	/^void ledBlueOff(void) {$/;"	f
 ledBlueOff	leddriver.c	/^void ledBlueOff(void) {$/;"	f
-ledBlueOn	led.c	/^void ledBlueOn(void) {$/;"	f
 ledBlueOn	leddriver.c	/^void ledBlueOn(void) {$/;"	f
-ledBlueWrite	led.c	/^void ledBlueWrite(int ch){$/;"	f
 ledBlueWrite	leddriver.c	/^void ledBlueWrite(int ch){$/;"	f
-ledGreenConfig	led.c	/^void ledGreenConfig(void) {$/;"	f
 ledGreenConfig	leddriver.c	/^void ledGreenConfig(void) {$/;"	f
-ledGreenOff	led.c	/^void ledGreenOff(void) {$/;"	f
 ledGreenOff	leddriver.c	/^void ledGreenOff(void) {$/;"	f
-ledGreenOn	led.c	/^void ledGreenOn(void) {$/;"	f
 ledGreenOn	leddriver.c	/^void ledGreenOn(void) {$/;"	f
-ledGreenWrite	led.c	/^void ledGreenWrite(int ch){$/;"	f
 ledGreenWrite	leddriver.c	/^void ledGreenWrite(int ch){$/;"	f
-ledInit	led.c	/^void ledInit(){ $/;"	f
 ledInit	leddriver.c	/^void ledInit(){ $/;"	f
 ledInitAll	leddriver.c	/^void ledInitAll(void) {$/;"	f
-ledOrangeConfig	led.c	/^void ledOrangeConfig(void) {$/;"	f
 ledOrangeConfig	leddriver.c	/^void ledOrangeConfig(void) {$/;"	f
-ledOrangeOff	led.c	/^void ledOrangeOff(void) {$/;"	f
 ledOrangeOff	leddriver.c	/^void ledOrangeOff(void) {$/;"	f
-ledOrangeOn	led.c	/^void ledOrangeOn(void) {$/;"	f
 ledOrangeOn	leddriver.c	/^void ledOrangeOn(void) {$/;"	f
-ledOrangeWrite	led.c	/^void ledOrangeWrite(int ch){$/;"	f
 ledOrangeWrite	leddriver.c	/^void ledOrangeWrite(int ch){$/;"	f
-ledYellowConfig	led.c	/^void ledYellowConfig(void) {$/;"	f
 ledYellowConfig	leddriver.c	/^void ledYellowConfig(void) {$/;"	f
-ledYellowOff	led.c	/^void ledYellowOff(void) {$/;"	f
 ledYellowOff	leddriver.c	/^void ledYellowOff(void) {$/;"	f
-ledYellowOn	led.c	/^void ledYellowOn(void) {$/;"	f
 ledYellowOn	leddriver.c	/^void ledYellowOn(void) {$/;"	f
-ledYellowWrite	led.c	/^void ledYellowWrite(int ch){$/;"	f
 ledYellowWrite	leddriver.c	/^void ledYellowWrite(int ch){$/;"	f
+led_init	led.c	/^int led_init(void * minor_num){ $/;"	f
 led_t	led.h	/^} led_t;$/;"	t	typeref:struct:_led_t
-ledinit	led.c	/^int ledinit(void * minor_num){ $/;"	f
+led_write	led.c	/^int led_write(int ch, void *minor_num){ $/;"	f
 leds	led.c	/^led_t leds[NUM_OF_LEDS] = { $/;"	v
-ledwrite	led.c	/^int ledwrite(int ch, void *minor_num){ $/;"	f
 lr	svc.c	/^		int lr;$/;"	m	union:frame::__anon38	file:
-main	main.c	/^int main(int argc, char *argv[])$/;"	f
+main	main.c	/^int main()$/;"	f
 mask	capacitivepadsdriver.c	/^	uint32_t mask;$/;"	m	struct:electrodeHW	file:
 mcgInit	mcg.c	/^void mcgInit(void) {$/;"	f
 potentiometer_driver_init	potentiometerdriver.c	/^void potentiometer_driver_init(void) {$/;"	f
@@ -14682,17 +14669,21 @@ uartInit	uartdriver.c	/^void uartInit(UART_MemMapPtr uartChannel, int clockInKHz
 uartPutchar	uartdriver.c	/^void uartPutchar(UART_MemMapPtr uartChannel, char ch) {$/;"	f
 uartPuts	uartdriver.c	/^void uartPuts(UART_MemMapPtr uartChannel, char *p) {$/;"	f
 uart_driver_init	uartdriver.c	/^void uart_driver_init(void){$/;"	f
+uart_driver_input_present	uartdriver.c	/^int uart_driver_input_present(){ $/;"	f
 uart_driver_read	uartdriver.c	/^int uart_driver_read(){$/;"	f
 uart_driver_write	uartdriver.c	/^int uart_driver_write(int ch){$/;"	f
 uart_driver_writestring	uartdriver.c	/^void uart_driver_writestring(char *string){ $/;"	f
 uart_init	uart.c	/^int uart_init(void * minor_num){ $/;"	f
+uart_input_present	uart.c	/^int uart_input_present(void *minor_num){ $/;"	f
 uart_read	uart.c	/^int uart_read(void *minor_num){ $/;"	f
 uart_t	uart.h	/^} uart_t;$/;"	t	typeref:struct:_uart_t
 uart_write	uart.c	/^int uart_write(int ch, void *minor_num){ $/;"	f
-uart_write_string	main.c	/^void uart_write_string(char *p) {$/;"	f
+uart_write_string	main.c	/^void uart_write_string(const char *p) {$/;"	f
 uarts	uart.c	/^uart_t uarts[NUM_OF_UARTS] = { $/;"	v
+uintptr_t	led.c	/^typedef unsigned long uintptr_t; $/;"	t	file:
+uintptr_t	uart.c	/^typedef unsigned long uintptr_t;$/;"	t	file:
 verify	capacitivepadsdriver.c	/^int verify(void) {$/;"	f
-verify_lcdc	main.c	/^int verify_lcdc(void){ $/;"	f
+verify_lcdc	main.c	/^int verify_lcdc(){ $/;"	f
 verify_led	main.c	/^int verify_led(void) {$/;"	f
 verify_potentiometer	potentiometer.c	/^int verify_potentiometer(void) {$/;"	f
 verify_pushbutton	main.c	/^int verify_pushbutton(void) {$/;"	f

@@ -208,6 +208,7 @@ int uartGetcharPresent(UART_MemMapPtr uartChannel) {
     return (UART_S1_REG(uartChannel) & UART_S1_RDRF_MASK) != 0;
 }
 
+
 /********************************************************************/
 /*
  * Output a string using uart_putchar
@@ -245,3 +246,9 @@ int uart_driver_read(){
 void uart_driver_writestring(char *string){ 
 	uartPuts(UART2_BASE_PTR, string);
 }
+
+
+int uart_driver_input_present(){ 
+    return uartGetcharPresent(UART2_BASE_PTR); 
+}
+

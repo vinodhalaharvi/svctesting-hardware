@@ -36,12 +36,14 @@ void ledInitAll(void) {
 	ledBlueConfig();
 }
 
+
 /**
  * Routine to configure the orange LED
  * 
  * Note: This procedure does not enable the port clock
  */ 
 void ledOrangeConfig(void) {
+    ledInit(); 
 	/* Configure bit LED_ORANGE_PORTA_BIT of PORTA using the Pin Control Register
 	 * (PORTA_PCR) to be a GPIO pin.  This sets the MUX field (Pin Mux Control) to
 	 * GPIO mode (Alternative 1).  (See 11.4.1 on page 309 of the K70 Sub-Family
@@ -65,6 +67,7 @@ void ledOrangeConfig(void) {
  * Note: This procedure does not enable the port clock
  */ 
 void ledYellowConfig(void) {
+    ledInit(); 
 	/* Configure bit LED_YELLOW_PORTA_BIT of PORTA to be a GPIO pin. */
 	PORT_PCR_REG(PORTA_BASE_PTR, LED_YELLOW_PORTA_BIT) =
 			PORT_PCR_MUX(PORT_PCR_MUX_GPIO);
@@ -78,6 +81,7 @@ void ledYellowConfig(void) {
  * Note: This procedure does not enable the port clock
  */ 
 void ledGreenConfig(void) {
+    ledInit(); 
 	/* Configure bit LED_GREEN_PORTA_BIT of PORTA to be a GPIO pin. */
 	PORT_PCR_REG(PORTA_BASE_PTR, LED_GREEN_PORTA_BIT) =
 			PORT_PCR_MUX(PORT_PCR_MUX_GPIO);
@@ -91,6 +95,7 @@ void ledGreenConfig(void) {
  * Note: This procedure does not enable the port clock
  */ 
 void ledBlueConfig(void) {
+    ledInit(); 
 	/* Configure bit LED_BLUE_PORTA_BIT of PORTA to be a GPIO pin. */
 	PORT_PCR_REG(PORTA_BASE_PTR, LED_BLUE_PORTA_BIT) =
 			PORT_PCR_MUX(PORT_PCR_MUX_GPIO);

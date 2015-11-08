@@ -35,8 +35,7 @@ void ledGreenOn(void);
 void ledBlueOn(void);
 
 void ledInitAll(void);
-
-int ledinit(void *minorno); 
-int ledwrite(int ch, void *minorno);
+int led_init(void *minorno); 
+int led_write(int ch, void *minorno);
 #endif
 
