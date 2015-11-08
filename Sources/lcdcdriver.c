@@ -192,16 +192,10 @@ void lcdc_driver_init(void) {
     uartInit(UART2_BASE_PTR, peripheralClock/KHzInHz, baud);
     lcdcInit();
     lcdcConsoleInit(&console);
-    //consoleDemo(&console);
 }
 
 int lcdc_driver_write(int ch){ 
-    //while(1) {
-    //char ch = uartGetchar(UART2_BASE_PTR);
     uartPutchar(UART2_BASE_PTR, ch);
     lcdcConsolePutc(&console, ch);
-    /*if(ch == CHAR_EOF) {
-        return 0;
-    }*/
     return 0;
 }

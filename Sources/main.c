@@ -71,11 +71,11 @@ void consoleDemo();
 static struct console console;
 
 
-void consoleDemo(struct console *console) {
+void consoleDemo() {
     while(1) {
         char ch = uart_read(0);
         uart_write(ch, 0);
-        lcdcConsolePutc(console, ch);
+        lcdc_write(ch, 0); 
         if(ch == CHAR_EOF) {
             return;
         }
@@ -87,8 +87,7 @@ int verify_lcdc(){
     sdramInit();
     uart_init(0); 
     lcdc_init(0);
-    lcdcConsoleInit(&console);
-    consoleDemo(&console);
+    consoleDemo(); 
     return 0;
 }
 
