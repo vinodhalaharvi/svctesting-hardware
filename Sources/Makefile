@@ -78,3 +78,7 @@ tags:
 clean:
 	rm -f *.o shell  mymalloctesting  file
 	rm -f mymalloc io stringutils
+	rm -f capacitivepads capacitivepadsdriver delay lcdc
+	rm -f lcdcConsole lcdcdriver led leddriver main mcg
+	rm -f potentiometer potentiometerdriver profont pushbutton
+	rm -f pushbuttondriver sdram svc uart uartdriver

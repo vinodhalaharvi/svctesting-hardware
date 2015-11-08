@@ -1,0 +1,7 @@
+*.swp.c
+*.swp.h
+*.o
+derivative.h
+tags
+todo
+template
