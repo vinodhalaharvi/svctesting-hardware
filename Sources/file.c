@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include "common.h"
 #define MAX_FS_ENTRIES 1000
-
+typedef unsigned long uintptr_t; 
 static  file_t * filesystem[MAX_FS_ENTRIES]; 
 
 void allocblock(node_t *node){ 
@@ -27,7 +27,7 @@ file_t * newfile(){
 }
 
 file_t * getfile(void * minor_num){ 
-    unsigned index = (unsigned) (unsigned) minor_num; 
+    unsigned index = (unsigned) (uintptr_t) minor_num; 
     myassert(index <= MAX_FS_ENTRIES, "", "index <= MAX_FS_ENTRIES"); 
     return filesystem[index]; 
 }
@@ -176,7 +176,7 @@ void delete_file(const char * filename){
         if (filesystem[i] 
                 && strcompare(filesystem[i]->filename, filename) == 0){ 
             unsigned temp = get_file_inode(filename); 
-            file_t * file = getfile((void *) (unsigned) temp); 
+            file_t * file = getfile((void *) (uintptr_t) temp); 
             free_file_memory(file->node);
             myfree(file);
             filesystem[i] = NULL; 

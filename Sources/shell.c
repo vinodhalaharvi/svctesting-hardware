@@ -16,7 +16,10 @@
 #include "uart.h"
 #include "lcdc.h"
 #include "lcdcConsole.h"
+#include "svc.h"
 
+#include "uartdriver.h"
+#define CHAR_EOF 4
 
 #include "mcg.h"
 #include "sdram.h"
@@ -83,18 +86,21 @@ struct commandEntry {
 static node_type * env = NULL; 
 
 void initialize_hardware(){ 
-    const int peripheralClock = 60000000;
-    const int KHzInHz = 1000;
-    const int baud = 115200;
-    struct console console;
     mcgInit();
     sdramInit();
-    uartInit(UART2_BASE_PTR, peripheralClock/KHzInHz, baud);
-    lcdcInit();
-    lcdcConsoleInit(&console);
+    SVCUartInit(0); 
+    SVCLcdcInit(0);
     initmemory(); 
 }
 
+/*
+    while(1) {
+        char ch = uartGetchar(UART2_BASE_PTR); 
+        //char ch = uart_read(0);
+        SVCUartWrite(ch, 0);
+        SVCLcdcWrite(ch, 0); 
+    }
+*/
 
 //prompt a '$' and wait for user input
 //until a newline and then process the line 

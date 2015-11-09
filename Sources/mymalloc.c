@@ -67,7 +67,7 @@ char * next(char *trav){
 }
 
 int hole(char * trav){ 
-    return ((mymalloc_t *) start)->free; 
+    return ((mymalloc_t *) trav)->free; 
 }
 
 void taken(char *node, unsigned size){ 
