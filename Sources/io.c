@@ -8,6 +8,11 @@
 #include "file.h"
 #include "stringutils.h"
 #include "pushbutton.h"
+#include "capacitivepads.h"
+#include "thermistor.h"
+#include "potentiometer.h"
+#include "uart.h"
+#include "lcdc.h"
 #include "led.h"
 typedef unsigned long uintptr_t; 
 
@@ -19,6 +24,13 @@ static filepath_to_device_t filepath_to_major_minor[PREDEFINED_DEVICE_MAP] = {
     {"/dev/led/blue", LED, LED_BLUE}, 
     {"/dev/pushbutton/1", PUSHBUTTON, PUSHBUTTON_SW1}, 
     {"/dev/pushbutton/2", PUSHBUTTON, PUSHBUTTON_SW2}, 
+    {"/dev/capacitivepad/1", CAPACITIVEPAD,CAPACITIVEPAD1}, 
+    {"/dev/capacitivepad/2",  CAPACITIVEPAD, CAPACITIVEPAD2},  
+    {"/dev/capacitivepad/3",  CAPACITIVEPAD, CAPACITIVEPAD3},  
+    {"/dev/capacitivepad/4",  CAPACITIVEPAD, CAPACITIVEPAD4},  
+    {"/dev/uart/1", UART, UART1},
+    {"/dev/lcdc/1", LCDC, LCDC1}, 
+    {"/dev/thermistor/1",THERMISTOR,THERMISTOR1}, 
 }; 
 
 static fdtable_t fdtable[MAX_FILE_DESCRIPTORS]; 
@@ -34,6 +46,35 @@ void init_pushbutton_fdtable(){
     unsigned i;
     for (i = 0; i < NUM_OF_PUSHBUTTONS; ++i) {
         create_fd(PUSHBUTTON, i); 
+    }
+}
+
+
+void init_lcdc_fdtable(){ 
+    unsigned i;
+    for (i = 0; i < NUM_OF_LCDCS; ++i) {
+        create_fd(LCDC, i); 
+    }
+}
+
+void init_uart_fdtable(){ 
+    unsigned i;
+    for (i = 0; i < NUM_OF_UARTS; ++i) {
+        create_fd(UART, i); 
+    }
+}
+
+void init_capacitive_fdtable(){ 
+    unsigned i;
+    for (i = 0; i < NUM_OF_CAPACITIVEPADS; ++i) {
+        create_fd(CAPACITIVEPAD, i); 
+    }
+}
+
+void init_potentiometer_fdtable(){ 
+    unsigned i;
+    for (i = 0; i < NUM_OF_POTENTIOMETERS; ++i) {
+        create_fd(POTENTIOMETER, i); 
     }
 }
 
@@ -55,6 +96,11 @@ static struct device {
 } devices[MAX_DEVICES] = {
     {led_init, NULL, NULL, led_write}, 
     {pushbutton_init, NULL, pushbutton_read, NULL}, 
+    {potentiometer_init, NULL, potentiometer_read, NULL}, 
+    {capacitivepad_init, NULL, capacitivepad_read, NULL}, 
+    {thermistor_init, NULL, thermistor_read, NULL}, 
+    {lcdc_init, NULL, NULL, lcdc_write}, 
+    {uart_init, NULL, uart_read, uart_write}, 
     {fileinit, filerelease, fileread, filewrite} 
 }; 
 
@@ -90,8 +136,7 @@ int get_major_num(const char * filepath){
 int create_fd(int major_num, int minor_num){ 
     static unsigned fd; 
     unsigned i; 
-    unsigned max_fd = NUM_OF_LEDS 
-        + MAX_FILE_DESCRIPTORS + NUM_OF_PUSHBUTTONS; 
+    unsigned max_fd = PREDEFINED_DEVICE_MAP + NUM_OF_PUSHBUTTONS; 
     myassert(fd <= max_fd, "", "fd <= max_fd"); 
     for (i = 0; i < max_fd; ++i) {
         if(fdtable[i].major_num == -1){ 
@@ -106,8 +151,7 @@ int create_fd(int major_num, int minor_num){
 
 int get_fd(int major_num, int minor_num){ 
     unsigned i; 
-    for (i = 0; i < NUM_OF_LEDS + 
-            NUM_OF_PUSHBUTTONS + MAX_FILE_DESCRIPTORS; ++i) {
+    for (i = 0; i < PREDEFINED_DEVICE_MAP + MAX_FILE_DESCRIPTORS; ++i) {
         if (fdtable[i].major_num == major_num &&
                 fdtable[i].minor_num == minor_num){ 
             return i; 
@@ -165,8 +209,8 @@ int mywrite(int fd, int ch){
     int major_num; 
     int minor_num; 
     myassert(fd >= 0, "", "fd >= 0"); 
-    myassert(fd <= (MAX_FILE_DESCRIPTORS + NUM_OF_LEDS + NUM_OF_PUSHBUTTONS), 
-            "", "fd <= MAX_FILE_DESCRIPTORS + NUM_OF_LEDS + NUM_OF_LEDS"); 
+    myassert(fd <= (MAX_FILE_DESCRIPTORS + PREDEFINED_DEVICE_MAP), 
+            "", "fd <= MAX_FILE_DESCRIPTORS + PREDEFINED_DEVICE_MAP"); 
     major_num = fdtable[fd].major_num; 
     minor_num = fdtable[fd].minor_num; 
     devices[major_num].write(ch, (void *) (uintptr_t) minor_num); 

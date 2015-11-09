@@ -105,6 +105,111 @@ struct frame {
 	int xPSR;
 };
 
+
+/* Issue the SVC (Supervisor Call) instruction (See A7.7.175 on page A7-503 of the
+ * ARM®v7-M Architecture Reference Manual, ARM DDI 0403Derrata 2010_Q3 (ID100710)) */
+#ifdef __GNUC__
+void * __attribute__((naked)) __attribute__((noinline)) SVCMalloc(unsigned) {
+	__asm("svc %0" : : "I" (SVC_MALLOC));
+	__asm("bx lr");
+}
+#else
+void __attribute__((never_inline)) SVCMalloc(unsigned) {
+	__asm("svc %0" : : "I" (SVC_MALLOC));
+}
+#endif
+
+
+#ifdef __GNUC__
+void __attribute__((naked)) __attribute__((noinline)) SVCFree(void *) {
+	__asm("svc %0" : : "I" (SVC_FREE));
+	__asm("bx lr");
+}
+#else
+void __attribute__((never_inline)) SVCFree(void *) {
+	__asm("svc %0" : : "I" (SVC_FREE));
+}
+#endif
+
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wreturn-type"
+int __attribute__((naked)) __attribute__((noinline)) SVCMyopen(const char *, unsigned) {
+	__asm("svc %0" : : "I" (SVC_MYOPEN));
+	__asm("bx lr");
+}
+#pragma GCC diagnostic pop
+#else
+int __attribute__((never_inline)) SVCMyopen(const char *, unsigned) {
+	__asm("svc %0" : : "I" (SVC_MYOPEN));
+}
+#endif
+
+
+#ifdef __GNUC__
+int __attribute__((naked)) __attribute__((noinline)) SVCFgetc(int) {
+	__asm("svc %0" : : "I" (SVC_MYREAD));
+	__asm("bx lr");
+}
+#else
+int __attribute__((never_inline)) SVCFgetc(int) {
+	__asm("svc %0" : : "I" (SVC_MYREAD));
+}
+#endif
+
+
+#ifdef __GNUC__
+int __attribute__((naked)) __attribute__((noinline)) SVCFputc(int, int) {
+	__asm("svc %0" : : "I" (SVC_MYWRITE));
+	__asm("bx lr");
+}
+#else
+int __attribute__((never_inline)) SVCFputc(int, int) {
+	__asm("svc %0" : : "I" (SVC_MYWRITE));
+}
+#endif
+
+
+
+#ifdef __GNUC__
+int __attribute__((naked)) __attribute__((noinline)) SVCFClose(int) {
+	__asm("svc %0" : : "I" (SVC_MYCLOSE));
+	__asm("bx lr");
+}
+#else
+int __attribute__((never_inline)) SVCFClose(int) {
+	__asm("svc %0" : : "I" (SVC_MYCLOSE));
+}
+#endif
+
+
+#ifdef __GNUC__
+int __attribute__((naked)) __attribute__((noinline)) SVCCreate(char *) {
+	__asm("svc %0" : : "I" (SVC_CREATE));
+	__asm("bx lr");
+}
+#else
+int __attribute__((never_inline)) SVCCreate(char *) {
+	__asm("svc %0" : : "I" (SVC_CREATE));
+}
+#endif
+
+
+#ifdef __GNUC__
+int __attribute__((naked)) __attribute__((noinline)) SVCDelete(char *) {
+	__asm("svc %0" : : "I" (SVC_DELETE));
+	__asm("bx lr");
+}
+#else
+int __attribute__((never_inline)) SVCDelete(char *) {
+	__asm("svc %0" : : "I" (SVC_DELETE));
+}
+#endif
+
+
+
+
+
 #ifdef __GNUC__
 void __attribute__((naked)) __attribute__((noinline)) SVCLedInit(int arg0) {
 	__asm("svc %0" : : "I" (SVC_LED_INIT));
@@ -206,8 +311,6 @@ void __attribute__((never_inline)) SVCLedWrite(int arg0, int arg1) {
 	__asm("svc %0" : : "I" (SVC_LED_WRITE));
 }
 #endif
-
-
 
 #ifdef __GNUC__
 void __attribute__((naked)) __attribute__((noinline)) SVCUartInit(int arg0) {
@@ -341,6 +444,14 @@ void svcHandlerInC(struct frame *framePtr);
  * function is called, R0 contains the first parameter.  Therefore, the
  * first parameter passed to svcHandlerInC is a pointer to the
  * top-of-stack of the stack containing the stack frame. */
+
+/*
+int myopen(const char * filepath, unsigned mode);
+int myclose(int fd);
+int mywrite(int fd, int ch);
+int myread(int fd);
+*/
+
 
 
 void svcHandlerInC(struct frame *framePtr) {
