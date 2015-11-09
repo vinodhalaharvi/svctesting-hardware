@@ -133,17 +133,17 @@ int get_major_num(const char * filepath){
     }
 }
 
+
 int create_fd(int major_num, int minor_num){ 
-    static unsigned fd; 
     unsigned i; 
     unsigned max_fd = PREDEFINED_DEVICE_MAP + NUM_OF_PUSHBUTTONS; 
-    myassert(fd <= max_fd, "", "fd <= max_fd"); 
-    for (i = 0; i < max_fd; ++i) {
+    for (i = PREDEFINED_DEVICE_MAP + 1; i < max_fd; ++i) {
         if(fdtable[i].major_num == -1){ 
-            myassert(fdtable[i].minor_num == -1, "", "fdtable[i].minor_num == -1"); 
-            fdtable[fd].major_num =  major_num; 
-            fdtable[fd].minor_num = minor_num; 
-            return fd; 
+            myassert(fdtable[i].minor_num == -1, 
+                    "", "fdtable[i].minor_num == -1"); 
+            fdtable[i].major_num =  major_num; 
+            fdtable[i].minor_num = minor_num; 
+            return i; 
         }
     }
     return -1; 
