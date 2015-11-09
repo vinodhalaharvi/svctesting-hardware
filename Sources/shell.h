@@ -23,11 +23,11 @@ int cmd_memorymap(int argc, char *argv[]);
 int cmd_verifymemalloc(int argc, char *argv[]); 
 
 int process_line(char line[LINE_MAX + 1], int *argc, char * argv[]);
-void stringsplit(char line[LINE_MAX +1], char * delimiter, int *argc, char *argv[]);
+void stringsplit(char line[LINE_MAX +1], const char * delimiter, int *argc, char *argv[]);
 command_func_type get_command_function(char line[LINE_MAX+1], int *argc, char * argv[]); 
 int do_command(char line[LINE_MAX + 1], int *argc, char * argv[]); 
 void print_error(char line[LINE_MAX +1], int *argc, char * argv[]); 
-char *join(char * stringArray[], char * delimiter); 
+char *join(char * stringArray[], const char * delimiter); 
 boolean isSlash(char ch); 
 char subescapse_char(char ch); 
 void double_quote_check(int *ch);

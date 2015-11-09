@@ -24,6 +24,8 @@
 #include "mcg.h"
 #include "sdram.h"
 
+unsigned mystdin; 
+unsigned mystdout; 
 
 #define MAX_STRING_LENGTH 1000
 #define MAX_STRING_LARGE_SIZE 1000
@@ -71,7 +73,7 @@ struct commandEntry {
     {"free", cmd_free}, 
     {"fopen", cmd_fopen}, 
     {"fclose", cmd_fclose}, 
-    {"fgetc", cmd_fgetc}, 
+    {"myread", cmd_fgetc}, 
     {"fputc", cmd_fputc}, 
     {"memorymap", cmd_memorymap}, 
     {"rm", cmd_delete_file}, 
@@ -91,6 +93,8 @@ void initialize_hardware(){
     SVCUartInit(0); 
     SVCLcdcInit(0);
     initmemory(); 
+    mystdin = SVCMyopen("/dev/uart/1", 0); 
+    mystdout = SVCMyopen("/dev/lcdc/1", 0); 
 }
 
 /*
@@ -102,6 +106,13 @@ void initialize_hardware(){
     }
 */
 
+void write_string(const char *p, unsigned mystdout) {
+    while(*p) {
+        mywrite(*p++, mystdout);
+    }
+}
+
+
 //prompt a '$' and wait for user input
 //until a newline and then process the line 
 //and optionally print code if error happened
@@ -112,38 +123,38 @@ int main() {
     int c, index;
     index = 0;
     initialize_hardware(); 
-
-    setvbuf(stdin, NULL, _IONBF, 0);
+    //setvbuf(mystdin, NULL, _IONBF, 0);
     printf("%s\n", "Memory allocated ..");
     //verify_string_operations(); 
     //verify_device_independent_file_operations(); 
     printf("%s\n", "Ready to accept user commands");
     while(1){ 
-        fputs("$ ", stdout); 
-        fflush(stdout); 
-        c = fgetc(stdin);
+        write_string("$ ", mystdout); 
+        //fflush(mystdout); 
+        c = myread(mystdin);
         while (c > 0 && c != '\n' && index < LINE_MAX) {
             if (isSlash(c)) { 
-                c = fgetc(stdin); 
+                c = myread(mystdin); 
                 c = subescapse_char(c); 
             }
             double_quote_check(&c); 
             line[index++] = c;
-            c = fgetc(stdin);
+            c = myread(mystdin);
         }
         myassert(!inside_double_quote, "", "!inside_double_quote"); 
         line[index] = '\0';
-        if (ferror(stdin)) {
-            //perror("readline"); 
+
+        process_line(line, &argc, argv);
+        index = 0; 
+        /*if (ferror(mystdin)) {
             printf("Error while reading line: %s\n", 
                     strerror(errno));
-
             exit(EXIT_FAILURE); 
             return 1;
         } else {
             process_line(line, &argc, argv);
             index = 0; 
-        }
+        }*/
     }
     myfree(argv); 
     exit(EXIT_SUCCESS); 
@@ -166,7 +177,7 @@ void shellfree(char *array[], unsigned howmany){
 
 
 //not an ideal implementation, but gets the job done
-char *join(char * stringArray[], char * delimiter){ 
+char *join(char * stringArray[], const char * delimiter){ 
     char * result = (char *) mymalloc(MAX_STRING_LARGE_SIZE); 
     char * base = result; 
     int i;
@@ -358,7 +369,7 @@ int  process_line(char line[LINE_MAX + 1], int *argc, char * argv[]) {
         printf("Non zero return value of %d while running command, %s\n", 
                 result, line);
     }
-    unsigned i;
+    int i;
     for (i = 0; i < *argc; ++i) {
         myfree(argv[i]);
     }
@@ -383,7 +394,7 @@ boolean isline(char line[LINE_MAX +1]){
 //helper function to split
 //don't like the strtok, and will be removed 
 //in the future psets
-void stringsplit(char line[LINE_MAX +1], char * delimiter, 
+void stringsplit(char line[LINE_MAX +1], const char * delimiter, 
         int *argc, char *argv[]){
     char *string; 
     string = strtok(line, delimiter); 
@@ -510,7 +521,7 @@ char subescapse_char(char ch){
 void double_quote_check(int *ch){ 
     if (*ch == 34){ 
         //clobber consecutive double quotes
-        while ((*ch = fgetc(stdin)) == 34);  
+        while ((*ch = myread(mystdin)) == 34);  
 
         //toggle every time we see a non consecutive double quote
         inside_double_quote = !inside_double_quote; 
@@ -748,10 +759,10 @@ int cmd_cat(int argc, char *argv[]){
     unsigned fd = myopen(filename, FILE_CREATE); 
     myassert(fd >= 0, "" , "fd >=0"); 
     while((ch = myread(fd)) != EOF){ 
-        fputc(ch, stdout); 
+        fputc(ch, mystdout); 
     }
     printf("\n");
-    fflush(stdout); 
+    //fflush(mystdout); 
     return 0;
 }
 

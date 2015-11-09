@@ -130,8 +130,9 @@ int verify_thermistor(void) {
 }
 
  
-int main()
+int verify_main()
 {
+
     //verify_uart(); 
     verify_lcdc(); 
     //verify_thermistor(); 

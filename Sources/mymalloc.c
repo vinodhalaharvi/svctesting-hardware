@@ -104,10 +104,10 @@ void * mymalloc(unsigned size){
 }
 
 void printnode(char *trav){ 
+
     //printf("addr= %p ", (void *)trav);
     printf("addr= %p ", ((mymalloc_t *) (trav))->data); 
-    printf("size=%lu ", ((mymalloc_t *) trav)->size 
-            - sizeof(mymalloc_t));
+    printf("size=%lu ", ((mymalloc_t *) trav)->size - sizeof(mymalloc_t));
     //printf("size=%u ", ((mymalloc_t *) trav)->size);
     printf("status=%s \n", 
             ((mymalloc_t *) trav)->free == 1? "free": "taken");

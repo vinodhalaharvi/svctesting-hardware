@@ -74,6 +74,7 @@
 #include "uart.h"
 #include "lcdc.h"
 #include "mymalloc.h"
+#include "io.h"
 
 
 #define XPSR_FRAME_ALIGNED_BIT 9
@@ -110,24 +111,27 @@ struct frame {
 /* Issue the SVC (Supervisor Call) instruction (See A7.7.175 on page A7-503 of the
  * ARM®v7-M Architecture Reference Manual, ARM DDI 0403Derrata 2010_Q3 (ID100710)) */
 #ifdef __GNUC__
-void * __attribute__((naked)) __attribute__((noinline)) SVCMalloc(unsigned) {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wreturn-type"
+void * __attribute__((naked)) __attribute__((noinline)) SVCMalloc(unsigned arg0) {
 	__asm("svc %0" : : "I" (SVC_MALLOC));
 	__asm("bx lr");
 }
+#pragma GCC diagnostic pop
 #else
-void __attribute__((never_inline)) SVCMalloc(unsigned) {
+void * __attribute__((never_inline)) SVCMalloc(unsigned arg0) {
 	__asm("svc %0" : : "I" (SVC_MALLOC));
 }
 #endif
 
 
 #ifdef __GNUC__
-void __attribute__((naked)) __attribute__((noinline)) SVCFree(void *) {
+void __attribute__((naked)) __attribute__((noinline)) SVCFree(void * arg0) {
 	__asm("svc %0" : : "I" (SVC_FREE));
 	__asm("bx lr");
 }
 #else
-void __attribute__((never_inline)) SVCFree(void *) {
+void __attribute__((never_inline)) SVCFree(void * arg0) {
 	__asm("svc %0" : : "I" (SVC_FREE));
 }
 #endif
@@ -135,37 +139,45 @@ void __attribute__((never_inline)) SVCFree(void *) {
 #ifdef __GNUC__
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wreturn-type"
-int __attribute__((naked)) __attribute__((noinline)) SVCMyopen(const char *, unsigned) {
+int __attribute__((naked)) __attribute__((noinline)) SVCMyopen(
+        const char * filepath, unsigned mode) {
 	__asm("svc %0" : : "I" (SVC_MYOPEN));
 	__asm("bx lr");
 }
 #pragma GCC diagnostic pop
 #else
-int __attribute__((never_inline)) SVCMyopen(const char *, unsigned) {
+int __attribute__((never_inline)) SVCMyopen(
+        const char *filepath, unsigned mode) {
 	__asm("svc %0" : : "I" (SVC_MYOPEN));
 }
 #endif
 
 
 #ifdef __GNUC__
-int __attribute__((naked)) __attribute__((noinline)) SVCFgetc(int) {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wreturn-type"
+int __attribute__((naked)) __attribute__((noinline)) SVCFgetc(int fd) {
 	__asm("svc %0" : : "I" (SVC_MYREAD));
 	__asm("bx lr");
 }
+#pragma GCC diagnostic pop
 #else
-int __attribute__((never_inline)) SVCFgetc(int) {
+int __attribute__((never_inline)) SVCFgetc(int fd) {
 	__asm("svc %0" : : "I" (SVC_MYREAD));
 }
 #endif
 
 
 #ifdef __GNUC__
-int __attribute__((naked)) __attribute__((noinline)) SVCFputc(int, int) {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wreturn-type"
+int __attribute__((naked)) __attribute__((noinline)) SVCFputc(int ch, int fd) {
 	__asm("svc %0" : : "I" (SVC_MYWRITE));
 	__asm("bx lr");
 }
+#pragma GCC diagnostic pop
 #else
-int __attribute__((never_inline)) SVCFputc(int, int) {
+int __attribute__((never_inline)) SVCFputc(int ch, int fd) {
 	__asm("svc %0" : : "I" (SVC_MYWRITE));
 }
 #endif
@@ -173,42 +185,48 @@ int __attribute__((never_inline)) SVCFputc(int, int) {
 
 
 #ifdef __GNUC__
-int __attribute__((naked)) __attribute__((noinline)) SVCFClose(int) {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wreturn-type"
+int __attribute__((naked)) __attribute__((noinline)) SVCFClose(int fd) {
 	__asm("svc %0" : : "I" (SVC_MYCLOSE));
 	__asm("bx lr");
 }
+#pragma GCC diagnostic pop
 #else
-int __attribute__((never_inline)) SVCFClose(int) {
+int __attribute__((never_inline)) SVCFClose(int fd) {
 	__asm("svc %0" : : "I" (SVC_MYCLOSE));
 }
 #endif
 
 
 #ifdef __GNUC__
-int __attribute__((naked)) __attribute__((noinline)) SVCCreate(char *) {
-	__asm("svc %0" : : "I" (SVC_CREATE));
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wreturn-type"
+int __attribute__((naked)) __attribute__((noinline)) SVCCreate(char * arg0) {
+	__asm("svc %0" : : "I" (SVC_FILE_CREATE));
 	__asm("bx lr");
 }
+#pragma GCC diagnostic pop
 #else
-int __attribute__((never_inline)) SVCCreate(char *) {
-	__asm("svc %0" : : "I" (SVC_CREATE));
+int __attribute__((never_inline)) SVCCreate(char * arg0) {
+	__asm("svc %0" : : "I" (SVC_FILE_CREATE));
 }
 #endif
 
 
 #ifdef __GNUC__
-int __attribute__((naked)) __attribute__((noinline)) SVCDelete(char *) {
-	__asm("svc %0" : : "I" (SVC_DELETE));
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wreturn-type"
+int __attribute__((naked)) __attribute__((noinline)) SVCDelete(char * filepath) {
+	__asm("svc %0" : : "I" (SVC_FILE_DELETE));
 	__asm("bx lr");
 }
+#pragma GCC diagnostic pop
 #else
-int __attribute__((never_inline)) SVCDelete(char *) {
-	__asm("svc %0" : : "I" (SVC_DELETE));
+int __attribute__((never_inline)) SVCDelete(char *filepath) {
+	__asm("svc %0" : : "I" (SVC_FILE_DELETE));
 }
 #endif
-
-
-
 
 
 #ifdef __GNUC__
@@ -223,6 +241,7 @@ void __attribute__((never_inline)) SVCLedInit(int arg0) {
 #endif
 
 
+
 #ifdef __GNUC__
 void __attribute__((naked)) __attribute__((noinline)) SVCPushButtonInit(int arg0) {
 	__asm("svc %0" : : "I" (SVC_PUSHBUTTON_INIT));
@@ -233,7 +252,6 @@ void __attribute__((never_inline)) SVCPushButtonInit(int arg0) {
 	__asm("svc %0" : : "I" (SVC_PUSHBUTTON_INIT));
 }
 #endif
-
 
 #ifdef __GNUC__
 #pragma GCC diagnostic push
@@ -361,6 +379,8 @@ void __attribute__((never_inline)) SVCLcdcInit(int arg0) {
 	__asm("svc %0" : : "I" (SVC_LCDC_INIT));
 }
 #endif
+
+
 #ifdef __GNUC__
 void __attribute__((naked)) __attribute__((noinline)) SVCLcdcWrite(int arg0, int arg1) {
 	__asm("svc %0" : : "I" (SVC_LCDC_WRITE));
@@ -453,22 +473,22 @@ int mywrite(int fd, int ch);
 int myread(int fd);
 */
 
-
-
 void svcHandlerInC(struct frame *framePtr) {
     void * minor_num; 
     int ch;
     unsigned fd; 
     char * filepath; 
+    unsigned size; 
+    void * addr; 
+    unsigned mode; 
+
 	printf("Entering svcHandlerInC\n");
 	printf("framePtr = 2x%08x\n", (unsigned int)framePtr);
-
 	/* framePtr->returnAddr is the return address for the SVC interrupt
 	 * service routine.  ((unsigned char *)framePtr->returnAddr)[-2]
 	 * is the operand specified for the SVC instruction. */
 	printf("SVC operand = %d\n",
 			((unsigned char *)framePtr->returnAddr)[-2]);
-
 	switch(((unsigned char *)framePtr->returnAddr)[-2]) {
 	case SVC_LED_INIT:
 		printf("SVC LED INIT has been called\n");
@@ -568,7 +588,7 @@ void svcHandlerInC(struct frame *framePtr) {
         framePtr->returnVal = (unsigned) mymalloc(size); 
         break ; 
     case SVC_FREE: 
-        void *addr = (void *)  framePtr->arg0; 
+        addr = (void *)  framePtr->arg0; 
         myfree(addr); 
         break; 
     case SVC_MYOPEN: 
@@ -590,12 +610,12 @@ void svcHandlerInC(struct frame *framePtr) {
         framePtr->returnVal = mywrite(ch, fd); 
         break; 
     case SVC_FILE_CREATE: 
-        filepath = (const char * ) framePtr->arg0; 
-        framePtr->returnVal = create_file(filepath); 
+        filepath = (char * ) framePtr->arg0; 
+        create_file(filepath); 
         break; 
     case SVC_FILE_DELETE: 
-        filepath = (const char * ) framePtr->arg0; 
-        framePtr->returnVal = delete_file(filepath); 
+        filepath = (char * ) framePtr->arg0; 
+        delete_file(filepath); 
         break; 
 	default:
 		printf("Unknown SVC has been called\n");

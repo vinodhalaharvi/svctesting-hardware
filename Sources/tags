@@ -8459,15 +8459,15 @@ LVPWR	derivative.h	/^  uint32_t LVPWR;                                  \/**< LC
 MA1	derivative.h	/^  uint8_t MA1;                                     \/**< UART Match Address Registers 1, offset: 0x8 *\/$/;"	m	struct:UART_MemMap
 MA2	derivative.h	/^  uint8_t MA2;                                     \/**< UART Match Address Registers 2, offset: 0x9 *\/$/;"	m	struct:UART_MemMap
 MASK	derivative.h	/^    uint32_t MASK;                                   \/**< Mask Register 0..Mask Register 3, array offset: 0x24, array step: 0x10 *\/$/;"	m	struct:DWT_MemMap::__anon19
-MAX_COMMAND_LINE_ARGUMENTS	shell.c	30;"	d	file:
+MAX_COMMAND_LINE_ARGUMENTS	shell.c	32;"	d	file:
 MAX_COUNT	mymalloctesting.c	8;"	d	file:
 MAX_DEVICES	io.h	6;"	d
 MAX_FILE_DESCRIPTORS	io.h	7;"	d
 MAX_FS_ENTRIES	file.c	7;"	d	file:
 MAX_LIST_SIZE	map.h	8;"	d
 MAX_STRING_LARGE_SIZE	mymalloctesting.c	10;"	d	file:
-MAX_STRING_LARGE_SIZE	shell.c	29;"	d	file:
-MAX_STRING_LENGTH	shell.c	28;"	d	file:
+MAX_STRING_LARGE_SIZE	shell.c	31;"	d	file:
+MAX_STRING_LENGTH	shell.c	30;"	d	file:
 MAX_STRING_SIZE	mymalloctesting.c	9;"	d	file:
 MB	derivative.h	/^  } MB[16];$/;"	m	struct:CAN_MemMap	typeref:struct:CAN_MemMap::__anon4
 MCG_ATCVH	derivative.h	11706;"	d
@@ -12597,18 +12597,18 @@ SVCCapacitivePadInit	svc.c	/^void __attribute__((naked)) __attribute__((noinline
 SVCCapacitivePadInit	svc.c	/^void __attribute__((never_inline)) SVCCapacitivePadInit(int arg0) {$/;"	f
 SVCCapacitivePadRead	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCCapacitivePadRead(int arg0) {$/;"	f
 SVCCapacitivePadRead	svc.c	/^int __attribute__((never_inline)) SVCCapacitivePadRead(int arg0) {$/;"	f
-SVCCreate	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCCreate(char *) {$/;"	f
-SVCCreate	svc.c	/^int __attribute__((never_inline)) SVCCreate(char *) {$/;"	f
-SVCDelete	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCDelete(char *) {$/;"	f
-SVCDelete	svc.c	/^int __attribute__((never_inline)) SVCDelete(char *) {$/;"	f
-SVCFClose	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCFClose(int) {$/;"	f
-SVCFClose	svc.c	/^int __attribute__((never_inline)) SVCFClose(int) {$/;"	f
-SVCFgetc	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCFgetc(int) {$/;"	f
-SVCFgetc	svc.c	/^int __attribute__((never_inline)) SVCFgetc(int) {$/;"	f
-SVCFputc	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCFputc(int, int) {$/;"	f
-SVCFputc	svc.c	/^int __attribute__((never_inline)) SVCFputc(int, int) {$/;"	f
-SVCFree	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCFree(void *) {$/;"	f
-SVCFree	svc.c	/^void __attribute__((never_inline)) SVCFree(void *) {$/;"	f
+SVCCreate	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCCreate(char * arg0) {$/;"	f
+SVCCreate	svc.c	/^int __attribute__((never_inline)) SVCCreate(char * arg0) {$/;"	f
+SVCDelete	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCDelete(char * filepath) {$/;"	f
+SVCDelete	svc.c	/^int __attribute__((never_inline)) SVCDelete(char *filepath) {$/;"	f
+SVCFClose	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCFClose(int fd) {$/;"	f
+SVCFClose	svc.c	/^int __attribute__((never_inline)) SVCFClose(int fd) {$/;"	f
+SVCFgetc	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCFgetc(int fd) {$/;"	f
+SVCFgetc	svc.c	/^int __attribute__((never_inline)) SVCFgetc(int fd) {$/;"	f
+SVCFputc	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCFputc(int ch, int fd) {$/;"	f
+SVCFputc	svc.c	/^int __attribute__((never_inline)) SVCFputc(int ch, int fd) {$/;"	f
+SVCFree	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCFree(void * arg0) {$/;"	f
+SVCFree	svc.c	/^void __attribute__((never_inline)) SVCFree(void * arg0) {$/;"	f
 SVCLcdcInit	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLcdcInit(int arg0) {$/;"	f
 SVCLcdcInit	svc.c	/^void __attribute__((never_inline)) SVCLcdcInit(int arg0) {$/;"	f
 SVCLcdcWrite	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLcdcWrite(int arg0, int arg1) {$/;"	f
@@ -12617,10 +12617,10 @@ SVCLedInit	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLedI
 SVCLedInit	svc.c	/^void __attribute__((never_inline)) SVCLedInit(int arg0) {$/;"	f
 SVCLedWrite	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLedWrite(int arg0, int arg1) {$/;"	f
 SVCLedWrite	svc.c	/^void __attribute__((never_inline)) SVCLedWrite(int arg0, int arg1) {$/;"	f
-SVCMalloc	svc.c	/^void * __attribute__((naked)) __attribute__((noinline)) SVCMalloc(unsigned) {$/;"	f
-SVCMalloc	svc.c	/^void __attribute__((never_inline)) SVCMalloc(unsigned) {$/;"	f
-SVCMyopen	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCMyopen(const char *, unsigned) {$/;"	f
-SVCMyopen	svc.c	/^int __attribute__((never_inline)) SVCMyopen(const char *, unsigned) {$/;"	f
+SVCMalloc	svc.c	/^void * __attribute__((naked)) __attribute__((noinline)) SVCMalloc(unsigned arg0) {$/;"	f
+SVCMalloc	svc.c	/^void __attribute__((never_inline)) SVCMalloc(unsigned arg0) {$/;"	f
+SVCMyopen	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCMyopen(const char * filepath, unsigned mode) {$/;"	f
+SVCMyopen	svc.c	/^int __attribute__((never_inline)) SVCMyopen(const char *filepath, unsigned mode) {$/;"	f
 SVCPotentiometerInit	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCPotentiometerInit(int arg0) {$/;"	f
 SVCPotentiometerInit	svc.c	/^void __attribute__((never_inline)) SVCPotentiometerInit(int arg0) {$/;"	f
 SVCPotentiometerRead	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCPotentiometerRead(int arg0) {$/;"	f
@@ -14615,8 +14615,8 @@ XFERTYP	derivative.h	/^  uint32_t XFERTYP;                                \/**< 
 XOR_CA	derivative.h	/^  uint32_t XOR_CA[9];                              \/**< General Purpose Register 0 - Exclusive Or command..General Purpose Register 8 - Exclusive Or command, array offset: 0x988, array step: 0x4 *\/$/;"	m	struct:CAU_MemMap
 XOR_CAA	derivative.h	/^  uint32_t XOR_CAA;                                \/**< Accumulator register - Exclusive Or command, offset: 0x984 *\/$/;"	m	struct:CAU_MemMap
 XOR_CASR	derivative.h	/^  uint32_t XOR_CASR;                               \/**< Status register  - Exclusive Or command, offset: 0x980 *\/$/;"	m	struct:CAU_MemMap
-XPSR_FRAME_ALIGNED_BIT	svc.c	78;"	d	file:
-XPSR_FRAME_ALIGNED_MASK	svc.c	79;"	d	file:
+XPSR_FRAME_ALIGNED_BIT	svc.c	79;"	d	file:
+XPSR_FRAME_ALIGNED_MASK	svc.c	80;"	d	file:
 _CAPACITIVEPADDRIVER_H	capacitivepadsdriver.h	2;"	d
 _CAPACITIVEPAD_H	capacitivepads.h	4;"	d
 _COMMON_H	common.h	2;"	d
@@ -14781,7 +14781,7 @@ isdevice	io.c	/^int isdevice(int major_num) { $/;"	f
 isfile	io.c	/^int isfile(int major_num){ $/;"	f
 isfileexists	file.c	/^unsigned isfileexists(const char * filepath){ $/;"	f
 isline	shell.c	/^boolean isline(char line[LINE_MAX +1]){ $/;"	f
-join	shell.c	/^char *join(char * stringArray[], char * delimiter){ $/;"	f
+join	shell.c	/^char *join(char * stringArray[], const char * delimiter){ $/;"	f
 key	map.h	/^    key_type key; $/;"	m	struct:node_type
 key_type	map.h	/^typedef const char * key_type; $/;"	t
 lcdcConsoleClear	lcdcConsole.c	/^void lcdcConsoleClear(struct console *console) {$/;"	f
@@ -14823,7 +14823,6 @@ led_write	led.c	/^int led_write(int ch, void *minor_num){ $/;"	f
 leds	led.c	/^led_t leds[NUM_OF_LEDS] = { $/;"	v
 lr	svc.c	/^		int lr;$/;"	m	union:frame::__anon49	file:
 ls	file.c	/^void ls(){$/;"	f
-main	main.c	/^int main()$/;"	f
 main	shell.c	/^int main() {$/;"	f
 major_device	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; $/;"	t	typeref:enum:__anon35
 major_num	io.h	/^    int major_num; $/;"	m	struct:_fdtable_t
@@ -14849,6 +14848,8 @@ mymalloc	mymalloc.c	/^void * mymalloc(unsigned size){ $/;"	f
 mymalloc_t	mymalloc.h	/^} mymalloc_t;$/;"	t	typeref:struct:_mymalloc_t
 myopen	io.c	/^int myopen(const char * filepath, unsigned mode){ $/;"	f
 myread	io.c	/^int myread(int fd){ $/;"	f
+mystdin	shell.c	/^unsigned mystdin; $/;"	v
+mystdout	shell.c	/^unsigned mystdout; $/;"	v
 mywrite	io.c	/^int mywrite(int fd, int ch){ $/;"	f
 name	shell.c	/^    const char *name;$/;"	m	struct:commandEntry	file:
 newfile	file.c	/^file_t * newfile(){ $/;"	f
@@ -14916,7 +14917,7 @@ strcompare	stringutils.c	/^unsigned strcompare(const char * s1, const char * s2)
 strcopy	stringutils.c	/^char * strcopy(char * dst, const char * src){ $/;"	f
 strduplicate	stringutils.c	/^char * strduplicate(const char * src){ $/;"	f
 stream_t	io.h	/^} stream_t;$/;"	t	typeref:struct:_stream_t
-stringsplit	shell.c	/^void stringsplit(char line[LINE_MAX +1], char * delimiter, $/;"	f
+stringsplit	shell.c	/^void stringsplit(char line[LINE_MAX +1], const char * delimiter, $/;"	f
 strlength	stringutils.c	/^unsigned strlength(const char * string){ $/;"	f
 strlrtrim	stringutils.c	/^char * strlrtrim(const char * src){ $/;"	f
 strltrim	stringutils.c	/^char * strltrim(const char * src){ $/;"	f
@@ -14972,10 +14973,11 @@ uintptr_t	uart.c	/^typedef unsigned long uintptr_t;$/;"	t	file:
 value	map.h	/^    value_type value; $/;"	m	struct:node_type
 value_type	map.h	/^typedef const char * value_type; $/;"	t
 verify	capacitivepadsdriver.c	/^int verify(void) {$/;"	f
-verify	map.c	/^int verify() {$/;"	f
 verify_device_independent_file_operations	io.c	/^void verify_device_independent_file_operations(){ $/;"	f
 verify_lcdc	main.c	/^int verify_lcdc(){ $/;"	f
 verify_led	main.c	/^int verify_led(void) {$/;"	f
+verify_main	main.c	/^int verify_main()$/;"	f
+verify_map	map.c	/^int verify_map() {$/;"	f
 verify_memory_allocation	mymalloc.c	/^void verify_memory_allocation() {$/;"	f
 verify_memory_allocation_mymemory_testing	mymalloctesting.c	/^void verify_memory_allocation_mymemory_testing(){ $/;"	f
 verify_potentiometer	main.c	/^int verify_potentiometer(void) {$/;"	f
@@ -14988,6 +14990,7 @@ write	io.c	/^    int (*write)(int ch, void *minor_num); $/;"	m	struct:device	fil
 write	lcdc.h	/^    int (*write)(int ch); $/;"	m	struct:_lcdcd_t
 write	led.h	/^    void (*write)(int ch); $/;"	m	struct:_led_t
 write	uart.h	/^    int (*write)(int ch); $/;"	m	struct:_uart_t
+write_string	shell.c	/^void write_string(const char *p, unsigned mystdout) {$/;"	f
 x	lcdcConsole.h	/^  uint16_t x, y;			\/\/ Current console output position x & y (in pixels)$/;"	m	struct:console
 xPSR	svc.c	/^	int xPSR;$/;"	m	struct:frame	file:
 y	lcdcConsole.h	/^  uint16_t x, y;			\/\/ Current console output position x & y (in pixels)$/;"	m	struct:console

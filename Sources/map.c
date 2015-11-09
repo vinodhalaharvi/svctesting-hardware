@@ -6,7 +6,7 @@
 //Author: Vinod Halaharvi
 //Very rudimentary doubly linked list 
 //to keep track of environment variables
-int verify() {
+int verify_map() {
     node_type * environ = NULL; 
     //map.c testing..
     environ = put(environ, "key1", "value1");
