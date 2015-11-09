@@ -73,6 +73,7 @@
 #include "thermistor.h"
 #include "uart.h"
 #include "lcdc.h"
+#include "mymalloc.h"
 
 
 #define XPSR_FRAME_ALIGNED_BIT 9
@@ -560,9 +561,47 @@ void svcHandlerInC(struct frame *framePtr) {
         minor_num = (void *) framePtr->arg1;
         framePtr->returnVal = lcdc_write(ch, minor_num); 
 		break;
+    case SVC_MALLOC: 
+        unsigned size = framePtr->arg0; 
+        size = (unsigned) framePtr->arg0; 
+        framePtr->returnVal = (unsigned) mymalloc(size); 
+        break ; 
+    case SVC_FREE: 
+        void *addr = (void *)  framePtr->arg0; 
+        framePtr->returnVal = myfree(addr); 
+        break; 
+    case SVC_MYOPEN: 
+        const char * filepath  = (char *) framePtr->arg0; 
+        minor_num = (unsigned) framePtr->arg1;
+        framePtr->returnVal = myopen(filepath, mode); 
+        break; 
+    case SVC_MYCLOSE: 
+        unsigned fd =  (unsigned) framePtr->arg0; 
+        framePtr->returnVal = myclose(fd); 
+        break; 
+    case SVC_MYREAD: 
+        unsigned fd =  (unsigned) framePtr->arg0; 
+        framePtr->returnVal = myread(fd); 
+        break; 
+    case SVC_MYWRITE: 
+        int ch; 
+        unsigned fd; 
+        ch = framePtr->arg0; 
+        fd = (unsigned) framePtr->arg1;
+        framePtr->returnVal = mywrite(ch, fd); 
+        break; 
+    case SVC_FILE_CREATE: 
+        char * filepath; 
+        filepath = (const char * ) framePtr->arg0; 
+        framePtr->returnVal = create_file(filepath); 
+        break; 
+    case SVC_FILE_DELETE: 
+        char * filepath; 
+        filepath = (const char * ) framePtr->arg0; 
+        framePtr->returnVal = delete_file(filepath); 
+        break; 
 	default:
 		printf("Unknown SVC has been called\n");
 	}
-	
 	printf("Exiting svcHandlerInC\n");
 }

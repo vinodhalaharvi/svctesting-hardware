@@ -37,12 +37,16 @@ int get_minor_num(const char * filepath);
 int get_major_num(const char * filepath); 
 int create_fd(int major_num, int minor_num); 
 int get_fd(int major_num, int minor_num); 
+
 int myopen(const char * filepath, unsigned mode); 
 int myclose(int fd); 
 int mywrite(int fd, int ch); 
+int myread(int fd); 
+void delete_file(const char * filename); 
+void create_file(const char * filename); 
+
 int isdevice(int major_num); 
 int isfile(int major_num); 
-int myread(int fd); 
 void assert_memory_is_initialized(); 
 void verify_device_independent_file_operations(); 
 void init_fdtable(); 

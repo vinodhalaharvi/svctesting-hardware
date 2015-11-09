@@ -1821,7 +1821,7 @@ CAN_WORD1_DATA_BYTE_7	derivative.h	2197;"	d
 CAN_WORD1_DATA_BYTE_7_MASK	derivative.h	2195;"	d
 CAN_WORD1_DATA_BYTE_7_SHIFT	derivative.h	2196;"	d
 CAN_WORD1_REG	derivative.h	1937;"	d
-CAPACITIVEPAD	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; typedef enum { LED_ORANGE, LED_YELLOW, LED_GREEN, LED_BLUE} led_minor_device;  $/;"	e	enum:__anon35
+CAPACITIVEPAD	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; $/;"	e	enum:__anon35
 CAPACITIVEPAD1	io.h	/^typedef enum { CAPACITIVEPAD1 , CAPACITIVEPAD2 , CAPACITIVEPAD3 , CAPACITIVEPAD4 } capacitivepad_minor_device; $/;"	e	enum:__anon39
 CAPACITIVEPAD2	io.h	/^typedef enum { CAPACITIVEPAD1 , CAPACITIVEPAD2 , CAPACITIVEPAD3 , CAPACITIVEPAD4 } capacitivepad_minor_device; $/;"	e	enum:__anon39
 CAPACITIVEPAD3	io.h	/^typedef enum { CAPACITIVEPAD1 , CAPACITIVEPAD2 , CAPACITIVEPAD3 , CAPACITIVEPAD4 } capacitivepad_minor_device; $/;"	e	enum:__anon39
@@ -7692,7 +7692,7 @@ LAR	derivative.h	/^  uint32_t LAR;                                    \/**< Lock
 LAUSCCR	derivative.h	/^  uint32_t LAUSCCR;                                \/**< LCDC AUS mode cursor control register, offset: 0x84 *\/$/;"	m	struct:LCDC_MemMap
 LAUSCR	derivative.h	/^  uint32_t LAUSCR;                                 \/**< LCDC AUS mode control register, offset: 0x80 *\/$/;"	m	struct:LCDC_MemMap
 LCCMR	derivative.h	/^  uint32_t LCCMR;                                  \/**< LCDC color cursor mapping register, offset: 0x14 *\/$/;"	m	struct:LCDC_MemMap
-LCDC	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; typedef enum { LED_ORANGE, LED_YELLOW, LED_GREEN, LED_BLUE} led_minor_device;  $/;"	e	enum:__anon35
+LCDC	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; $/;"	e	enum:__anon35
 LCDC1	io.h	/^typedef enum { LCDC1} lcdc_minor_device; $/;"	e	enum:__anon41
 LCDCCONSOLE_TAB_STOP_SPACING	lcdcConsole.h	19;"	d
 LCDC_ALT2	lcdcdriver.h	61;"	d
@@ -8008,17 +8008,17 @@ LDR_CA	derivative.h	/^  uint32_t LDR_CA[9];                              \/**< G
 LDR_CAA	derivative.h	/^  uint32_t LDR_CAA;                                \/**< Accumulator register - Load Register command, offset: 0x844 *\/$/;"	m	struct:CAU_MemMap
 LDR_CASR	derivative.h	/^  uint32_t LDR_CASR;                               \/**< Status register  - Load Register command, offset: 0x840 *\/$/;"	m	struct:CAU_MemMap
 LDVAL	derivative.h	/^    uint32_t LDVAL;                                  \/**< Timer Load Value Register, array offset: 0x100, array step: 0x10 *\/$/;"	m	struct:PIT_MemMap::__anon28
-LED	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; typedef enum { LED_ORANGE, LED_YELLOW, LED_GREEN, LED_BLUE} led_minor_device;  $/;"	e	enum:__anon35
-LED_BLUE	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; typedef enum { LED_ORANGE, LED_YELLOW, LED_GREEN, LED_BLUE} led_minor_device;  $/;"	e	enum:__anon36
+LED	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; $/;"	e	enum:__anon35
+LED_BLUE	io.h	/^typedef enum { LED_ORANGE, LED_YELLOW, LED_GREEN, LED_BLUE} led_minor_device;  $/;"	e	enum:__anon36
 LED_BLUE_PORTA_BIT	led.h	8;"	d
 LED_BLUE_PORTA_BIT	leddriver.h	18;"	d
-LED_GREEN	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; typedef enum { LED_ORANGE, LED_YELLOW, LED_GREEN, LED_BLUE} led_minor_device;  $/;"	e	enum:__anon36
+LED_GREEN	io.h	/^typedef enum { LED_ORANGE, LED_YELLOW, LED_GREEN, LED_BLUE} led_minor_device;  $/;"	e	enum:__anon36
 LED_GREEN_PORTA_BIT	led.h	7;"	d
 LED_GREEN_PORTA_BIT	leddriver.h	17;"	d
-LED_ORANGE	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; typedef enum { LED_ORANGE, LED_YELLOW, LED_GREEN, LED_BLUE} led_minor_device;  $/;"	e	enum:__anon36
+LED_ORANGE	io.h	/^typedef enum { LED_ORANGE, LED_YELLOW, LED_GREEN, LED_BLUE} led_minor_device;  $/;"	e	enum:__anon36
 LED_ORANGE_PORTA_BIT	led.h	5;"	d
 LED_ORANGE_PORTA_BIT	leddriver.h	15;"	d
-LED_YELLOW	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; typedef enum { LED_ORANGE, LED_YELLOW, LED_GREEN, LED_BLUE} led_minor_device;  $/;"	e	enum:__anon36
+LED_YELLOW	io.h	/^typedef enum { LED_ORANGE, LED_YELLOW, LED_GREEN, LED_BLUE} led_minor_device;  $/;"	e	enum:__anon36
 LED_YELLOW_PORTA_BIT	led.h	6;"	d
 LED_YELLOW_PORTA_BIT	leddriver.h	16;"	d
 LGWCR	derivative.h	/^  uint32_t LGWCR;                                  \/**< LCDC graphic window control register, offset: 0x64 *\/$/;"	m	struct:LCDC_MemMap
@@ -10495,7 +10495,7 @@ PORT_PCR_PS_SHIFT	derivative.h	13969;"	d
 PORT_PCR_REG	derivative.h	13945;"	d
 PORT_PCR_SRE_MASK	derivative.h	13972;"	d
 PORT_PCR_SRE_SHIFT	derivative.h	13973;"	d
-POTENTIOMETER	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; typedef enum { LED_ORANGE, LED_YELLOW, LED_GREEN, LED_BLUE} led_minor_device;  $/;"	e	enum:__anon35
+POTENTIOMETER	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; $/;"	e	enum:__anon35
 POTENTIOMETER1	io.h	/^typedef enum { POTENTIOMETER1} potentiometer_minor_device;$/;"	e	enum:__anon38
 PPS	derivative.h	/^  uint8_t PPS;                                     \/**< CMT Primary Prescaler Register, offset: 0xA *\/$/;"	m	struct:CMT_MemMap
 PRE	derivative.h	/^  uint8_t PRE;                                     \/**< UART CEA709.1-B Preamble, offset: 0x27 *\/$/;"	m	struct:UART_MemMap
@@ -10521,7 +10521,7 @@ PTD_BASE_PTR	derivative.h	9472;"	d
 PTE_BASE_PTR	derivative.h	9474;"	d
 PTF_BASE_PTR	derivative.h	9476;"	d
 PTOR	derivative.h	/^  uint32_t PTOR;                                   \/**< Port Toggle Output Register, offset: 0xC *\/$/;"	m	struct:GPIO_MemMap
-PUSHBUTTON	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; typedef enum { LED_ORANGE, LED_YELLOW, LED_GREEN, LED_BLUE} led_minor_device;  $/;"	e	enum:__anon35
+PUSHBUTTON	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; $/;"	e	enum:__anon35
 PUSHBUTTON_SW1	io.h	/^typedef enum { PUSHBUTTON_SW1, PUSHBUTTON_SW2 } pushbutton_minor_device;$/;"	e	enum:__anon37
 PUSHBUTTON_SW1_PORTD_BIT	pushbuttondriver.h	15;"	d
 PUSHBUTTON_SW2	io.h	/^typedef enum { PUSHBUTTON_SW1, PUSHBUTTON_SW2 } pushbutton_minor_device;$/;"	e	enum:__anon37
@@ -12635,29 +12635,28 @@ SVCUartRead	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCUart
 SVCUartRead	svc.c	/^int __attribute__((never_inline)) SVCUartRead(int arg0) {$/;"	f
 SVCUartWrite	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCUartWrite(int arg0, int arg1) {$/;"	f
 SVCUartWrite	svc.c	/^void __attribute__((never_inline)) SVCUartWrite(int arg0, int arg1) {$/;"	f
-SVC_	svc.h	47;"	d
-SVC_	svc.h	48;"	d
-SVC_	svc.h	49;"	d
-SVC_CAPACITIVEPAD_INIT	svc.h	39;"	d
-SVC_CAPACITIVEPAD_READ	svc.h	40;"	d
-SVC_CLOSE	svc.h	46;"	d
-SVC_FREE	svc.h	42;"	d
+SVC_CAPACITIVEPAD_INIT	svc.h	37;"	d
+SVC_CAPACITIVEPAD_READ	svc.h	38;"	d
+SVC_FILE_CREATE	svc.h	45;"	d
+SVC_FILE_DELETE	svc.h	46;"	d
+SVC_FREE	svc.h	40;"	d
 SVC_LCDC_INIT	svc.h	29;"	d
 SVC_LCDC_WRITE	svc.h	30;"	d
 SVC_LED_INIT	svc.h	19;"	d
 SVC_LED_WRITE	svc.h	20;"	d
-SVC_MALLOC	svc.h	41;"	d
-SVC_MYCLOSE	svc.h	44;"	d
-SVC_MYOPEN	svc.h	43;"	d
+SVC_MALLOC	svc.h	39;"	d
+SVC_MYCLOSE	svc.h	42;"	d
+SVC_MYOPEN	svc.h	41;"	d
+SVC_MYREAD	svc.h	43;"	d
+SVC_MYWRITE	svc.h	44;"	d
 SVC_MaxPriority	svc.h	15;"	d
-SVC_OPEN	svc.h	45;"	d
 SVC_POTENTIOMETER_INIT	svc.h	32;"	d
 SVC_POTENTIOMETER_READ	svc.h	33;"	d
 SVC_PUSHBUTTON_INIT	svc.h	22;"	d
 SVC_PUSHBUTTON_READ	svc.h	23;"	d
 SVC_PriorityShift	svc.h	16;"	d
 SVC_THERMISTOR_INIT	svc.h	35;"	d
-SVC_THERMISTOR_READ	svc.h	37;"	d
+SVC_THERMISTOR_READ	svc.h	36;"	d
 SVC_UART_INIT	svc.h	25;"	d
 SVC_UART_READ	svc.h	27;"	d
 SVC_UART_WRITE	svc.h	26;"	d
@@ -12731,7 +12730,7 @@ TFLG	derivative.h	/^    uint32_t TFLG;                                   \/**< T
 TFR	derivative.h	/^  uint32_t TFR[2];                                 \/**< SAI Transmit FIFO Register, array offset: 0x40, array step: 0x4 *\/$/;"	m	struct:I2S_MemMap
 TFWR	derivative.h	/^  uint32_t TFWR;                                   \/**< Transmit FIFO Watermark Register, offset: 0x144 *\/$/;"	m	struct:ENET_MemMap
 TGSR	derivative.h	/^  uint32_t TGSR;                                   \/**< Timer Global Status Register, offset: 0x604 *\/$/;"	m	struct:ENET_MemMap
-THERMISTOR	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; typedef enum { LED_ORANGE, LED_YELLOW, LED_GREEN, LED_BLUE} led_minor_device;  $/;"	e	enum:__anon35
+THERMISTOR	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; $/;"	e	enum:__anon35
 THERMISTOR1	io.h	/^typedef enum { THERMISTOR1} thermistor_minor_device; $/;"	e	enum:__anon40
 THRESHOLD	derivative.h	/^  uint32_t THRESHOLD;                              \/**< Low Power Channel Threshold Register, offset: 0x120 *\/$/;"	m	struct:TSI_MemMap
 THRESHOLD_OFFSET	capacitivepadsdriver.c	23;"	d	file:
@@ -13004,7 +13003,7 @@ TXFR0	derivative.h	/^  uint32_t TXFR0;                                  \/**< DS
 TXFR1	derivative.h	/^  uint32_t TXFR1;                                  \/**< DSPI Transmit FIFO Registers, offset: 0x40 *\/$/;"	m	struct:SPI_MemMap
 TXFR2	derivative.h	/^  uint32_t TXFR2;                                  \/**< DSPI Transmit FIFO Registers, offset: 0x44 *\/$/;"	m	struct:SPI_MemMap
 TXFR3	derivative.h	/^  uint32_t TXFR3;                                  \/**< DSPI Transmit FIFO Registers, offset: 0x48 *\/$/;"	m	struct:SPI_MemMap
-UART	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; typedef enum { LED_ORANGE, LED_YELLOW, LED_GREEN, LED_BLUE} led_minor_device;  $/;"	e	enum:__anon35
+UART	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; $/;"	e	enum:__anon35
 UART0_B1T	derivative.h	18040;"	d
 UART0_BASE_PTR	derivative.h	17980;"	d
 UART0_BDH	derivative.h	18006;"	d
@@ -14622,7 +14621,7 @@ _CAPACITIVEPADDRIVER_H	capacitivepadsdriver.h	2;"	d
 _CAPACITIVEPAD_H	capacitivepads.h	4;"	d
 _COMMON_H	common.h	2;"	d
 _DELAY_H	delay.h	13;"	d
-_FILE	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; typedef enum { LED_ORANGE, LED_YELLOW, LED_GREEN, LED_BLUE} led_minor_device;  $/;"	e	enum:__anon35
+_FILE	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; $/;"	e	enum:__anon35
 _LCDCCONSOLE_H	lcdcConsole.h	13;"	d
 _LCDCDRIVER_H	lcdcdriver.h	13;"	d
 _LCDC_H	lcdc.h	3;"	d
@@ -14764,9 +14763,11 @@ init	thermistor.h	/^    void (*init)(void); $/;"	m	struct:_thermistor_t
 init	uart.h	/^    void (*init)(void); $/;"	m	struct:_uart_t
 init_capacitive_fdtable	io.c	/^void init_capacitive_fdtable(){ $/;"	f
 init_fdtable	io.c	/^void init_fdtable(){ $/;"	f
+init_lcdc_fdtable	io.c	/^void init_lcdc_fdtable(){ $/;"	f
 init_led_fdtable	io.c	/^void init_led_fdtable(){ $/;"	f
 init_potentiometer_fdtable	io.c	/^void init_potentiometer_fdtable(){ $/;"	f
 init_pushbutton_fdtable	io.c	/^void init_pushbutton_fdtable(){ $/;"	f
+init_uart_fdtable	io.c	/^void init_uart_fdtable(){ $/;"	f
 initialize_hardware	shell.c	/^void initialize_hardware(){ $/;"	f
 initmemory	mymalloc.c	/^unsigned initmemory(){ $/;"	f
 initmemory_ram	mymalloc.c	/^unsigned initmemory_ram(){ $/;"	f
@@ -14816,7 +14817,7 @@ ledYellowOff	leddriver.c	/^void ledYellowOff(void) {$/;"	f
 ledYellowOn	leddriver.c	/^void ledYellowOn(void) {$/;"	f
 ledYellowWrite	leddriver.c	/^void ledYellowWrite(int ch){$/;"	f
 led_init	led.c	/^int led_init(void * minor_num){ $/;"	f
-led_minor_device	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; typedef enum { LED_ORANGE, LED_YELLOW, LED_GREEN, LED_BLUE} led_minor_device;  $/;"	t	typeref:enum:__anon36
+led_minor_device	io.h	/^typedef enum { LED_ORANGE, LED_YELLOW, LED_GREEN, LED_BLUE} led_minor_device;  $/;"	t	typeref:enum:__anon36
 led_t	led.h	/^} led_t;$/;"	t	typeref:struct:_led_t
 led_write	led.c	/^int led_write(int ch, void *minor_num){ $/;"	f
 leds	led.c	/^led_t leds[NUM_OF_LEDS] = { $/;"	v
@@ -14824,7 +14825,7 @@ lr	svc.c	/^		int lr;$/;"	m	union:frame::__anon49	file:
 ls	file.c	/^void ls(){$/;"	f
 main	main.c	/^int main()$/;"	f
 main	shell.c	/^int main() {$/;"	f
-major_device	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; typedef enum { LED_ORANGE, LED_YELLOW, LED_GREEN, LED_BLUE} led_minor_device;  $/;"	t	typeref:enum:__anon35
+major_device	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; $/;"	t	typeref:enum:__anon35
 major_num	io.h	/^    int major_num; $/;"	m	struct:_fdtable_t
 major_num	io.h	/^    unsigned major_num; $/;"	m	struct:_filepath_to_device_t
 majorno	io.h	/^    int majorno; $/;"	m	struct:_stream_t

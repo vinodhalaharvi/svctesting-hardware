@@ -33,20 +33,18 @@
 #define SVC_POTENTIOMETER_READ 14
 
 #define SVC_THERMISTOR_INIT 15
-
 #define SVC_THERMISTOR_READ 16
-
 #define SVC_CAPACITIVEPAD_INIT 17
 #define SVC_CAPACITIVEPAD_READ 18
 #define SVC_MALLOC 19 
 #define SVC_FREE 20 
 #define SVC_MYOPEN 21
 #define SVC_MYCLOSE 22
-#define SVC_OPEN 23
-#define SVC_CLOSE 24
-#define SVC_
-#define SVC_
-#define SVC_
+#define SVC_MYREAD 23
+#define SVC_MYWRITE 24
+#define SVC_FILE_CREATE 25
+#define SVC_FILE_DELETE 26
+
 
 void svcInit_SetSVCPriority(unsigned char priority);
 void svcHandler(void);
