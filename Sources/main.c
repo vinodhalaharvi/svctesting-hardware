@@ -73,24 +73,19 @@ void uart_write_string(const char *p) {
     }
 }
 
-
-void consoleDemo() {
-    while(1) {
-        char ch = uart_read(0);
-        uart_write(ch, 0);
-        lcdc_write(ch, 0); 
-        if(ch == CHAR_EOF) {
-            return;
-        }
-    }
-}
-
 int verify_lcdc(){ 
     mcgInit();
     sdramInit();
     uart_init(0); 
     lcdc_init(0);
-    consoleDemo(); 
+    while(1) {
+        char ch = uart_read(0);
+        uart_write(ch, 0);
+        lcdc_write(ch, 0); 
+        if(ch == CHAR_EOF) {
+            return 0;
+        }
+    }
     return 0;
 }
 
