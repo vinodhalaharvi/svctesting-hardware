@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "svc.h"
 #include "led.h"
 #include "delay.h"
 #include "pushbutton.h"
@@ -9,8 +8,9 @@
 #include "lcdc.h"
 #include "lcdcConsole.h"
 #include "thermistor.h"
-#include "potentiometer.h"
 #include "uartdriver.h"
+#include "potentiometer.h"
+#include "svc.h"
 #define FALSE 0
 #define TRUE 1
 
@@ -70,22 +70,22 @@ int verify_pushbutton(void) {
 
 void uart_write_string(const char *p) {
     while(*p) {
-        uart_write(*p++, 0);
+        SVCUartWrite(*p++, 0);
     }
 }
 
 int verify_lcdc(){ 
     mcgInit();
     sdramInit();
-    uart_init(0); 
-    lcdc_init(0);
+    SVCUartInit(0); 
+    SVCLcdcInit(0);
     while(1) {
         //this will eventually be using 
         //uart_read
         char ch = uartGetchar(UART2_BASE_PTR); 
         //char ch = uart_read(0);
-        uart_write(ch, 0);
-        lcdc_write(ch, 0); 
+        SVCUartWrite(ch, 0);
+        SVCLcdcWrite(ch, 0); 
         if(ch == CHAR_EOF) {
             return 0;
         }
@@ -99,7 +99,7 @@ int verify_uart(void){
     uart_write_string("SerialIO Project Starting\r\n");
     uart_write_string("Waiting for character from UART2");
     while(!uart_input_present(0)) {
-        uart_write('.', 0);
+        SVCUartWrite('.', 0);
         delay(delayCount);
     }
     uart_write_string("\r\nReceived character from UART2: '");
@@ -110,21 +110,21 @@ int verify_uart(void){
 }
 
 int verify_potentiometer(void) {
-   potentiometer_init(0);
+   SVCPotentiometerInit(0);
    while(TRUE) { 
       printf("pot: %4u\ttemp: %4u\n",
-    		 potentiometer_read(0), 
-    		 potentiometer_read(0));
+    		 SVCPotentiometerRead(0), 
+    		 SVCPotentiometerRead(0));
    }
    return 0;
 }
 
 int verify_thermistor(void) {
-   thermistor_init(0);
+   SVCThermistorInit(0);
    while(TRUE) { 
       printf("pot: %4u\ttemp: %4u\n",
-    		 thermistor_read(0), 
-    		 thermistor_read(0));
+    		 SVCThermistorRead(0), 
+    		 SVCThermistorRead(0));
    }
    return 0;
 }
@@ -132,9 +132,10 @@ int verify_thermistor(void) {
  
 int main()
 {
-    //verify_pushbutton(); 
     //verify_uart(); 
     verify_lcdc(); 
-    verify_thermistor(); 
+    //verify_thermistor(); 
+    //verify_led(); 
+    //verify_pushbutton(); 
     return 0;
 }

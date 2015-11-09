@@ -49,7 +49,7 @@ int SVCPushButtonRead(int minor_num);
 
 void SVCUartInit(int minor_num); 
 int SVCUartRead(int minor_num); 
-void SVCUartWriter(int minor_num); 
+void SVCUartWrite(int ch, int minor_num); 
 
 void SVCLcdcInit(int minor_num); 
 void SVCLcdcWrite(int ch, int minor_num); 
