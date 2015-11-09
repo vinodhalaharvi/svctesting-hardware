@@ -252,18 +252,25 @@ void verify_device_independent_file_operations(){
     myassert(fd != -1, "", "fd != -1"); 
     i = 0; 
     const char * string = "hello world!"; 
-    printf("Writing string '%s %s' to the file\n", string, filename);
+    char * print_string = (char *) mymalloc(1000);  
+    sprintf(print_string, "Writing string '%s %s' to the file\n", string, filename); 
+    write_string(print_string, mystdout); 
     do {
         mywrite(fd, string[i]); 
     } while(string[i++]);
-    printf("Reading from file %s\n", filename);
+    print_string = (char *) mymalloc(1000);  
+    sprintf(print_string, "Reading from file %s\n", filename);
+    write_string(print_string, mystdout); 
     while((ch = myread(fd)) != EOF){ 
         fputc(ch, stdout); 
     }
-    printf("\n%s\n", "Files before ..");
+    sprintf(print_string, "\n%s\n", "Files before ..");
+    write_string(print_string, mystdout); 
     ls(); 
     delete_file(filename); 
-    printf("Files after deleting file %s:\n", filename);
+    sprintf(print_string, "Files after deleting file %s:\n", filename);
+    write_string(print_string, mystdout); 
     ls(); 
-    printf("\n");
+    sprintf(print_string, "\n");
+    writ_string(print_string, mystdout); 
 }

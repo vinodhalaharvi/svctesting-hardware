@@ -104,13 +104,16 @@ void * mymalloc(unsigned size){
 }
 
 void printnode(char *trav){ 
-
-    //printf("addr= %p ", (void *)trav);
-    printf("addr= %p ", ((mymalloc_t *) (trav))->data); 
-    printf("size=%lu ", ((mymalloc_t *) trav)->size - sizeof(mymalloc_t));
-    //printf("size=%u ", ((mymalloc_t *) trav)->size);
-    printf("status=%s \n", 
+    char print_string[1000]; 
+    //sprintf(print_string, "addr= %p ", (void *)trav);
+    sprintf(print_string, "addr= %p ", ((mymalloc_t *) (trav))->data); 
+    write_string(print_string); 
+    sprintf(print_string, "size=%lu ", ((mymalloc_t *) trav)->size - sizeof(mymalloc_t));
+    write_string(print_string); 
+    //sprintf(print_string, "size=%u ", ((mymalloc_t *) trav)->size);
+    sprintf(print_string, "status=%s \n", 
             ((mymalloc_t *) trav)->free == 1? "free": "taken");
+    write_string(print_string); 
 }
 
 void merge(char * trav){ 
@@ -134,6 +137,7 @@ void myfree(void *addr){
 
 
 void memorymap(){ 
+    char print_string[1000]; 
     return ; 
     assert(start);
     char * trav = start; 
@@ -142,7 +146,8 @@ void memorymap(){
         assert(((mymalloc_t *) trav)->size); 
         trav = trav + ((mymalloc_t *) trav)->size; 
     }
-    printf("\n");
+    sprintf(print_string, "\n");
+    write_string(print_string); 
 }
 
 void defragment_memory(unsigned iterations){ 

@@ -4,6 +4,7 @@
 #include "stringutils.h"
 #include <stdint.h>
 #include "common.h"
+#include "mymalloc.h"
 #define MAX_FS_ENTRIES 1000
 typedef unsigned long uintptr_t; 
 static  file_t * filesystem[MAX_FS_ENTRIES]; 
@@ -106,10 +107,10 @@ void ls(){
     for (i = 0; i < MAX_FS_ENTRIES; ++i) {
         myassert(i <= MAX_FS_ENTRIES, "", "index <= MAX_FS_ENTRIES"); 
         if (filesystem[i] && filesystem[i]->filename){ 
-            printf("%s\n", filesystem[i]->filename);
+            write_string(filesystem[i]->filename, mystdout);
         }
     }
-    printf("\n");
+    write_string("\n", mystdout);
 }
 
 int fileinit(void * minor_num) { 
@@ -183,5 +184,8 @@ void delete_file(const char * filename){
             return; 
         }
     }
-    printf("File %s does not exist", filename); 
+    char * string = (char *) mymalloc(1000); 
+    sprintf(string, "File %s does not exist ..", filename); 
+    write_string(string, mystdout); 
+    myfree(string); 
 }

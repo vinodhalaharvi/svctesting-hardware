@@ -5,6 +5,8 @@ void myassert(unsigned status,
     if (status == 0){ 
         /*printf("Assertion Error: \nExpected: %s Found: %s\n", 
                 expected, actual);*/
-        printf("Assertion Error: \nExpected: %s\n", expected);
+        char print_string[1000]; 
+        sprintf(print_string, "Assertion Error: \nExpected: %s\n", expected);
+        write_string(print_string, mystdout); 
     } 
 }

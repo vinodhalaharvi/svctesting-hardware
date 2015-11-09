@@ -20,12 +20,15 @@ void consoleDemo();
 extern void svcHandler(void);
 
 int verify_led(void) {
-    printf("Starting SVCall project\n");
+    char print_string[1000]; 
+    sprintf(print_string, "Starting SVCall project\n");
+    write_string(print_string, mystdout); 
     svcInit_SetSVCPriority(7);
     //__asm("ldr r0,=73");
     //__asm("svc #4");
     const unsigned long int delayCount = 0x7ffff;
-    printf("FlashLED Project Starting\n");
+    sprintf(print_string, "FlashLED Project Starting\n");
+    write_string(print_string, mystdout); 
     SVCLedInit(0);
     while(1) {
         delay(delayCount * 3);	
@@ -39,13 +42,16 @@ int verify_led(void) {
         SVCLedWrite(0, 2);
         SVCLedWrite(0, 3);
     }
-    printf("FlashLED Project Completed\n");
+    sprintf(print_string, "FlashLED Project Completed\n");
+    write_string(print_string, mystdout); 
     return 0;
 }
 
 
 int verify_pushbutton(void) {
-    printf("Pushbuttons Project Starting\n");
+    char print_string[1000]; 
+    sprintf(print_string, "Pushbuttons Project Starting\n");
+    write_string(print_string, mystdout); 
     unsigned i; 
     for (i = 0; i < NUM_OF_LEDS; ++i) {
         SVCLedInit(i); 
@@ -64,7 +70,8 @@ int verify_pushbutton(void) {
             SVCLedWrite(1,0);
         }
     }
-    printf("Pushbuttons Project Completed\n");
+    sprintf(print_string, "Pushbuttons Project Completed\n");
+    write_string(print_string, mystdout); 
     return 0;
 }
 
@@ -95,7 +102,9 @@ int verify_lcdc(){
 
 int verify_uart(void){
     const unsigned long int delayCount = 0x7ffff;
-    printf("SerialIO Project Starting\n");
+    char print_string[1000]; 
+    sprintf(print_string, "SerialIO Project Starting\n");
+    write_string(print_string, mystdout); 
     uart_write_string("SerialIO Project Starting\r\n");
     uart_write_string("Waiting for character from UART2");
     while(!uart_input_present(0)) {
@@ -105,26 +114,31 @@ int verify_uart(void){
     uart_write_string("\r\nReceived character from UART2: '");
     uart_write_string("'\r\n");
     uart_write_string("SerialIO Project Completed\r\n");
-    printf("SerialIO Project Completed\n");
+    sprintf(print_string, "SerialIO Project Completed\n");
+    write_string(print_string, mystdout); 
     return 0;
 }
 
 int verify_potentiometer(void) {
    SVCPotentiometerInit(0);
+   char print_string[1000]; 
    while(TRUE) { 
-      printf("pot: %4u\ttemp: %4u\n",
+      sprintf(print_string, "pot: %4u\ttemp: %4u\n",
     		 SVCPotentiometerRead(0), 
     		 SVCPotentiometerRead(0));
+    write_string(print_string, mystdout); 
    }
    return 0;
 }
 
 int verify_thermistor(void) {
    SVCThermistorInit(0);
+   char print_string[1000]; 
    while(TRUE) { 
-      printf("pot: %4u\ttemp: %4u\n",
+      sprintf(print_string, "pot: %4u\ttemp: %4u\n",
     		 SVCThermistorRead(0), 
     		 SVCThermistorRead(0));
+      write_string(print_string, mystdout); 
    }
    return 0;
 }

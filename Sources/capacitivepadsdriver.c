@@ -117,7 +117,6 @@ int electrode_in(int electrodeNumber) {
 }
 
 int verify(void) {
-	printf("CapacitivePads Project Starting\n");
 	ledInitAll();
 	pushbuttonInitAll();
 	TSI_Init();
@@ -144,6 +143,5 @@ int verify(void) {
 			ledBlueOff();
 		}
 	}
-	printf("CapacitivePads Project Completed\n");
 	return 0;
 }

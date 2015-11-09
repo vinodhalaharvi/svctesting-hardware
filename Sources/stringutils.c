@@ -102,20 +102,29 @@ void verify_string_operations()
     if (!is_memory_initialized()){ 
         initmemory(); 
     }
+    char print_string[1000]; 
     result = strduplicate(string); 
-    printf("|%s|%s|\n", string, result);
+    sprintf(print_string, "|%s|%s|\n", string, result);
+    write_string(print_string, mystdout); 
+
     myfree(result); 
     memorymap(); 
     result = strltrim(string); 
-    printf("|%s|%s|\n", string, result);
+    sprintf(print_string, "|%s|%s|\n", string, result);
+    write_string(print_string, mystdout); 
+
     myfree(result); 
     memorymap(); 
     result = strrtrim(string); 
-    printf("|%s|%s|\n", string, result);
+    sprintf(print_string, "|%s|%s|\n", string, result);
+    write_string(print_string, mystdout); 
+
     myfree(result); 
     memorymap(); 
     result = strlrtrim(string); 
-    printf("|%s|%s|\n", string, result);
+    sprintf(print_string, "|%s|%s|\n", string, result);
+    write_string(print_string, mystdout); 
+
     myfree(result); 
     memorymap(); 
 }

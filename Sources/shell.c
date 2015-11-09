@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include <errno.h>
 #include <string.h>
 #include "map.h"
@@ -17,6 +16,7 @@
 #include "lcdc.h"
 #include "lcdcConsole.h"
 #include "svc.h"
+#include "stdio.h"
 
 #include "uartdriver.h"
 #define CHAR_EOF 4
@@ -124,10 +124,10 @@ int main() {
     index = 0;
     initialize_hardware(); 
     //setvbuf(mystdin, NULL, _IONBF, 0);
-    printf("%s\n", "Memory allocated ..");
+    write_string("Memory allocated ..", mystdout);
     //verify_string_operations(); 
     //verify_device_independent_file_operations(); 
-    printf("%s\n", "Ready to accept user commands");
+    write_string("Ready to accept user commands", mystdout);
     while(1){ 
         write_string("$ ", mystdout); 
         //fflush(mystdout); 
@@ -147,7 +147,7 @@ int main() {
         process_line(line, &argc, argv);
         index = 0; 
         /*if (ferror(mystdin)) {
-            printf("Error while reading line: %s\n", 
+            sprintf(print_string, "Error while reading line: %s\n", 
                     strerror(errno));
             exit(EXIT_FAILURE); 
             return 1;
@@ -229,14 +229,17 @@ return 0;
 int cmd_malloc(int argc, char *argv[]){
     void * addr;
     unsigned val; 
+    char print_string[1000]; 
     myassert(argc == 2, "", "argc == 2"); 
     val = strtoul(argv[1], NULL, 10);
     addr = (void *) mymalloc(val); 
     if (addr) { 
-        printf("%p\n", addr);
+        sprintf(print_string, "%p\n", addr);
+        write_string(print_string, mystdout); 
         return 0; 
     } else { 
-        printf("%s\n", "Memory allocation failed ..");
+        sprintf(print_string, "%s\n", "Memory allocation failed ..");
+        write_string(print_string, mystdout); 
         return 127; 
     }
     //myfree(addr); 
@@ -261,9 +264,11 @@ int cmd_memorymap(int argc, char *argv[]){
 
 //echo command implementation
 int cmd_echo(int argc, char *argv[]){ 
+    char print_string[1000]; 
     myassert(argc > 0, "", "argc > 0"); 
     argv[argc] = NULL; 
-    printf("%s\n", join(++argv, " ")); 
+    sprintf(print_string, "%s\n", join(++argv, " ")); 
+    write_string(print_string, mystdout); 
     return 0;
 }
 
@@ -334,10 +339,13 @@ int cmd_exit(int argc, char *argv[]){
 //show very simple help of all commands
 int cmd_help(int argc, char *argv[]){ 
     myassert(argc == 1, "", "argc == 1"); 
-    printf("%s\n", "The following commands are available");
+    char print_string[1000]; 
+    sprintf(print_string, "%s\n", "The following commands are available");
+    write_string(print_string, mystdout); 
     int i = 0; 
     while(commands[i].name){ 
-        printf("%s\n", commands[i].name);
+        sprintf(print_string, "%s\n", commands[i].name);
+        write_string(print_string, mystdout); 
         i++; 
     }
     return 0;
@@ -345,6 +353,7 @@ int cmd_help(int argc, char *argv[]){
 
 //process each line
 int  process_line(char line[LINE_MAX + 1], int *argc, char * argv[]) {
+    char print_string[1000]; 
     int result; 
 
     //is the line empty
@@ -366,8 +375,9 @@ int  process_line(char line[LINE_MAX + 1], int *argc, char * argv[]) {
     //and non 0 is a failed exec
     result = do_command(line, argc, argv); 
     if (result != 0){ 
-        printf("Non zero return value of %d while running command, %s\n", 
+        sprintf(print_string, "Non zero return value of %d while running command, %s\n", 
                 result, line);
+        write_string(print_string, mystdout); 
     }
     int i;
     for (i = 0; i < *argc; ++i) {
@@ -400,7 +410,7 @@ void stringsplit(char line[LINE_MAX +1], const char * delimiter,
     string = strtok(line, delimiter); 
     int count = 0; 
     while(string){ 
-        //printf("%s\n", string);
+        //sprintf(print_string, "%s\n", string);
         argv[count++] = strduplicate(string); 
         //free(string);  ? shouldn't this be freed
         string = strtok(NULL, delimiter); 
@@ -428,6 +438,7 @@ command_func_type get_command_function(char line[LINE_MAX+1],
 //and exec the command. get the result and return the 
 //result
 int do_command(char line[LINE_MAX + 1], int *argc, char * argv[]){ 
+    char print_string[1000]; 
     int (*func)(int argc, char * argv[]); 
     int result; 
     myassert(argv != NULL, "", "argv != NULL"); 
@@ -435,7 +446,8 @@ int do_command(char line[LINE_MAX + 1], int *argc, char * argv[]){
     func = get_command_function(line, argc, argv); 
     //assert(func); 
     if (func == NULL){ 
-        printf("Command %s not found \n", argv[0]); 
+        sprintf(print_string, "Command %s not found \n", argv[0]); 
+        write_string(print_string, mystdout); 
         result = COMMAND_NOT_FOUND; 
     } else { 
         result = func(*argc, argv); 
@@ -445,12 +457,15 @@ int do_command(char line[LINE_MAX + 1], int *argc, char * argv[]){
 
 //helper to print boolean
 void print_boolean(boolean bool){ 
+    char print_string[1000]; 
     switch (bool) {
         case false:
-            printf("%s\n", "false");
+            sprintf(print_string, "%s\n", "false");
+            write_string(print_string, mystdout); 
             break;
         case true:
-            printf("%s\n", "true");
+            sprintf(print_string, "%s\n", "true");
+            write_string(print_string, mystdout); 
         default:
             myassert(0, "", "0"); 
     }
@@ -606,11 +621,13 @@ void splitString(char * string, char delimiter,
 
 //helper function to print array of strings to console
 void printStringArray(char *stringArray[], int howmany){ 
+    char print_string[1000];
     myassert(stringArray != NULL, "",
             "stringArray != NULL"); 
     int i =0; 
     for (i = 0; i < howmany; ++i) {
-        printf("%s\n", stringArray[i]); 
+        sprintf(print_string, "%s\n", stringArray[i]); 
+        write_string(print_string, mystdout); 
     }
     return; 
 }
@@ -661,13 +678,15 @@ void calendar(unsigned long days,
     timeofday(&clock, seconds - 60 * 60 * 24 * daycount); 
 
     //"January 23, 2014 15:57:07.123456"
-    printf("%s %.2lu, %.4lu %.2u:%.2u:%.2u.%.6lu\n", 
+    char print_string[1000]; 
+    sprintf(print_string, "%s %.2lu, %.4lu %.2u:%.2u:%.2u.%.6lu\n", 
             toString(month), dayofmonth, year, 
             clock.data.hour, 
             clock.data.minute, 
             clock.data.second, 
             useconds
           );
+    write_string(print_string, mystdout); 
 }
 
 
@@ -714,11 +733,14 @@ void timeofday(myclock_t * clock, unsigned long seconds){
 
 int cmd_fopen(int argc, char *argv[]){
     unsigned fd; 
+    char print_string[1000]; 
     init_fdtable(); 
     myassert(argc == 2, "", "argc == 2"); 
-    printf("%s %s\n", argv[0], argv[1]);
+    sprintf(print_string, "%s %s\n", argv[0], argv[1]);
+    write_string(print_string, mystdout); 
     fd = myopen(argv[1], FILE_CREATE); 
-    printf("fd = %d\n", fd);
+    sprintf(print_string, "fd = %d\n", fd);
+    write_string(print_string, mystdout); 
     return fd; 
 }
 
@@ -733,10 +755,12 @@ int cmd_fclose(int argc, char *argv[]){
 int cmd_fgetc(int argc, char *argv[]){
     unsigned fd; 
     int ch; 
+    char print_string[1000]; 
     myassert(argc == 2, "", "argc == 2"); 
     fd = strtoul(argv[1], NULL, 10);
     ch = myread(fd); 
-    printf("%c\n", ch);
+    sprintf(print_string, "%c\n", ch);
+    write_string(print_string, mystdout); 
     return 0;
 }
 
@@ -754,6 +778,7 @@ int cmd_ls(int argc, char *argv[]){
 
 int cmd_cat(int argc, char *argv[]){
     unsigned ch; 
+    char print_string[1000]; 
     myassert(argc == 2, "", "argc == 2"); 
     char * filename =  argv[1]; 
     unsigned fd = myopen(filename, FILE_CREATE); 
@@ -761,7 +786,8 @@ int cmd_cat(int argc, char *argv[]){
     while((ch = myread(fd)) != EOF){ 
         fputc(ch, mystdout); 
     }
-    printf("\n");
+    sprintf(print_string, "\n");
+    write_string(print_string, mystdout); 
     //fflush(mystdout); 
     return 0;
 }

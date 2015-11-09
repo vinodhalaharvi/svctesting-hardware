@@ -23,8 +23,10 @@ int verify_map() {
 
 //helper function to print the list
 void print(node_type * environ){
+    char print_string[1000]; 
     while(environ){
-        printf("%s = %s\n", environ->key, environ->value);
+        sprintf(print_string, "%s = %s\n", environ->key, environ->value);
+        write_string(print_string, mysdout); 
         environ = environ->next;
     }
 }

@@ -23,7 +23,9 @@ int led_init(void * minor_num){
 
 int led_write(int ch, void *minor_num){ 
     int fd = (int) (uintptr_t) minor_num; 
-    printf("ledwrite ch = %d\n", ch);
+    char print_string[1000]; 
+    sprintf(print_string, "ledwrite ch = %d\n", ch);
+    write_string(print_string, mystdout); 
     leds[fd].write(ch); 
     return 0; 
 }
