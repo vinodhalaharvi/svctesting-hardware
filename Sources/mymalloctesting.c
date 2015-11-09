@@ -5,6 +5,8 @@
 #include "mymalloc.h"
 #include <stdint.h>
 #include "stringutils.h"
+#include "common.h"
+
 #define MAX_COUNT 10 
 #define MAX_STRING_SIZE 10
 #define MAX_STRING_LARGE_SIZE 1000
@@ -71,6 +73,7 @@ void teststringandint(){
 //simple testing for allocating and
 //deallocating memory
 void testfree(){ 
+    char print_string[1000]; 
     char * string1, *string2, *string3; 
     sprintf(print_string, "%s\n", "********************");
     write_string(print_string, mystdout); 
@@ -107,6 +110,7 @@ void testfree(){
 //test string allocation 
 //and deallocation
 void teststringallocation(){ 
+    char print_string[1000]; 
     char * string1, *string2, *string3; 
     sprintf(print_string, "%s\n", "********************");
     write_string(print_string, mystdout); 
@@ -201,6 +205,7 @@ void testrandom(){
 }*/
 
 void verify_memory_allocation_mymemory_testing(){ 
+    char print_string[1000]; 
     if (!is_memory_initialized()){ 
         initmemory(); 
     }

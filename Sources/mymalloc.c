@@ -5,8 +5,8 @@
 #include <assert.h>
 #include "mymalloc.h"
 #include "stringutils.h"
-#include "common.h"
 #include "sdram.h"
+#include "common.h"
 
 #define MEMORY_DATA_PADDING 10
 #define ALIGN_SIZE 7
@@ -107,13 +107,13 @@ void printnode(char *trav){
     char print_string[1000]; 
     //sprintf(print_string, "addr= %p ", (void *)trav);
     sprintf(print_string, "addr= %p ", ((mymalloc_t *) (trav))->data); 
-    write_string(print_string); 
+    write_string(print_string, mystdout); 
     sprintf(print_string, "size=%lu ", ((mymalloc_t *) trav)->size - sizeof(mymalloc_t));
-    write_string(print_string); 
+    write_string(print_string, mystdout); 
     //sprintf(print_string, "size=%u ", ((mymalloc_t *) trav)->size);
     sprintf(print_string, "status=%s \n", 
             ((mymalloc_t *) trav)->free == 1? "free": "taken");
-    write_string(print_string); 
+    write_string(print_string, mystdout); 
 }
 
 void merge(char * trav){ 
@@ -147,7 +147,7 @@ void memorymap(){
         trav = trav + ((mymalloc_t *) trav)->size; 
     }
     sprintf(print_string, "\n");
-    write_string(print_string); 
+    write_string(print_string, mystdout); 
 }
 
 void defragment_memory(unsigned iterations){ 

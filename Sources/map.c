@@ -26,7 +26,7 @@ void print(node_type * environ){
     char print_string[1000]; 
     while(environ){
         sprintf(print_string, "%s = %s\n", environ->key, environ->value);
-        write_string(print_string, mysdout); 
+        write_string(print_string, mystdout); 
         environ = environ->next;
     }
 }

@@ -24,9 +24,6 @@
 #include "mcg.h"
 #include "sdram.h"
 
-unsigned mystdin; 
-unsigned mystdout; 
-
 #define MAX_STRING_LENGTH 1000
 #define MAX_STRING_LARGE_SIZE 1000
 #define MAX_COMMAND_LINE_ARGUMENTS 100
@@ -105,12 +102,6 @@ void initialize_hardware(){
         SVCLcdcWrite(ch, 0); 
     }
 */
-
-void write_string(const char *p, unsigned mystdout) {
-    while(*p) {
-        mywrite(*p++, mystdout);
-    }
-}
 
 
 //prompt a '$' and wait for user input

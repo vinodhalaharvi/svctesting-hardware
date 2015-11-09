@@ -75,6 +75,7 @@
 #include "lcdc.h"
 #include "mymalloc.h"
 #include "io.h"
+#include "common.h"
 
 
 #define XPSR_FRAME_ALIGNED_BIT 9
@@ -484,35 +485,35 @@ void svcHandlerInC(struct frame *framePtr) {
     char print_string[1000]; 
 
 	sprintf(print_string, "Entering svcHandlerInC\n");
-    write_string(printstring, stdout); 
+    write_string(print_string, mystdout); 
 
 	sprintf(print_string, "framePtr = 2x%08x\n", (unsigned int)framePtr);
-    write_string(printstring, stdout); 
+    write_string(print_string, mystdout); 
 
 	/* framePtr->returnAddr is the return address for the SVC interrupt
 	 * service routine.  ((unsigned char *)framePtr->returnAddr)[-2]
 	 * is the operand specified for the SVC instruction. */
 	sprintf(print_string, "SVC operand = %d\n",
 			((unsigned char *)framePtr->returnAddr)[-2]);
-    write_string(printstring, stdout); 
+    write_string(print_string, mystdout); 
 
 	switch(((unsigned char *)framePtr->returnAddr)[-2]) {
 	case SVC_LED_INIT:
 		sprintf(print_string, "SVC LED INIT has been called\n");
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
 		sprintf(print_string, "Only parameter is %d\n", framePtr->arg0);
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
         minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = led_init(minor_num); 
 		break;
 	case SVC_LED_WRITE:
 		sprintf(print_string, "SVC LED WRITE has been called\n");
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
 		sprintf(print_string, "parameters: %d %d\n", framePtr->arg0, framePtr->arg1);
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
         ch = framePtr->arg0; 
         minor_num = (void *) framePtr->arg1;
@@ -520,100 +521,100 @@ void svcHandlerInC(struct frame *framePtr) {
 		break;
 	case SVC_PUSHBUTTON_INIT:
 		sprintf(print_string, "SVC PUSHBUTTON INIT has been called\n");
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
 		sprintf(print_string, "Only parameter is %d\n", framePtr->arg0);
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
         minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = pushbutton_init(minor_num); 
 		break;
 	case SVC_PUSHBUTTON_READ:
 		sprintf(print_string, "SVC PUSHBUTTON WRITE has been called\n");
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
 		sprintf(print_string, "parameters: %d\n", framePtr->arg0);
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
         minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = pushbutton_read(minor_num); 
 		break;
 	case SVC_CAPACITIVEPAD_INIT:
 		sprintf(print_string, "SVC CAPACITIVEPAD INIT has been called\n");
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
 		sprintf(print_string, "Only parameter is %d\n", framePtr->arg0);
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
         minor_num = (void *) framePtr->arg0; 
         capacitivepad_init(minor_num); 
 		break;
 	case SVC_CAPACITIVEPAD_READ:
 		sprintf(print_string, "SVC CAPACITIVEPAD WRITE has been called\n");
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
 		sprintf(print_string, "parameters: %d\n", framePtr->arg0);
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
         minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = capacitivepad_read(minor_num); 
 		break;
 	case SVC_POTENTIOMETER_INIT:
 		sprintf(print_string, "SVC POTENTIOMETER INIT has been called\n");
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
 		sprintf(print_string, "Only parameter is %d\n", framePtr->arg0);
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
         minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = potentiometer_init(minor_num); 
 		break;
 	case SVC_POTENTIOMETER_READ:
 		sprintf(print_string, "SVC POTENTIOMETER WRITE has been called\n");
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
 		sprintf(print_string, "parameters: %d\n", framePtr->arg0);
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
         minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = potentiometer_read(minor_num); 
 		break;
 	case SVC_THERMISTOR_INIT:
 		sprintf(print_string, "SVC SVC_THERMISTOR_INIT INIT has been called\n");
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
 		sprintf(print_string, "Only parameter is %d\n", framePtr->arg0);
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
         minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = thermistor_init(minor_num); 
 		break;
 	case SVC_THERMISTOR_READ:
 		sprintf(print_string, "SVC SVC_THERMISTOR_READ WRITE has been called\n");
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
 		sprintf(print_string, "parameters: %d\n", framePtr->arg0);
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
         minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = thermistor_read(minor_num); 
 		break;
 	case SVC_UART_INIT:
 		sprintf(print_string, "SVC UART INIT has been called\n");
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
 		sprintf(print_string, "Only parameter is %d\n", framePtr->arg0);
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
         minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = uart_init(minor_num); 
 		break;
 	case SVC_UART_WRITE:
 		sprintf(print_string, "SVC UART WRITE has been called\n");
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
 		sprintf(print_string, "parameters: %d %d\n", framePtr->arg0, framePtr->arg1);
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
         ch = (unsigned) framePtr->arg0; 
         minor_num = (void *) framePtr->arg1;
@@ -621,30 +622,30 @@ void svcHandlerInC(struct frame *framePtr) {
 		break;
 	case SVC_UART_READ:
 		sprintf(print_string, "SVC UART WRITE has been called\n");
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
 		sprintf(print_string, "parameters: %d\n", framePtr->arg0);
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
         minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = uart_read(minor_num); 
 		break;
 	case SVC_LCDC_INIT:
 		sprintf(print_string, "SVC LCDC INIT has been called\n");
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
 		sprintf(print_string, "Only parameter is %d\n", framePtr->arg0);
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
         minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = lcdc_init(minor_num); 
 		break;
 	case SVC_LCDC_WRITE:
 		sprintf(print_string, "SVC LCDC WRITE has been called\n");
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
 		sprintf(print_string, "parameters: %d %d\n", framePtr->arg0, framePtr->arg1);
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
         ch = (unsigned) framePtr->arg0; 
         minor_num = (void *) framePtr->arg1;
@@ -686,10 +687,9 @@ void svcHandlerInC(struct frame *framePtr) {
         break; 
 	default:
 		sprintf(print_string, "Unknown SVC has been called\n");
-        write_string(printstring, stdout); 
+        write_string(print_string, mystdout); 
 
 	}
 	sprintf(print_string, "Exiting svcHandlerInC\n");
-    write_string(printstring, stdout); 
-
+    write_string(print_string, mystdout); 
 }

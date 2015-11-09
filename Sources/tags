@@ -8463,7 +8463,7 @@ MAX_COMMAND_LINE_ARGUMENTS	shell.c	32;"	d	file:
 MAX_COUNT	mymalloctesting.c	8;"	d	file:
 MAX_DEVICES	io.h	6;"	d
 MAX_FILE_DESCRIPTORS	io.h	7;"	d
-MAX_FS_ENTRIES	file.c	7;"	d	file:
+MAX_FS_ENTRIES	file.c	8;"	d	file:
 MAX_LIST_SIZE	map.h	8;"	d
 MAX_STRING_LARGE_SIZE	mymalloctesting.c	10;"	d	file:
 MAX_STRING_LARGE_SIZE	shell.c	31;"	d	file:
@@ -12618,9 +12618,9 @@ SVCLedInit	svc.c	/^void __attribute__((never_inline)) SVCLedInit(int arg0) {$/;"
 SVCLedWrite	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLedWrite(int arg0, int arg1) {$/;"	f
 SVCLedWrite	svc.c	/^void __attribute__((never_inline)) SVCLedWrite(int arg0, int arg1) {$/;"	f
 SVCMalloc	svc.c	/^void * __attribute__((naked)) __attribute__((noinline)) SVCMalloc(unsigned arg0) {$/;"	f
-SVCMalloc	svc.c	/^void __attribute__((never_inline)) SVCMalloc(unsigned arg0) {$/;"	f
-SVCMyopen	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCMyopen(const char * filepath, unsigned mode) {$/;"	f
-SVCMyopen	svc.c	/^int __attribute__((never_inline)) SVCMyopen(const char *filepath, unsigned mode) {$/;"	f
+SVCMalloc	svc.c	/^void * __attribute__((never_inline)) SVCMalloc(unsigned arg0) {$/;"	f
+SVCMyopen	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCMyopen($/;"	f
+SVCMyopen	svc.c	/^int __attribute__((never_inline)) SVCMyopen($/;"	f
 SVCPotentiometerInit	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCPotentiometerInit(int arg0) {$/;"	f
 SVCPotentiometerInit	svc.c	/^void __attribute__((never_inline)) SVCPotentiometerInit(int arg0) {$/;"	f
 SVCPotentiometerRead	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCPotentiometerRead(int arg0) {$/;"	f
@@ -14615,8 +14615,8 @@ XFERTYP	derivative.h	/^  uint32_t XFERTYP;                                \/**< 
 XOR_CA	derivative.h	/^  uint32_t XOR_CA[9];                              \/**< General Purpose Register 0 - Exclusive Or command..General Purpose Register 8 - Exclusive Or command, array offset: 0x988, array step: 0x4 *\/$/;"	m	struct:CAU_MemMap
 XOR_CAA	derivative.h	/^  uint32_t XOR_CAA;                                \/**< Accumulator register - Exclusive Or command, offset: 0x984 *\/$/;"	m	struct:CAU_MemMap
 XOR_CASR	derivative.h	/^  uint32_t XOR_CASR;                               \/**< Status register  - Exclusive Or command, offset: 0x980 *\/$/;"	m	struct:CAU_MemMap
-XPSR_FRAME_ALIGNED_BIT	svc.c	79;"	d	file:
-XPSR_FRAME_ALIGNED_MASK	svc.c	80;"	d	file:
+XPSR_FRAME_ALIGNED_BIT	svc.c	80;"	d	file:
+XPSR_FRAME_ALIGNED_MASK	svc.c	81;"	d	file:
 _CAPACITIVEPADDRIVER_H	capacitivepadsdriver.h	2;"	d
 _CAPACITIVEPAD_H	capacitivepads.h	4;"	d
 _COMMON_H	common.h	2;"	d

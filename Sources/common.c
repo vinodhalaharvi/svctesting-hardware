@@ -1,5 +1,14 @@
 #include "common.h"
+#include "io.h"
 #include <stdio.h>
+unsigned mystdin; 
+unsigned mystdout; 
+void write_string(const char *p, unsigned mystdout) {
+    while(*p) {
+        mywrite(*p++, mystdout);
+    }
+}
+
 void myassert(unsigned status, 
         const char *actual, const char *expected){ 
     if (status == 0){ 

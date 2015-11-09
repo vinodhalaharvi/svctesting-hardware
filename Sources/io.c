@@ -232,7 +232,7 @@ int myread(int fd){
 void cat(unsigned fd){ 
     int  ch; 
     while((ch = myread(fd)) != EOF){ 
-        fputc(ch, stdout); 
+        fputc(ch, mystdout); 
     }
 }
 
@@ -262,7 +262,7 @@ void verify_device_independent_file_operations(){
     sprintf(print_string, "Reading from file %s\n", filename);
     write_string(print_string, mystdout); 
     while((ch = myread(fd)) != EOF){ 
-        fputc(ch, stdout); 
+        mywrite(ch, mystdout); 
     }
     sprintf(print_string, "\n%s\n", "Files before ..");
     write_string(print_string, mystdout); 

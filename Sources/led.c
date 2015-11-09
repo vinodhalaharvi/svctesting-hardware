@@ -6,6 +6,7 @@
 #include <assert.h>
 #include "led.h"
 #include "leddriver.h"
+#include "common.h"
 typedef unsigned long uintptr_t; 
 
 led_t leds[NUM_OF_LEDS] = { 

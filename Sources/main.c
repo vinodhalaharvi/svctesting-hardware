@@ -11,6 +11,8 @@
 #include "uartdriver.h"
 #include "potentiometer.h"
 #include "svc.h"
+#include "common.h"
+
 #define FALSE 0
 #define TRUE 1
 
