@@ -184,12 +184,6 @@ void lcdcInitScreen() {
 void lcdc_driver_init(void) {
     /* After calling mcgInit, MCGOUTCLK is set to 120 MHz and the Bus
      * (peripheral) clock is set to 60 MHz.*/
-    //const int peripheralClock = 60000000;
-    //const int KHzInHz = 1000;
-    //const int baud = 115200;
-    //mcgInit();
-    //sdramInit();
-    //uartInit(UART2_BASE_PTR, peripheralClock/KHzInHz, baud);
     lcdcInit();
     lcdcConsoleInit(&console);
 }

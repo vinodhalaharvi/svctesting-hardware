@@ -10,6 +10,7 @@
 #include "lcdcConsole.h"
 #include "thermistor.h"
 #include "potentiometer.h"
+#include "uartdriver.h"
 #define FALSE 0
 #define TRUE 1
 
@@ -79,7 +80,10 @@ int verify_lcdc(){
     uart_init(0); 
     lcdc_init(0);
     while(1) {
-        char ch = uart_read(0);
+        //this will eventually be using 
+        //uart_read
+        char ch = uartGetchar(UART2_BASE_PTR); 
+        //char ch = uart_read(0);
         uart_write(ch, 0);
         lcdc_write(ch, 0); 
         if(ch == CHAR_EOF) {

@@ -169,9 +169,6 @@ int __attribute__((never_inline)) SVCCapacitivePadRead(int arg0) {
 #endif
 
 
-
-
-
 #ifdef __GNUC__
 void __attribute__((naked)) __attribute__((noinline)) SVCPotentiometerInit(int arg0) {
 	__asm("svc %0" : : "I" (SVC_POTENTIOMETER_INIT));

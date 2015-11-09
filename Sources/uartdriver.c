@@ -10,7 +10,6 @@
  */
 
 #include <stdint.h>
-#include <stdio.h>
 #include "derivative.h"
 #include "uartdriver.h"
 
@@ -227,12 +226,6 @@ void uart_driver_init(void){
     const int peripheralClock = 60000000;
     const int KHzInHz = 1000;
     const int baud = 115200;
-    //const int IRC = 32000;					
-    //const int FLL_Factor = 640;
-    //const int moduleClock = FLL_Factor*IRC;
-    //const int KHzInHz = 1000;
-    //const int baud = 115200;
-    //uartInit(UART2_BASE_PTR, moduleClock/KHzInHz, baud);  
     uartInit(UART2_BASE_PTR, peripheralClock/KHzInHz, baud);  
 }
 
