@@ -458,6 +458,8 @@ int myread(int fd);
 void svcHandlerInC(struct frame *framePtr) {
     void * minor_num; 
     int ch;
+    unsigned fd; 
+    char * filepath; 
 	printf("Entering svcHandlerInC\n");
 	printf("framePtr = 2x%08x\n", (unsigned int)framePtr);
 
@@ -562,41 +564,36 @@ void svcHandlerInC(struct frame *framePtr) {
         framePtr->returnVal = lcdc_write(ch, minor_num); 
 		break;
     case SVC_MALLOC: 
-        unsigned size = framePtr->arg0; 
         size = (unsigned) framePtr->arg0; 
         framePtr->returnVal = (unsigned) mymalloc(size); 
         break ; 
     case SVC_FREE: 
         void *addr = (void *)  framePtr->arg0; 
-        framePtr->returnVal = myfree(addr); 
+        myfree(addr); 
         break; 
     case SVC_MYOPEN: 
-        const char * filepath  = (char *) framePtr->arg0; 
-        minor_num = (unsigned) framePtr->arg1;
+        filepath  = (char *) framePtr->arg0; 
+        mode = (unsigned) framePtr->arg1;
         framePtr->returnVal = myopen(filepath, mode); 
         break; 
     case SVC_MYCLOSE: 
-        unsigned fd =  (unsigned) framePtr->arg0; 
+        fd =  (unsigned) framePtr->arg0; 
         framePtr->returnVal = myclose(fd); 
         break; 
     case SVC_MYREAD: 
-        unsigned fd =  (unsigned) framePtr->arg0; 
+        fd =  (unsigned) framePtr->arg0; 
         framePtr->returnVal = myread(fd); 
         break; 
     case SVC_MYWRITE: 
-        int ch; 
-        unsigned fd; 
         ch = framePtr->arg0; 
         fd = (unsigned) framePtr->arg1;
         framePtr->returnVal = mywrite(ch, fd); 
         break; 
     case SVC_FILE_CREATE: 
-        char * filepath; 
         filepath = (const char * ) framePtr->arg0; 
         framePtr->returnVal = create_file(filepath); 
         break; 
     case SVC_FILE_DELETE: 
-        char * filepath; 
         filepath = (const char * ) framePtr->arg0; 
         framePtr->returnVal = delete_file(filepath); 
         break; 
