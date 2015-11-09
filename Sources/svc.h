@@ -32,8 +32,11 @@
 #define SVC_POTENTIOMETER_INIT 13
 #define SVC_POTENTIOMETER_READ 14
 
-#define SVC_CAPACITIVEPAD_INIT 15
-#define SVC_CAPACITIVEPAD_READ 16
+#define SVC_THERMISTOR_INIT 15
+#define SVC_THERMISTOR_READ 16
+
+#define SVC_CAPACITIVEPAD_INIT 17
+#define SVC_CAPACITIVEPAD_READ 18
 
 void svcInit_SetSVCPriority(unsigned char priority);
 void svcHandler(void);
@@ -46,14 +49,17 @@ int SVCPushButtonRead(int minor_num);
 
 void SVCUartInit(int minor_num); 
 int SVCUartRead(int minor_num); 
-int SVCUartWriter(int minor_num); 
+void SVCUartWriter(int minor_num); 
 
 void SVCLcdcInit(int minor_num); 
-int SVCLcdcWrite(int ch, int minor_num); 
+void SVCLcdcWrite(int ch, int minor_num); 
 
 void SVCCapacitivePadInit(int minor_num); 
 int SVCCapacitivePadRead(int minor_num); 
 
 void SVCPotentiometerInit(int minor_num); 
 int SVCPotentiometerRead(int minor_num); 
+
+void SVCThermistorInit(int minor_num); 
+int SVCThermistorRead(int minor_num); 
 #endif /* ifndef _SVC_H */

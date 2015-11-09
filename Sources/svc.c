@@ -70,6 +70,7 @@
 #include "pushbutton.h"
 #include "capacitivepads.h"
 #include "potentiometer.h"
+#include "thermistor.h"
 #include "uart.h"
 #include "lcdc.h"
 
@@ -260,12 +261,12 @@ void __attribute__((never_inline)) SVCLcdcInit(int arg0) {
 }
 #endif
 #ifdef __GNUC__
-int __attribute__((naked)) __attribute__((noinline)) SVCLcdcWrite(int arg0, int arg1) {
+void __attribute__((naked)) __attribute__((noinline)) SVCLcdcWrite(int arg0, int arg1) {
 	__asm("svc %0" : : "I" (SVC_LCDC_WRITE));
 	__asm("bx lr");
 }
 #else
-int __attribute__((never_inline)) SVCLcdcWrite(int arg0, int arg1) {
+void __attribute__((never_inline)) SVCLcdcWrite(int arg0, int arg1) {
 	__asm("svc %0" : : "I" (SVC_LCDC_WRITE));
 }
 #endif
@@ -362,14 +363,14 @@ void svcHandlerInC(struct frame *framePtr) {
 		printf("SVC LED INIT has been called\n");
 		printf("Only parameter is %d\n", framePtr->arg0);
         minor_num = (void *) framePtr->arg0; 
-        framePtr->returnVal = ledinit(minor_num); 
+        framePtr->returnVal = led_init(minor_num); 
 		break;
 	case SVC_LED_WRITE:
 		printf("SVC LED WRITE has been called\n");
 		printf("parameters: %d %d\n", framePtr->arg0, framePtr->arg1);
         ch = framePtr->arg0; 
         minor_num = (void *) framePtr->arg1;
-        framePtr->returnVal = ledwrite(ch, minor_num); 
+        framePtr->returnVal = led_write(ch, minor_num); 
 		break;
 	case SVC_PUSHBUTTON_INIT:
 		printf("SVC PUSHBUTTON INIT has been called\n");
@@ -387,7 +388,7 @@ void svcHandlerInC(struct frame *framePtr) {
 		printf("SVC CAPACITIVEPAD INIT has been called\n");
 		printf("Only parameter is %d\n", framePtr->arg0);
         minor_num = (void *) framePtr->arg0; 
-        framePtr->returnVal = capacitivepad_init(minor_num); 
+        capacitivepad_init(minor_num); 
 		break;
 	case SVC_CAPACITIVEPAD_READ:
 		printf("SVC CAPACITIVEPAD WRITE has been called\n");
@@ -406,6 +407,18 @@ void svcHandlerInC(struct frame *framePtr) {
 		printf("parameters: %d\n", framePtr->arg0);
         minor_num = (void *) framePtr->arg0; 
         framePtr->returnVal = potentiometer_read(minor_num); 
+		break;
+	case SVC_THERMISTOR_INIT:
+		printf("SVC SVC_THERMISTOR_INIT INIT has been called\n");
+		printf("Only parameter is %d\n", framePtr->arg0);
+        minor_num = (void *) framePtr->arg0; 
+        framePtr->returnVal = thermistor_init(minor_num); 
+		break;
+	case SVC_THERMISTOR_READ:
+		printf("SVC SVC_THERMISTOR_READ WRITE has been called\n");
+		printf("parameters: %d\n", framePtr->arg0);
+        minor_num = (void *) framePtr->arg0; 
+        framePtr->returnVal = thermistor_read(minor_num); 
 		break;
 	case SVC_UART_INIT:
 		printf("SVC UART INIT has been called\n");

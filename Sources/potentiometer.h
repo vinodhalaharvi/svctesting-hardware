@@ -7,9 +7,11 @@
 
 typedef struct _potentiometer_t {
     void (*init)(void); 
-    unsigned int (*read)(uint8_t channel); 
+    unsigned int (*read)(); 
 } potentiometer_t;
 
+
+void potentiometerInitAll(void);
 int potentiometer_init(void *minorno); 
 int potentiometer_read(void *minorno);
 #endif

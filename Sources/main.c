@@ -8,8 +8,14 @@
 #include "sdram.h"
 #include "lcdc.h"
 #include "lcdcConsole.h"
-#define CHAR_EOF 4
+#include "thermistor.h"
+#include "potentiometer.h"
+#define FALSE 0
+#define TRUE 1
 
+void consoleDemo();
+
+#define CHAR_EOF 4
 extern void svcHandler(void);
 
 int verify_led(void) {
@@ -67,9 +73,6 @@ void uart_write_string(const char *p) {
     }
 }
 
-void consoleDemo();
-static struct console console;
-
 
 void consoleDemo() {
     while(1) {
@@ -107,10 +110,32 @@ int verify_uart(void){
     return 0;
 }
 
+int verify_potentiometer(void) {
+   potentiometer_init(0);
+   while(TRUE) { 
+      printf("pot: %4u\ttemp: %4u\n",
+    		 potentiometer_read(0), 
+    		 potentiometer_read(0));
+   }
+   return 0;
+}
+
+int verify_thermistor(void) {
+   thermistor_init(0);
+   while(TRUE) { 
+      printf("pot: %4u\ttemp: %4u\n",
+    		 thermistor_read(0), 
+    		 thermistor_read(0));
+   }
+   return 0;
+}
+
+ 
 int main()
 {
     //verify_pushbutton(); 
     //verify_uart(); 
     verify_lcdc(); 
+    verify_thermistor(); 
     return 0;
 }

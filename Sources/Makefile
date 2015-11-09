@@ -1,4 +1,4 @@
-CFLAGS=-ggdb -Wall -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast
+CFLAGS=-ggdb -Wall -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast -Wno-attributes
 
 all: main
 
@@ -8,6 +8,8 @@ debug: shell
 capacitivepads: capacitivepads.o
 
 capacitivepadsdriver: capacitivepadsdriver.o
+
+thermistordriver: thermistordriver.o
 
 delay: delay.o
 
@@ -21,7 +23,7 @@ led: led.o
 
 leddriver: leddriver.o
 
-main: main.o
+main: main.o  svc.o led.o delay.o pushbutton.o uart.o mcg.o sdram.o lcdc.o lcdcConsole.o potentiometer.o thermistor.o lcdcdriver.o potentiometerdriver.o thermistordriver.o leddriver.o pushbuttondriver.o
 
 mcg: mcg.o
 

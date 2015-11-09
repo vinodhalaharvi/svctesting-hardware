@@ -148,9 +148,13 @@ ADC_CFG1_ADLSMP_MASK	derivative.h	378;"	d
 ADC_CFG1_ADLSMP_SHIFT	derivative.h	379;"	d
 ADC_CFG1_MODE	derivative.h	377;"	d
 ADC_CFG1_MODE_10_11_BIT	potentiometerdriver.h	14;"	d
+ADC_CFG1_MODE_10_11_BIT	thermistordriver.h	13;"	d
 ADC_CFG1_MODE_12_13_BIT	potentiometerdriver.h	13;"	d
+ADC_CFG1_MODE_12_13_BIT	thermistordriver.h	12;"	d
 ADC_CFG1_MODE_16_BIT	potentiometerdriver.h	15;"	d
+ADC_CFG1_MODE_16_BIT	thermistordriver.h	14;"	d
 ADC_CFG1_MODE_8_9_BIT	potentiometerdriver.h	12;"	d
+ADC_CFG1_MODE_8_9_BIT	thermistordriver.h	11;"	d
 ADC_CFG1_MODE_MASK	derivative.h	375;"	d
 ADC_CFG1_MODE_SHIFT	derivative.h	376;"	d
 ADC_CFG1_REG	derivative.h	321;"	d
@@ -166,6 +170,8 @@ ADC_CFG2_MUXSEL_SHIFT	derivative.h	394;"	d
 ADC_CFG2_REG	derivative.h	322;"	d
 ADC_CHANNEL_POTENTIOMETER	potentiometerdriver.h	9;"	d
 ADC_CHANNEL_TEMPERATURE_SENSOR	potentiometerdriver.h	10;"	d
+ADC_CHANNEL_TEMPERATURE_SENSOR	thermistordriver.h	9;"	d
+ADC_CHANNEL_THERMISTOR	thermistordriver.h	8;"	d
 ADC_CLM0_CLM0	derivative.h	514;"	d
 ADC_CLM0_CLM0_MASK	derivative.h	512;"	d
 ADC_CLM0_CLM0_SHIFT	derivative.h	513;"	d
@@ -292,6 +298,7 @@ ADC_SC3_AVGE_MASK	derivative.h	427;"	d
 ADC_SC3_AVGE_SHIFT	derivative.h	428;"	d
 ADC_SC3_AVGS	derivative.h	426;"	d
 ADC_SC3_AVGS_32_SAMPLES	potentiometerdriver.h	16;"	d
+ADC_SC3_AVGS_32_SAMPLES	thermistordriver.h	15;"	d
 ADC_SC3_AVGS_MASK	derivative.h	424;"	d
 ADC_SC3_AVGS_SHIFT	derivative.h	425;"	d
 ADC_SC3_CALF_MASK	derivative.h	431;"	d
@@ -2032,7 +2039,7 @@ CH	derivative.h	/^  } CH[4];$/;"	m	struct:PDB_MemMap	typeref:struct:PDB_MemMap::
 CHANNEL	derivative.h	/^  } CHANNEL[4];$/;"	m	struct:ENET_MemMap	typeref:struct:ENET_MemMap::__anon19
 CHANNEL	derivative.h	/^  } CHANNEL[4];$/;"	m	struct:PIT_MemMap	typeref:struct:PIT_MemMap::__anon27
 CHAR_EOF	lcdcdriver.c	22;"	d	file:
-CHAR_EOF	main.c	11;"	d	file:
+CHAR_EOF	main.c	16;"	d	file:
 CHCFG	derivative.h	/^  uint8_t CHCFG[16];                               \/**< Channel Configuration Register, array offset: 0x0, array step: 0x1 *\/$/;"	m	struct:DMAMUX_MemMap
 CID0	derivative.h	/^  uint32_t CID0;                                   \/**< Component Identification Register 0., offset: 0xFF0 *\/$/;"	m	struct:DWT_MemMap
 CID0	derivative.h	/^  uint32_t CID0;                                   \/**< Component Identification Register 0., offset: 0xFF0 *\/$/;"	m	struct:FPB_MemMap
@@ -5766,7 +5773,9 @@ F1	derivative.h	/^  uint8_t F1;                                      \/**< LLWU 
 F2	derivative.h	/^  uint8_t F2;                                      \/**< LLWU Flag 2 Register, offset: 0x6 *\/$/;"	m	struct:LLWU_MemMap
 F3	derivative.h	/^  uint8_t F3;                                      \/**< LLWU Flag 3 Register, offset: 0x7 *\/$/;"	m	struct:LLWU_MemMap
 FADR	derivative.h	/^  uint32_t FADR;                                   \/**< Fault address register, offset: 0x20 *\/$/;"	m	struct:MCM_MemMap
+FALSE	main.c	13;"	d	file:
 FALSE	potentiometerdriver.h	6;"	d
+FALSE	thermistordriver.h	5;"	d
 FATR	derivative.h	/^  uint32_t FATR;                                   \/**< Fault attributes register, offset: 0x24 *\/$/;"	m	struct:MCM_MemMap
 FB_BASE_PTR	derivative.h	7972;"	d
 FB_BASE_PTRS	derivative.h	7974;"	d
@@ -9219,6 +9228,7 @@ NUM_OF_LCDCS	lcdc.h	4;"	d
 NUM_OF_LEDS	led.h	3;"	d
 NUM_OF_POTENTIOMETERS	potentiometer.h	5;"	d
 NUM_OF_PUSHBUTTONS	pushbutton.h	3;"	d
+NUM_OF_THERMISTORS	thermistor.h	5;"	d
 NUM_OF_UARTS	uart.h	4;"	d
 NVICIABR0	derivative.h	13222;"	d
 NVICIABR1	derivative.h	13223;"	d
@@ -12546,8 +12556,8 @@ SVCCapacitivePadRead	svc.c	/^int __attribute__((naked)) __attribute__((noinline)
 SVCCapacitivePadRead	svc.c	/^int __attribute__((never_inline)) SVCCapacitivePadRead(int arg0) {$/;"	f
 SVCLcdcInit	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLcdcInit(int arg0) {$/;"	f
 SVCLcdcInit	svc.c	/^void __attribute__((never_inline)) SVCLcdcInit(int arg0) {$/;"	f
-SVCLcdcWrite	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCLcdcWrite(int arg0, int arg1) {$/;"	f
-SVCLcdcWrite	svc.c	/^int __attribute__((never_inline)) SVCLcdcWrite(int arg0, int arg1) {$/;"	f
+SVCLcdcWrite	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLcdcWrite(int arg0, int arg1) {$/;"	f
+SVCLcdcWrite	svc.c	/^void __attribute__((never_inline)) SVCLcdcWrite(int arg0, int arg1) {$/;"	f
 SVCLedInit	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLedInit(int arg0) {$/;"	f
 SVCLedInit	svc.c	/^void __attribute__((never_inline)) SVCLedInit(int arg0) {$/;"	f
 SVCLedWrite	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCLedWrite(int arg0, int arg1) {$/;"	f
@@ -12566,8 +12576,8 @@ SVCUartRead	svc.c	/^int __attribute__((naked)) __attribute__((noinline)) SVCUart
 SVCUartRead	svc.c	/^int __attribute__((never_inline)) SVCUartRead(int arg0) {$/;"	f
 SVCUartWrite	svc.c	/^void __attribute__((naked)) __attribute__((noinline)) SVCUartWrite(int arg0, int arg1) {$/;"	f
 SVCUartWrite	svc.c	/^void __attribute__((never_inline)) SVCUartWrite(int arg0, int arg1) {$/;"	f
-SVC_CAPACITIVEPAD_INIT	svc.h	35;"	d
-SVC_CAPACITIVEPAD_READ	svc.h	36;"	d
+SVC_CAPACITIVEPAD_INIT	svc.h	38;"	d
+SVC_CAPACITIVEPAD_READ	svc.h	39;"	d
 SVC_LCDC_INIT	svc.h	29;"	d
 SVC_LCDC_WRITE	svc.h	30;"	d
 SVC_LED_INIT	svc.h	19;"	d
@@ -12578,6 +12588,8 @@ SVC_POTENTIOMETER_READ	svc.h	33;"	d
 SVC_PUSHBUTTON_INIT	svc.h	22;"	d
 SVC_PUSHBUTTON_READ	svc.h	23;"	d
 SVC_PriorityShift	svc.h	16;"	d
+SVC_THERMISTOR_INIT	svc.h	35;"	d
+SVC_THERMISTOR_READ	svc.h	36;"	d
 SVC_UART_INIT	svc.h	25;"	d
 SVC_UART_READ	svc.h	27;"	d
 SVC_UART_WRITE	svc.h	26;"	d
@@ -12734,7 +12746,9 @@ TRG	derivative.h	/^  uint32_t TRG;                                    \/**< Trig
 TRIGGER	derivative.h	/^  uint32_t TRIGGER;                                \/**< Trigger Event Register, offset: 0x8 *\/$/;"	m	struct:ETM_MemMap
 TRIGGER	derivative.h	/^  uint32_t TRIGGER;                                \/**< Trigger Register, offset: 0xEE8 *\/$/;"	m	struct:TPIU_MemMap
 TRM	derivative.h	/^  uint8_t TRM;                                     \/**< VREF Trim Register, offset: 0x0 *\/$/;"	m	struct:VREF_MemMap
+TRUE	main.c	14;"	d	file:
 TRUE	potentiometerdriver.h	7;"	d
+TRUE	thermistordriver.h	6;"	d
 TSEM	derivative.h	/^  uint32_t TSEM;                                   \/**< Transmit FIFO Section Empty Threshold, offset: 0x1A0 *\/$/;"	m	struct:ENET_MemMap
 TSEVR	derivative.h	/^  uint32_t TSEVR;                                  \/**< Timestamp Event Register, offset: 0x1F8 *\/$/;"	m	struct:ETM_MemMap
 TSI0_BASE_PTR	derivative.h	17425;"	d
@@ -14530,8 +14544,8 @@ XFERTYP	derivative.h	/^  uint32_t XFERTYP;                                \/**< 
 XOR_CA	derivative.h	/^  uint32_t XOR_CA[9];                              \/**< General Purpose Register 0 - Exclusive Or command..General Purpose Register 8 - Exclusive Or command, array offset: 0x988, array step: 0x4 *\/$/;"	m	struct:CAU_MemMap
 XOR_CAA	derivative.h	/^  uint32_t XOR_CAA;                                \/**< Accumulator register - Exclusive Or command, offset: 0x984 *\/$/;"	m	struct:CAU_MemMap
 XOR_CASR	derivative.h	/^  uint32_t XOR_CASR;                               \/**< Status register  - Exclusive Or command, offset: 0x980 *\/$/;"	m	struct:CAU_MemMap
-XPSR_FRAME_ALIGNED_BIT	svc.c	77;"	d	file:
-XPSR_FRAME_ALIGNED_MASK	svc.c	78;"	d	file:
+XPSR_FRAME_ALIGNED_BIT	svc.c	78;"	d	file:
+XPSR_FRAME_ALIGNED_MASK	svc.c	79;"	d	file:
 _CAPACITIVEPADDRIVER_H	capacitivepadsdriver.h	2;"	d
 _CAPACITIVEPAD_H	capacitivepads.h	4;"	d
 _DELAY_H	delay.h	13;"	d
@@ -14548,6 +14562,8 @@ _PUSHBUTTONDRIVER_H	pushbuttondriver.h	13;"	d
 _PUSHBUTTON_H	pushbutton.h	2;"	d
 _SDRAM_H	sdram.h	13;"	d
 _SVC_H	svc.h	13;"	d
+_THERMISTORDRIVER_H	thermistordriver.h	2;"	d
+_THERMISTOR_H	thermistor.h	4;"	d
 _UARTDRIVER_H	uartdriver.h	13;"	d
 _UART_H	uart.h	3;"	d
 _capacitivepad_t	capacitivepads.h	/^typedef struct _capacitivepad_t {$/;"	s
@@ -14555,6 +14571,7 @@ _lcdcd_t	lcdc.h	/^typedef struct _lcdcd_t {$/;"	s
 _led_t	led.h	/^typedef struct _led_t {$/;"	s
 _potentiometer_t	potentiometer.h	/^typedef struct _potentiometer_t {$/;"	s
 _pushbutton_t	pushbutton.h	/^typedef struct _pushbutton_t {$/;"	s
+_thermistor_t	thermistor.h	/^typedef struct _thermistor_t {$/;"	s
 _uart_t	uart.h	/^typedef struct _uart_t {$/;"	s
 arg0	svc.c	/^		int arg0;$/;"	m	union:frame::__anon34	file:
 arg1	svc.c	/^		int arg1;$/;"	m	union:frame::__anon35	file:
@@ -14575,7 +14592,7 @@ channel	capacitivepadsdriver.c	/^	int channel;$/;"	m	struct:electrodeHW	file:
 console	lcdcConsole.h	/^struct console {$/;"	s
 console	lcdcdriver.c	/^static struct console console;$/;"	v	typeref:struct:console	file:
 console	main.c	/^static struct console console;$/;"	v	typeref:struct:console	file:
-consoleDemo	main.c	/^void consoleDemo(struct console *console) {$/;"	f
+consoleDemo	main.c	/^void consoleDemo() {$/;"	f
 counterRegister	capacitivepadsdriver.c	/^	uint16_t *counterRegister;$/;"	m	struct:electrodeHW	file:
 delay	delay.c	/^void delay(unsigned long int limit) {$/;"	f
 electrodeHW	capacitivepadsdriver.c	/^struct electrodeHW {$/;"	s	file:
@@ -14589,6 +14606,7 @@ init	lcdc.h	/^    void (*init)(void); $/;"	m	struct:_lcdcd_t
 init	led.h	/^    void (*init)(void); $/;"	m	struct:_led_t
 init	potentiometer.h	/^    void (*init)(void); $/;"	m	struct:_potentiometer_t
 init	pushbutton.h	/^    void (*init)(void); $/;"	m	struct:_pushbutton_t
+init	thermistor.h	/^    void (*init)(void); $/;"	m	struct:_thermistor_t
 init	uart.h	/^    void (*init)(void); $/;"	m	struct:_uart_t
 input_present	uart.h	/^    int (*input_present)(void); $/;"	m	struct:_uart_t
 lcdcConsoleClear	lcdcConsole.c	/^void lcdcConsoleClear(struct console *console) {$/;"	f
@@ -14631,7 +14649,7 @@ main	main.c	/^int main()$/;"	f
 mask	capacitivepadsdriver.c	/^	uint32_t mask;$/;"	m	struct:electrodeHW	file:
 mcgInit	mcg.c	/^void mcgInit(void) {$/;"	f
 potentiometer_driver_init	potentiometerdriver.c	/^void potentiometer_driver_init(void) {$/;"	f
-potentiometer_driver_read	potentiometerdriver.c	/^unsigned int potentiometer_driver_read(uint8_t channel) {$/;"	f
+potentiometer_driver_read	potentiometerdriver.c	/^unsigned int potentiometer_driver_read() {$/;"	f
 potentiometer_init	potentiometer.c	/^int potentiometer_init(void * minor_num){ $/;"	f
 potentiometer_read	potentiometer.c	/^int potentiometer_read(void *minor_num){ $/;"	f
 potentiometer_t	potentiometer.h	/^} potentiometer_t;$/;"	t	typeref:struct:_potentiometer_t
@@ -14652,8 +14670,9 @@ r14	svc.c	/^		int r14;$/;"	m	union:frame::__anon38	file:
 r2	svc.c	/^		int r2;$/;"	m	union:frame::__anon36	file:
 r3	svc.c	/^		int r3;$/;"	m	union:frame::__anon37	file:
 read	capacitivepads.h	/^    int  (*read)(int); $/;"	m	struct:_capacitivepad_t
-read	potentiometer.h	/^    unsigned int (*read)(uint8_t channel); $/;"	m	struct:_potentiometer_t
+read	potentiometer.h	/^    unsigned int (*read)(); $/;"	m	struct:_potentiometer_t
 read	pushbutton.h	/^    int (*read)(void); $/;"	m	struct:_pushbutton_t
+read	thermistor.h	/^    unsigned int (*read)(); $/;"	m	struct:_thermistor_t
 read	uart.h	/^    int (*read)(); $/;"	m	struct:_uart_t
 returnAddr	svc.c	/^	int returnAddr;$/;"	m	struct:frame	file:
 returnVal	svc.c	/^		int returnVal;$/;"	m	union:frame::__anon34	file:
@@ -14662,6 +14681,12 @@ svcHandlerInC	svc.c	/^void svcHandlerInC(struct frame *framePtr) {$/;"	f
 svcInit_SetSVCPriority	svc.c	/^void svcInit_SetSVCPriority(unsigned char priority) {$/;"	f
 sw1In	pushbuttondriver.c	/^int sw1In(void) {$/;"	f
 sw2In	pushbuttondriver.c	/^int sw2In(void) {$/;"	f
+thermistor_driver_init	thermistordriver.c	/^void thermistor_driver_init(void) {$/;"	f
+thermistor_driver_read	thermistordriver.c	/^unsigned int thermistor_driver_read() {$/;"	f
+thermistor_init	thermistor.c	/^int thermistor_init(void * minor_num){ $/;"	f
+thermistor_read	thermistor.c	/^int thermistor_read(void *minor_num){ $/;"	f
+thermistor_t	thermistor.h	/^} thermistor_t;$/;"	t	typeref:struct:_thermistor_t
+thermistors	thermistor.c	/^thermistor_t thermistors[NUM_OF_THERMISTORS] = { $/;"	v
 threshold	capacitivepadsdriver.c	/^	uint16_t threshold;$/;"	m	struct:electrodeHW	file:
 uartGetchar	uartdriver.c	/^char uartGetchar(UART_MemMapPtr uartChannel) {$/;"	f
 uartGetcharPresent	uartdriver.c	/^int uartGetcharPresent(UART_MemMapPtr uartChannel) {$/;"	f
@@ -14680,13 +14705,17 @@ uart_t	uart.h	/^} uart_t;$/;"	t	typeref:struct:_uart_t
 uart_write	uart.c	/^int uart_write(int ch, void *minor_num){ $/;"	f
 uart_write_string	main.c	/^void uart_write_string(const char *p) {$/;"	f
 uarts	uart.c	/^uart_t uarts[NUM_OF_UARTS] = { $/;"	v
+uintptr_t	capacitivepads.c	/^typedef unsigned long uintptr_t; $/;"	t	file:
 uintptr_t	led.c	/^typedef unsigned long uintptr_t; $/;"	t	file:
+uintptr_t	potentiometer.c	/^typedef unsigned long uintptr_t; $/;"	t	file:
+uintptr_t	thermistor.c	/^typedef unsigned long uintptr_t; $/;"	t	file:
 uintptr_t	uart.c	/^typedef unsigned long uintptr_t;$/;"	t	file:
 verify	capacitivepadsdriver.c	/^int verify(void) {$/;"	f
 verify_lcdc	main.c	/^int verify_lcdc(){ $/;"	f
 verify_led	main.c	/^int verify_led(void) {$/;"	f
-verify_potentiometer	potentiometer.c	/^int verify_potentiometer(void) {$/;"	f
+verify_potentiometer	main.c	/^int verify_potentiometer(void) {$/;"	f
 verify_pushbutton	main.c	/^int verify_pushbutton(void) {$/;"	f
+verify_thermistor	main.c	/^int verify_thermistor(void) {$/;"	f
 verify_uart	main.c	/^int verify_uart(void){$/;"	f
 width	lcdcConsole.h	/^  uint16_t width, height;	\/\/ Screen width & height (in pixels)$/;"	m	struct:console
 write	lcdc.h	/^    int (*write)(int ch); $/;"	m	struct:_lcdcd_t

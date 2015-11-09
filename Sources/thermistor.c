@@ -7,24 +7,23 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <assert.h>
-#include "potentiometerdriver.h"
-#include "potentiometer.h"
+#include "thermistordriver.h"
+#include "thermistor.h"
 typedef unsigned long uintptr_t; 
 
-potentiometer_t potentiometers[NUM_OF_POTENTIOMETERS] = { 
-    {potentiometer_driver_init, potentiometer_driver_read}
+thermistor_t thermistors[NUM_OF_THERMISTORS] = { 
+    {thermistor_driver_init, thermistor_driver_read}
 };
 
-int potentiometer_init(void * minor_num){ 
+int thermistor_init(void * minor_num){ 
     int fd = (int) (uintptr_t) minor_num; 
-    potentiometers[fd].init(); 
+    thermistors[fd].init(); 
     return 0;
 }
 
-int potentiometer_read(void *minor_num){ 
+int thermistor_read(void *minor_num){ 
     int fd = (int) (uintptr_t) minor_num; 
-    //still have to fix this
-    potentiometers[fd].read(); 
+    thermistors[fd].read(); 
     return 0; 
 }
 
