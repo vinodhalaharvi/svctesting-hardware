@@ -17,6 +17,8 @@
 #include "lcdcConsole.h"
 #include "svc.h"
 #include "stdio.h"
+#include "uart.h"
+
 
 #include "uartdriver.h"
 #define CHAR_EOF 4
@@ -122,7 +124,8 @@ int main() {
     while(1){ 
         write_string("$ ", mystdout); 
         //fflush(mystdout); 
-        c = myread(mystdin);
+        //c = myread(mystdin);
+        c = uartGetchar(UART2_BASE_PTR); 
         while (c > 0 && c != '\n' && index < LINE_MAX) {
             if (isSlash(c)) { 
                 c = myread(mystdin); 

@@ -2046,7 +2046,7 @@ CH	derivative.h	/^  } CH[4];$/;"	m	struct:PDB_MemMap	typeref:struct:PDB_MemMap::
 CHANNEL	derivative.h	/^  } CHANNEL[4];$/;"	m	struct:ENET_MemMap	typeref:struct:ENET_MemMap::__anon20
 CHANNEL	derivative.h	/^  } CHANNEL[4];$/;"	m	struct:PIT_MemMap	typeref:struct:PIT_MemMap::__anon28
 CHAR_EOF	lcdcdriver.c	22;"	d	file:
-CHAR_EOF	main.c	19;"	d	file:
+CHAR_EOF	main.c	21;"	d	file:
 CHAR_EOF	shell.c	22;"	d	file:
 CHCFG	derivative.h	/^  uint8_t CHCFG[16];                               \/**< Channel Configuration Register, array offset: 0x0, array step: 0x1 *\/$/;"	m	struct:DMAMUX_MemMap
 CID0	derivative.h	/^  uint32_t CID0;                                   \/**< Component Identification Register 0., offset: 0xFF0 *\/$/;"	m	struct:DWT_MemMap
@@ -5783,7 +5783,7 @@ F1	derivative.h	/^  uint8_t F1;                                      \/**< LLWU 
 F2	derivative.h	/^  uint8_t F2;                                      \/**< LLWU Flag 2 Register, offset: 0x6 *\/$/;"	m	struct:LLWU_MemMap
 F3	derivative.h	/^  uint8_t F3;                                      \/**< LLWU Flag 3 Register, offset: 0x7 *\/$/;"	m	struct:LLWU_MemMap
 FADR	derivative.h	/^  uint32_t FADR;                                   \/**< Fault address register, offset: 0x20 *\/$/;"	m	struct:MCM_MemMap
-FALSE	main.c	14;"	d	file:
+FALSE	main.c	16;"	d	file:
 FALSE	potentiometerdriver.h	6;"	d
 FALSE	thermistordriver.h	5;"	d
 FATR	derivative.h	/^  uint32_t FATR;                                   \/**< Fault attributes register, offset: 0x24 *\/$/;"	m	struct:MCM_MemMap
@@ -8459,16 +8459,16 @@ LVPWR	derivative.h	/^  uint32_t LVPWR;                                  \/**< LC
 MA1	derivative.h	/^  uint8_t MA1;                                     \/**< UART Match Address Registers 1, offset: 0x8 *\/$/;"	m	struct:UART_MemMap
 MA2	derivative.h	/^  uint8_t MA2;                                     \/**< UART Match Address Registers 2, offset: 0x9 *\/$/;"	m	struct:UART_MemMap
 MASK	derivative.h	/^    uint32_t MASK;                                   \/**< Mask Register 0..Mask Register 3, array offset: 0x24, array step: 0x10 *\/$/;"	m	struct:DWT_MemMap::__anon19
-MAX_COMMAND_LINE_ARGUMENTS	shell.c	32;"	d	file:
-MAX_COUNT	mymalloctesting.c	8;"	d	file:
+MAX_COMMAND_LINE_ARGUMENTS	shell.c	29;"	d	file:
+MAX_COUNT	mymalloctesting.c	10;"	d	file:
 MAX_DEVICES	io.h	6;"	d
 MAX_FILE_DESCRIPTORS	io.h	7;"	d
 MAX_FS_ENTRIES	file.c	8;"	d	file:
 MAX_LIST_SIZE	map.h	8;"	d
-MAX_STRING_LARGE_SIZE	mymalloctesting.c	10;"	d	file:
-MAX_STRING_LARGE_SIZE	shell.c	31;"	d	file:
-MAX_STRING_LENGTH	shell.c	30;"	d	file:
-MAX_STRING_SIZE	mymalloctesting.c	9;"	d	file:
+MAX_STRING_LARGE_SIZE	mymalloctesting.c	12;"	d	file:
+MAX_STRING_LARGE_SIZE	shell.c	28;"	d	file:
+MAX_STRING_LENGTH	shell.c	27;"	d	file:
+MAX_STRING_SIZE	mymalloctesting.c	11;"	d	file:
 MB	derivative.h	/^  } MB[16];$/;"	m	struct:CAN_MemMap	typeref:struct:CAN_MemMap::__anon4
 MCG_ATCVH	derivative.h	11706;"	d
 MCG_ATCVH_ATCVH	derivative.h	11618;"	d
@@ -12815,7 +12815,7 @@ TRG	derivative.h	/^  uint32_t TRG;                                    \/**< Trig
 TRIGGER	derivative.h	/^  uint32_t TRIGGER;                                \/**< Trigger Event Register, offset: 0x8 *\/$/;"	m	struct:ETM_MemMap
 TRIGGER	derivative.h	/^  uint32_t TRIGGER;                                \/**< Trigger Register, offset: 0xEE8 *\/$/;"	m	struct:TPIU_MemMap
 TRM	derivative.h	/^  uint8_t TRM;                                     \/**< VREF Trim Register, offset: 0x0 *\/$/;"	m	struct:VREF_MemMap
-TRUE	main.c	15;"	d	file:
+TRUE	main.c	17;"	d	file:
 TRUE	potentiometerdriver.h	7;"	d
 TRUE	thermistordriver.h	6;"	d
 TSEM	derivative.h	/^  uint32_t TSEM;                                   \/**< Transmit FIFO Section Empty Threshold, offset: 0x1A0 *\/$/;"	m	struct:ENET_MemMap
@@ -14615,8 +14615,8 @@ XFERTYP	derivative.h	/^  uint32_t XFERTYP;                                \/**< 
 XOR_CA	derivative.h	/^  uint32_t XOR_CA[9];                              \/**< General Purpose Register 0 - Exclusive Or command..General Purpose Register 8 - Exclusive Or command, array offset: 0x988, array step: 0x4 *\/$/;"	m	struct:CAU_MemMap
 XOR_CAA	derivative.h	/^  uint32_t XOR_CAA;                                \/**< Accumulator register - Exclusive Or command, offset: 0x984 *\/$/;"	m	struct:CAU_MemMap
 XOR_CASR	derivative.h	/^  uint32_t XOR_CASR;                               \/**< Status register  - Exclusive Or command, offset: 0x980 *\/$/;"	m	struct:CAU_MemMap
-XPSR_FRAME_ALIGNED_BIT	svc.c	80;"	d	file:
-XPSR_FRAME_ALIGNED_MASK	svc.c	81;"	d	file:
+XPSR_FRAME_ALIGNED_BIT	svc.c	81;"	d	file:
+XPSR_FRAME_ALIGNED_MASK	svc.c	82;"	d	file:
 _CAPACITIVEPADDRIVER_H	capacitivepadsdriver.h	2;"	d
 _CAPACITIVEPAD_H	capacitivepads.h	4;"	d
 _COMMON_H	common.h	2;"	d
@@ -14848,8 +14848,8 @@ mymalloc	mymalloc.c	/^void * mymalloc(unsigned size){ $/;"	f
 mymalloc_t	mymalloc.h	/^} mymalloc_t;$/;"	t	typeref:struct:_mymalloc_t
 myopen	io.c	/^int myopen(const char * filepath, unsigned mode){ $/;"	f
 myread	io.c	/^int myread(int fd){ $/;"	f
-mystdin	shell.c	/^unsigned mystdin; $/;"	v
-mystdout	shell.c	/^unsigned mystdout; $/;"	v
+mystdin	common.c	/^unsigned mystdin; $/;"	v
+mystdout	common.c	/^unsigned mystdout; $/;"	v
 mywrite	io.c	/^int mywrite(int fd, int ch){ $/;"	f
 name	shell.c	/^    const char *name;$/;"	m	struct:commandEntry	file:
 newfile	file.c	/^file_t * newfile(){ $/;"	f
@@ -14990,7 +14990,7 @@ write	io.c	/^    int (*write)(int ch, void *minor_num); $/;"	m	struct:device	fil
 write	lcdc.h	/^    int (*write)(int ch); $/;"	m	struct:_lcdcd_t
 write	led.h	/^    void (*write)(int ch); $/;"	m	struct:_led_t
 write	uart.h	/^    int (*write)(int ch); $/;"	m	struct:_uart_t
-write_string	shell.c	/^void write_string(const char *p, unsigned mystdout) {$/;"	f
+write_string	common.c	/^void write_string(const char *p, unsigned mystdout) {$/;"	f
 x	lcdcConsole.h	/^  uint16_t x, y;			\/\/ Current console output position x & y (in pixels)$/;"	m	struct:console
 xPSR	svc.c	/^	int xPSR;$/;"	m	struct:frame	file:
 y	lcdcConsole.h	/^  uint16_t x, y;			\/\/ Current console output position x & y (in pixels)$/;"	m	struct:console
