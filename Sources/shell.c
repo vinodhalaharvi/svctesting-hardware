@@ -92,6 +92,7 @@ void initialize_hardware(){
     SVCUartInit(0); 
     SVCLcdcInit(0);
     initmemory(); 
+    init_fdtable(); 
     mystdin = SVCMyopen("/dev/uart/1", 0); 
     mystdout = SVCMyopen("/dev/lcdc/1", 0); 
 }
@@ -728,7 +729,7 @@ void timeofday(myclock_t * clock, unsigned long seconds){
 int cmd_fopen(int argc, char *argv[]){
     unsigned fd; 
     char print_string[1000]; 
-    init_fdtable(); 
+    //init_fdtable(); 
     myassert(argc == 2, "", "argc == 2"); 
     sprintf(print_string, "%s %s\n", argv[0], argv[1]);
     write_string(print_string, mystdout); 

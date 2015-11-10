@@ -2047,7 +2047,7 @@ CHANNEL	derivative.h	/^  } CHANNEL[4];$/;"	m	struct:ENET_MemMap	typeref:struct:E
 CHANNEL	derivative.h	/^  } CHANNEL[4];$/;"	m	struct:PIT_MemMap	typeref:struct:PIT_MemMap::__anon28
 CHAR_EOF	lcdcdriver.c	22;"	d	file:
 CHAR_EOF	main.c	21;"	d	file:
-CHAR_EOF	shell.c	22;"	d	file:
+CHAR_EOF	shell.c	24;"	d	file:
 CHCFG	derivative.h	/^  uint8_t CHCFG[16];                               \/**< Channel Configuration Register, array offset: 0x0, array step: 0x1 *\/$/;"	m	struct:DMAMUX_MemMap
 CID0	derivative.h	/^  uint32_t CID0;                                   \/**< Component Identification Register 0., offset: 0xFF0 *\/$/;"	m	struct:DWT_MemMap
 CID0	derivative.h	/^  uint32_t CID0;                                   \/**< Component Identification Register 0., offset: 0xFF0 *\/$/;"	m	struct:FPB_MemMap
@@ -6348,7 +6348,9 @@ FTM0_FILTER	derivative.h	9257;"	d
 FTM0_FLTCTRL	derivative.h	9258;"	d
 FTM0_FLTPOL	derivative.h	9261;"	d
 FTM0_FMS	derivative.h	9256;"	d
+FTM0_INTERRUPT_PRIORITY	flexTimer.h	41;"	d
 FTM0_INVCTRL	derivative.h	9263;"	d
+FTM0_IRQ_NUMBER	flexTimer.h	39;"	d
 FTM0_MOD	derivative.h	9229;"	d
 FTM0_MODE	derivative.h	9248;"	d
 FTM0_OUTINIT	derivative.h	9250;"	d
@@ -6759,11 +6761,23 @@ FTM_QDCTRL_REG	derivative.h	8772;"	d
 FTM_QDCTRL_TOFDIR_MASK	derivative.h	9071;"	d
 FTM_QDCTRL_TOFDIR_SHIFT	derivative.h	9072;"	d
 FTM_SC_CLKS	derivative.h	8800;"	d
+FTM_SC_CLKS_EXTERNAL_CLOCK	flexTimer.h	78;"	d
+FTM_SC_CLKS_FIXED_FREQUENCY_CLOCK	flexTimer.h	57;"	d
 FTM_SC_CLKS_MASK	derivative.h	8798;"	d
+FTM_SC_CLKS_NO_CLOCK	flexTimer.h	44;"	d
 FTM_SC_CLKS_SHIFT	derivative.h	8799;"	d
+FTM_SC_CLKS_SYSTEM_CLOCK	flexTimer.h	45;"	d
 FTM_SC_CPWMS_MASK	derivative.h	8801;"	d
 FTM_SC_CPWMS_SHIFT	derivative.h	8802;"	d
 FTM_SC_PS	derivative.h	8797;"	d
+FTM_SC_PS_DIVIDE_BY_1	flexTimer.h	63;"	d
+FTM_SC_PS_DIVIDE_BY_128	flexTimer.h	70;"	d
+FTM_SC_PS_DIVIDE_BY_16	flexTimer.h	67;"	d
+FTM_SC_PS_DIVIDE_BY_2	flexTimer.h	64;"	d
+FTM_SC_PS_DIVIDE_BY_32	flexTimer.h	68;"	d
+FTM_SC_PS_DIVIDE_BY_4	flexTimer.h	65;"	d
+FTM_SC_PS_DIVIDE_BY_64	flexTimer.h	69;"	d
+FTM_SC_PS_DIVIDE_BY_8	flexTimer.h	66;"	d
 FTM_SC_PS_MASK	derivative.h	8795;"	d
 FTM_SC_PS_SHIFT	derivative.h	8796;"	d
 FTM_SC_REG	derivative.h	8754;"	d
@@ -8459,15 +8473,15 @@ LVPWR	derivative.h	/^  uint32_t LVPWR;                                  \/**< LC
 MA1	derivative.h	/^  uint8_t MA1;                                     \/**< UART Match Address Registers 1, offset: 0x8 *\/$/;"	m	struct:UART_MemMap
 MA2	derivative.h	/^  uint8_t MA2;                                     \/**< UART Match Address Registers 2, offset: 0x9 *\/$/;"	m	struct:UART_MemMap
 MASK	derivative.h	/^    uint32_t MASK;                                   \/**< Mask Register 0..Mask Register 3, array offset: 0x24, array step: 0x10 *\/$/;"	m	struct:DWT_MemMap::__anon19
-MAX_COMMAND_LINE_ARGUMENTS	shell.c	29;"	d	file:
+MAX_COMMAND_LINE_ARGUMENTS	shell.c	31;"	d	file:
 MAX_COUNT	mymalloctesting.c	10;"	d	file:
 MAX_DEVICES	io.h	6;"	d
 MAX_FILE_DESCRIPTORS	io.h	7;"	d
 MAX_FS_ENTRIES	file.c	8;"	d	file:
 MAX_LIST_SIZE	map.h	8;"	d
 MAX_STRING_LARGE_SIZE	mymalloctesting.c	12;"	d	file:
-MAX_STRING_LARGE_SIZE	shell.c	28;"	d	file:
-MAX_STRING_LENGTH	shell.c	27;"	d	file:
+MAX_STRING_LARGE_SIZE	shell.c	30;"	d	file:
+MAX_STRING_LENGTH	shell.c	29;"	d	file:
 MAX_STRING_SIZE	mymalloctesting.c	11;"	d	file:
 MB	derivative.h	/^  } MB[16];$/;"	m	struct:CAN_MemMap	typeref:struct:CAN_MemMap::__anon4
 MCG_ATCVH	derivative.h	11706;"	d
@@ -9266,6 +9280,7 @@ NUM_OF_POTENTIOMETERS	potentiometer.h	5;"	d
 NUM_OF_PUSHBUTTONS	pushbutton.h	3;"	d
 NUM_OF_THERMISTORS	thermistor.h	5;"	d
 NUM_OF_UARTS	uart.h	4;"	d
+NVICEnableIRQ	nvic.c	/^void NVICEnableIRQ(int IRQ, unsigned char priority) {$/;"	f
 NVICIABR0	derivative.h	13222;"	d
 NVICIABR1	derivative.h	13223;"	d
 NVICIABR2	derivative.h	13224;"	d
@@ -9395,6 +9410,7 @@ NVICISPR3	derivative.h	13217;"	d
 NVICSTIR	derivative.h	13332;"	d
 NVIC_BASE_PTR	derivative.h	13190;"	d
 NVIC_BASE_PTRS	derivative.h	13192;"	d
+NVIC_FieldsPerNonIPRRegister	nvic.h	15;"	d
 NVIC_IABR	derivative.h	13339;"	d
 NVIC_IABR_ACTIVE	derivative.h	12858;"	d
 NVIC_IABR_ACTIVE_MASK	derivative.h	12856;"	d
@@ -9740,8 +9756,11 @@ NVIC_ISPR_REG	derivative.h	12819;"	d
 NVIC_ISPR_SETPEND	derivative.h	12850;"	d
 NVIC_ISPR_SETPEND_MASK	derivative.h	12848;"	d
 NVIC_ISPR_SETPEND_SHIFT	derivative.h	12849;"	d
+NVIC_MaxIRQ	nvic.h	12;"	d
+NVIC_MaxPriority	nvic.h	13;"	d
 NVIC_MemMap	derivative.h	/^typedef struct NVIC_MemMap {$/;"	s
 NVIC_MemMapPtr	derivative.h	/^} volatile *NVIC_MemMapPtr;$/;"	t
+NVIC_PriorityShift	nvic.h	14;"	d
 NVIC_STIR	derivative.h	13341;"	d
 NVIC_STIR_INTID	derivative.h	13181;"	d
 NVIC_STIR_INTID_MASK	derivative.h	13179;"	d
@@ -9902,6 +9921,12 @@ PCR	derivative.h	/^  uint32_t PCR[32];                                \/**< Pin 
 PCSR	derivative.h	/^  uint32_t PCSR;                                   \/**< Program Counter Sample Register, offset: 0x1C *\/$/;"	m	struct:DWT_MemMap
 PCTH	derivative.h	/^  uint8_t PCTH;                                    \/**< UART CEA709.1-B Packet Cycle Time Counter High, offset: 0x22 *\/$/;"	m	struct:UART_MemMap
 PCTL	derivative.h	/^  uint8_t PCTL;                                    \/**< UART CEA709.1-B Packet Cycle Time Counter Low, offset: 0x23 *\/$/;"	m	struct:UART_MemMap
+PDB0Action	intPDBContinuousTest.c	/^void PDB0Action(void) {$/;"	f
+PDB0Action	intPDBOneShotTest.c	/^void PDB0Action(void) {$/;"	f
+PDB0Init	PDB.c	/^void PDB0Init(uint16_t count, int continuous) {$/;"	f
+PDB0Isr	PDB.c	/^void PDB0Isr(void) {$/;"	f
+PDB0Start	PDB.c	/^void PDB0Start(void) {$/;"	f
+PDB0Stop	PDB.c	/^void PDB0Stop(void) {$/;"	f
 PDB0_BASE_PTR	derivative.h	13605;"	d
 PDB0_C1	derivative.h	13652;"	d
 PDB0_CH0C1	derivative.h	13625;"	d
@@ -9929,6 +9954,8 @@ PDB0_DLY	derivative.h	13654;"	d
 PDB0_IDLY	derivative.h	13624;"	d
 PDB0_INT	derivative.h	13656;"	d
 PDB0_INTC	derivative.h	13655;"	d
+PDB0_INTERRUPT_PRIORITY	PDB.h	39;"	d
+PDB0_IRQ_NUMBER	PDB.h	37;"	d
 PDB0_MOD	derivative.h	13622;"	d
 PDB0_PO0DLY	derivative.h	13646;"	d
 PDB0_PO0EN	derivative.h	19823;"	d
@@ -9939,6 +9966,8 @@ PDB0_PODLY	derivative.h	13657;"	d
 PDB0_POEN	derivative.h	13645;"	d
 PDB0_S	derivative.h	13653;"	d
 PDB0_SC	derivative.h	13621;"	d
+PDBTimerContinuous	PDB.h	76;"	d
+PDBTimerOneShot	PDB.h	75;"	d
 PDB_BASE_PTRS	derivative.h	13607;"	d
 PDB_C1_BB	derivative.h	13565;"	d
 PDB_C1_BB_MASK	derivative.h	13563;"	d
@@ -9998,6 +10027,10 @@ PDB_SC_LDMOD_SHIFT	derivative.h	13542;"	d
 PDB_SC_LDOK_MASK	derivative.h	13516;"	d
 PDB_SC_LDOK_SHIFT	derivative.h	13517;"	d
 PDB_SC_MULT	derivative.h	13522;"	d
+PDB_SC_MULT_BY_1	PDB.h	70;"	d
+PDB_SC_MULT_BY_10	PDB.h	71;"	d
+PDB_SC_MULT_BY_20	PDB.h	72;"	d
+PDB_SC_MULT_BY_40	PDB.h	73;"	d
 PDB_SC_MULT_MASK	derivative.h	13520;"	d
 PDB_SC_MULT_SHIFT	derivative.h	13521;"	d
 PDB_SC_PDBEIE_MASK	derivative.h	13539;"	d
@@ -10009,6 +10042,14 @@ PDB_SC_PDBIE_SHIFT	derivative.h	13524;"	d
 PDB_SC_PDBIF_MASK	derivative.h	13525;"	d
 PDB_SC_PDBIF_SHIFT	derivative.h	13526;"	d
 PDB_SC_PRESCALER	derivative.h	13534;"	d
+PDB_SC_PRESCALER_DIVIDE_BY_1	PDB.h	42;"	d
+PDB_SC_PRESCALER_DIVIDE_BY_128	PDB.h	49;"	d
+PDB_SC_PRESCALER_DIVIDE_BY_16	PDB.h	46;"	d
+PDB_SC_PRESCALER_DIVIDE_BY_2	PDB.h	43;"	d
+PDB_SC_PRESCALER_DIVIDE_BY_32	PDB.h	47;"	d
+PDB_SC_PRESCALER_DIVIDE_BY_4	PDB.h	44;"	d
+PDB_SC_PRESCALER_DIVIDE_BY_64	PDB.h	48;"	d
+PDB_SC_PRESCALER_DIVIDE_BY_8	PDB.h	45;"	d
 PDB_SC_PRESCALER_MASK	derivative.h	13532;"	d
 PDB_SC_PRESCALER_SHIFT	derivative.h	13533;"	d
 PDB_SC_REG	derivative.h	13489;"	d
@@ -10017,6 +10058,22 @@ PDB_SC_SWTRIG_SHIFT	derivative.h	13538;"	d
 PDB_SC_TRGSEL	derivative.h	13531;"	d
 PDB_SC_TRGSEL_MASK	derivative.h	13529;"	d
 PDB_SC_TRGSEL_SHIFT	derivative.h	13530;"	d
+PDB_SC_TRGSEL_SOFTWARE_TRIGGER	PDB.h	67;"	d
+PDB_SC_TRGSEL_TRIGGER_IN_0	PDB.h	52;"	d
+PDB_SC_TRGSEL_TRIGGER_IN_1	PDB.h	53;"	d
+PDB_SC_TRGSEL_TRIGGER_IN_10	PDB.h	62;"	d
+PDB_SC_TRGSEL_TRIGGER_IN_11	PDB.h	63;"	d
+PDB_SC_TRGSEL_TRIGGER_IN_12	PDB.h	64;"	d
+PDB_SC_TRGSEL_TRIGGER_IN_13	PDB.h	65;"	d
+PDB_SC_TRGSEL_TRIGGER_IN_14	PDB.h	66;"	d
+PDB_SC_TRGSEL_TRIGGER_IN_2	PDB.h	54;"	d
+PDB_SC_TRGSEL_TRIGGER_IN_3	PDB.h	55;"	d
+PDB_SC_TRGSEL_TRIGGER_IN_4	PDB.h	56;"	d
+PDB_SC_TRGSEL_TRIGGER_IN_5	PDB.h	57;"	d
+PDB_SC_TRGSEL_TRIGGER_IN_6	PDB.h	58;"	d
+PDB_SC_TRGSEL_TRIGGER_IN_7	PDB.h	59;"	d
+PDB_SC_TRGSEL_TRIGGER_IN_8	PDB.h	60;"	d
+PDB_SC_TRGSEL_TRIGGER_IN_9	PDB.h	61;"	d
 PDB_S_CF	derivative.h	13572;"	d
 PDB_S_CF_MASK	derivative.h	13570;"	d
 PDB_S_CF_SHIFT	derivative.h	13571;"	d
@@ -11804,6 +11861,8 @@ SDTH	derivative.h	/^  uint8_t SDTH;                                    \/**< UAR
 SDTL	derivative.h	/^  uint8_t SDTL;                                    \/**< UART CEA709.1-B Secondary Delay Timer Low, offset: 0x26 *\/$/;"	m	struct:UART_MemMap
 SECSZ	derivative.h	/^  uint32_t SECSZ;                                  \/**< Sector size, offset: 0x3F2C *\/$/;"	m	struct:NFC_MemMap
 SEEI	derivative.h	/^  uint8_t SEEI;                                    \/**< Set Enable Error Interrupt Register, offset: 0x19 *\/$/;"	m	struct:DMA_MemMap
+SERIAL_PORT_2_INPUT_BUFFER_SIZE	intSerialIO.h	16;"	d
+SERIAL_PORT_2_OUTPUT_BUFFER_SIZE	intSerialIO.h	18;"	d
 SERQ	derivative.h	/^  uint8_t SERQ;                                    \/**< Set Enable Request Register, offset: 0x1B *\/$/;"	m	struct:DMA_MemMap
 SERV	derivative.h	/^  uint8_t SERV;                                    \/**< Service Register, offset: 0x1 *\/$/;"	m	struct:EWM_MemMap
 SET	derivative.h	/^  } SET[4][4];$/;"	m	struct:FMC_MemMap	typeref:struct:FMC_MemMap::__anon22
@@ -12739,6 +12798,14 @@ TIMER	derivative.h	/^  uint32_t TIMER;                                  \/**< Fr
 TIMER0	derivative.h	/^  uint32_t TIMER0;                                 \/**< TIMER0 Register, offset: 0x10 *\/$/;"	m	struct:USBDCD_MemMap
 TIMER1	derivative.h	/^  uint32_t TIMER1;                                 \/**< , offset: 0x14 *\/$/;"	m	struct:USBDCD_MemMap
 TIMER2	derivative.h	/^  uint32_t TIMER2;                                 \/**< , offset: 0x18 *\/$/;"	m	struct:USBDCD_MemMap
+TIMER_FLL_Factor	PDB.h	25;"	d
+TIMER_FLL_Factor	flexTimer.h	27;"	d
+TIMER_FTM_CLKIN0	PDB.h	34;"	d
+TIMER_FTM_CLKIN0	flexTimer.h	36;"	d
+TIMER_IRC	PDB.h	24;"	d
+TIMER_IRC	flexTimer.h	26;"	d
+TIMER_MCGOUTCLK	PDB.h	26;"	d
+TIMER_MCGOUTCLK	flexTimer.h	28;"	d
 TIPG	derivative.h	/^  uint32_t TIPG;                                   \/**< Transmit Inter-Packet Gap, offset: 0x1AC *\/$/;"	m	struct:ENET_MemMap
 TL7816	derivative.h	/^  uint8_t TL7816;                                  \/**< UART 7816 Transmit Length Register, offset: 0x1F *\/$/;"	m	struct:UART_MemMap
 TMR	derivative.h	/^  uint32_t TMR;                                    \/**< SAI Transmit Mask Register, offset: 0x60 *\/$/;"	m	struct:I2S_MemMap
@@ -14622,6 +14689,11 @@ _CAPACITIVEPAD_H	capacitivepads.h	4;"	d
 _COMMON_H	common.h	2;"	d
 _DELAY_H	delay.h	13;"	d
 _FILE	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; $/;"	e	enum:__anon35
+_FLEXTIMER_H	flexTimer.h	15;"	d
+_INT_PDB_CONTINUOUS_TEST_H	intPDBContinuousTest.h	13;"	d
+_INT_PDB_ONE_SHOT_TEST_H	intPDBOneShotTest.h	13;"	d
+_INT_SERIAL_IO_H	intSerialIO.h	13;"	d
+_INT_TEST_H	intFlexTimerTest.h	13;"	d
 _LCDCCONSOLE_H	lcdcConsole.h	13;"	d
 _LCDCDRIVER_H	lcdcdriver.h	13;"	d
 _LCDC_H	lcdc.h	3;"	d
@@ -14630,6 +14702,7 @@ _LED_H	led.h	2;"	d
 _MAP_H	map.h	2;"	d
 _MCG_H	mcg.h	13;"	d
 _MYMALLOCTESTING_	mymalloctesting.h	2;"	d
+_PDB_H	PDB.h	13;"	d
 _POTENTIAMETERDRIVER_H	potentiometerdriver.h	2;"	d
 _POTENTIOMETER_H	potentiometer.h	4;"	d
 _PROFONT_H	profont.h	13;"	d
@@ -14735,6 +14808,11 @@ filerelease	file.c	/^int filerelease(void * minor_num){ $/;"	f
 fileseek	file.c	/^void fileseek(void *minor_num, unsigned offset){$/;"	f
 filesystem	file.c	/^static  file_t * filesystem[MAX_FS_ENTRIES]; $/;"	v	file:
 filewrite	file.c	/^int filewrite(int ch, void * minor_num){$/;"	f
+flexTimer0Action	intFlexTimerTest.c	/^void flexTimer0Action(void) {$/;"	f
+flexTimer0Init	flexTimer.c	/^void flexTimer0Init(uint16_t count) {$/;"	f
+flexTimer0Isr	flexTimer.c	/^void flexTimer0Isr(void) {$/;"	f
+flexTimer0Start	flexTimer.c	/^void flexTimer0Start(void) {$/;"	f
+flexTimer0Stop	flexTimer.c	/^void flexTimer0Stop(void) {$/;"	f
 frame	svc.c	/^struct frame {$/;"	s	file:
 framebuffer	lcdcConsole.h	/^  uint32_t *framebuffer;	\/\/ Starting address of frame buffer in memory$/;"	m	struct:console
 free	mymalloc.h	/^    unsigned free; $/;"	m	struct:_mymalloc_t
@@ -14747,6 +14825,7 @@ get_fd	io.c	/^int get_fd(int major_num, int minor_num){ $/;"	f
 get_file_inode	file.c	/^int get_file_inode(const char * filepath){ $/;"	f
 get_major_num	io.c	/^int get_major_num(const char * filepath){ $/;"	f
 get_minor_num	io.c	/^int get_minor_num(const char * filepath){ $/;"	f
+getcharFromBuffer	intSerialIO.c	/^char getcharFromBuffer(void) {$/;"	f
 getcurrentprocessid	mymalloc.c	/^int getcurrentprocessid(){ $/;"	f
 getfile	file.c	/^file_t * getfile(void * minor_num){ $/;"	f
 height	lcdcConsole.h	/^  uint16_t width, height;	\/\/ Screen width & height (in pixels)$/;"	m	struct:console
@@ -14774,6 +14853,15 @@ initmemory_ram	mymalloc.c	/^unsigned initmemory_ram(){ $/;"	f
 initmemory_sdram	mymalloc.c	/^unsigned initmemory_sdram(){ $/;"	f
 input_present	uart.h	/^    int (*input_present)(void); $/;"	m	struct:_uart_t
 inside_double_quote	shell.c	/^static int inside_double_quote = 0; $/;"	v	file:
+intFlexTimerTestInit	intFlexTimerTest.c	/^void intFlexTimerTestInit(void) {$/;"	f
+intPDBContinuousTestInit	intPDBContinuousTest.c	/^void intPDBContinuousTestInit(void) {$/;"	f
+intPDBOneShotTestInit	intPDBOneShotTest.c	/^void intPDBOneShotTestInit(void) {$/;"	f
+intSerialIOInit	intSerialIO.c	/^void intSerialIOInit(void) {$/;"	f
+interruptCount	intSerialIO.c	/^volatile int interruptCount = 0;$/;"	v
+interruptNeitherTDREnorRDRFCount	intSerialIO.c	/^volatile int interruptNeitherTDREnorRDRFCount = 0;$/;"	v
+interruptRDRFCount	intSerialIO.c	/^volatile int interruptRDRFCount = 0;$/;"	v
+interruptSerialPort2	intSerialIO.c	/^void interruptSerialPort2(void) {$/;"	f
+interruptTDRECount	intSerialIO.c	/^volatile int interruptTDRECount = 0;$/;"	v
 isSlash	shell.c	/^boolean isSlash(char ch){ $/;"	f
 is_leap_year	shell.c	/^boolean is_leap_year(int yearno){ $/;"	f
 is_memory_initialized	mymalloc.c	/^unsigned is_memory_initialized(){ $/;"	f
@@ -14823,6 +14911,10 @@ led_write	led.c	/^int led_write(int ch, void *minor_num){ $/;"	f
 leds	led.c	/^led_t leds[NUM_OF_LEDS] = { $/;"	v
 lr	svc.c	/^		int lr;$/;"	m	union:frame::__anon49	file:
 ls	file.c	/^void ls(){$/;"	f
+main	intFlexTimerTest.c	/^int main(void) {$/;"	f
+main	intPDBContinuousTest.c	/^int main(void) {$/;"	f
+main	intPDBOneShotTest.c	/^int main(void) {$/;"	f
+main	intSerialIO.c	/^int main(void) {$/;"	f
 main	shell.c	/^int main() {$/;"	f
 major_device	io.h	/^typedef enum { LED, PUSHBUTTON, POTENTIOMETER, CAPACITIVEPAD, THERMISTOR, LCDC, UART, _FILE } major_device; $/;"	t	typeref:enum:__anon35
 major_num	io.h	/^    int major_num; $/;"	m	struct:_fdtable_t
@@ -14875,6 +14967,9 @@ print	map.c	/^void print(node_type * environ){$/;"	f
 printStringArray	shell.c	/^void printStringArray(char *stringArray[], int howmany){ $/;"	f
 print_boolean	shell.c	/^void print_boolean(boolean bool){ $/;"	f
 printnode	mymalloc.c	/^void printnode(char *trav){ $/;"	f
+processSwitchCmd	intFlexTimerTest.c	/^void processSwitchCmd(enum switchState cmd) {$/;"	f
+processSwitchCmd	intPDBContinuousTest.c	/^void processSwitchCmd(enum switchState cmd) {$/;"	f
+processSwitchCmd	intPDBOneShotTest.c	/^void processSwitchCmd(enum switchState cmd) {$/;"	f
 process_line	shell.c	/^int  process_line(char line[LINE_MAX + 1], int *argc, char * argv[]) {$/;"	f
 profont	profont.c	/^uint8_t profont[PROFONT_CHARS_IN_FONT][PROFONT_FONT_HEIGHT][PROFONT_FONT_WIDTH] = {$/;"	v
 pushbuttonInitAll	pushbuttondriver.c	/^void pushbuttonInitAll(void) {$/;"	f
@@ -14887,6 +14982,8 @@ pushbutton_t	pushbutton.h	/^} pushbutton_t;$/;"	t	typeref:struct:_pushbutton_t
 pushbuttoninit	pushbuttondriver.c	/^void pushbuttoninit(void){ $/;"	f
 pushbuttons	pushbutton.c	/^pushbutton_t pushbuttons[NUM_OF_PUSHBUTTONS] = { $/;"	v
 put	map.c	/^node_type * put(node_type * node, key_type key, value_type value){$/;"	f
+putcharIntoBuffer	intSerialIO.c	/^void putcharIntoBuffer(char ch) {$/;"	f
+putsIntoBuffer	intSerialIO.c	/^void putsIntoBuffer(char *s) {$/;"	f
 r0	svc.c	/^		int r0;$/;"	m	union:frame::__anon45	file:
 r1	svc.c	/^		int r1;$/;"	m	union:frame::__anon46	file:
 r12	svc.c	/^	int r12;$/;"	m	struct:frame	file:
@@ -14905,6 +15002,14 @@ returnAddr	svc.c	/^	int returnAddr;$/;"	m	struct:frame	file:
 returnVal	svc.c	/^		int returnVal;$/;"	m	union:frame::__anon45	file:
 sdramInit	sdram.c	/^void sdramInit(void) {$/;"	f
 second	shell.h	/^        unsigned second; $/;"	m	struct:_myclock_t::__anon44
+serialPort2InputBuffer	intSerialIO.c	/^char serialPort2InputBuffer[SERIAL_PORT_2_INPUT_BUFFER_SIZE];$/;"	v
+serialPort2InputCharCount	intSerialIO.c	/^int serialPort2InputCharCount = 0;$/;"	v
+serialPort2InputDequeueOffset	intSerialIO.c	/^int serialPort2InputDequeueOffset = 0;$/;"	v
+serialPort2InputEnqueueOffset	intSerialIO.c	/^int serialPort2InputEnqueueOffset = 0;$/;"	v
+serialPort2OutputBuffer	intSerialIO.c	/^char serialPort2OutputBuffer[SERIAL_PORT_2_OUTPUT_BUFFER_SIZE];$/;"	v
+serialPort2OutputCharCount	intSerialIO.c	/^int serialPort2OutputCharCount = 0;$/;"	v
+serialPort2OutputDequeueOffset	intSerialIO.c	/^int serialPort2OutputDequeueOffset = 0;$/;"	v
+serialPort2OutputEnqueueOffset	intSerialIO.c	/^int serialPort2OutputEnqueueOffset = 0;$/;"	v
 shellfree	shell.c	/^void shellfree(char *array[], unsigned howmany){ $/;"	f
 size	file.h	/^    unsigned size; $/;"	m	struct:_file_t
 size	map.h	/^    unsigned size; $/;"	m	struct:node_type

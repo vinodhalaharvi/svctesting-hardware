@@ -16,6 +16,16 @@
 /mnt/hgfs/workspace/svctesting-hardware/Sources/derivative.h
 /mnt/hgfs/workspace/svctesting-hardware/Sources/file.c
 /mnt/hgfs/workspace/svctesting-hardware/Sources/file.h
+/mnt/hgfs/workspace/svctesting-hardware/Sources/flexTimer.c
+/mnt/hgfs/workspace/svctesting-hardware/Sources/flexTimer.h
+/mnt/hgfs/workspace/svctesting-hardware/Sources/intFlexTimerTest.c
+/mnt/hgfs/workspace/svctesting-hardware/Sources/intFlexTimerTest.h
+/mnt/hgfs/workspace/svctesting-hardware/Sources/intPDBContinuousTest.c
+/mnt/hgfs/workspace/svctesting-hardware/Sources/intPDBContinuousTest.h
+/mnt/hgfs/workspace/svctesting-hardware/Sources/intPDBOneShotTest.c
+/mnt/hgfs/workspace/svctesting-hardware/Sources/intPDBOneShotTest.h
+/mnt/hgfs/workspace/svctesting-hardware/Sources/intSerialIO.c
+/mnt/hgfs/workspace/svctesting-hardware/Sources/intSerialIO.h
 /mnt/hgfs/workspace/svctesting-hardware/Sources/io.c
 /mnt/hgfs/workspace/svctesting-hardware/Sources/io.h
 /mnt/hgfs/workspace/svctesting-hardware/Sources/lcdc.c
@@ -37,6 +47,10 @@
 /mnt/hgfs/workspace/svctesting-hardware/Sources/mymalloc.h
 /mnt/hgfs/workspace/svctesting-hardware/Sources/mymalloctesting.c
 /mnt/hgfs/workspace/svctesting-hardware/Sources/mymalloctesting.h
+/mnt/hgfs/workspace/svctesting-hardware/Sources/nvic.c
+/mnt/hgfs/workspace/svctesting-hardware/Sources/nvic.h
+/mnt/hgfs/workspace/svctesting-hardware/Sources/PDB.c
+/mnt/hgfs/workspace/svctesting-hardware/Sources/PDB.h
 /mnt/hgfs/workspace/svctesting-hardware/Sources/potentiometer.c
 /mnt/hgfs/workspace/svctesting-hardware/Sources/potentiometer.h
 /mnt/hgfs/workspace/svctesting-hardware/Sources/potentiometerdriver.c
