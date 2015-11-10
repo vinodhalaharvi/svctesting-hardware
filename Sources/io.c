@@ -232,7 +232,8 @@ int myread(int fd){
 void cat(unsigned fd){ 
     int  ch; 
     while((ch = myread(fd)) != EOF){ 
-        fputc(ch, mystdout); 
+        mywrite(ch, mystdout); 
+        //fputc(ch, mystdout); 
     }
 }
 
@@ -272,5 +273,5 @@ void verify_device_independent_file_operations(){
     write_string(print_string, mystdout); 
     ls(); 
     sprintf(print_string, "\n");
-    writ_string(print_string, mystdout); 
+    write_string(print_string, mystdout); 
 }

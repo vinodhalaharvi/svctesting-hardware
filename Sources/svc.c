@@ -474,6 +474,7 @@ int mywrite(int fd, int ch);
 int myread(int fd);
 */
 
+/*
 #ifdef __GNUC__
 void __attribute__((naked)) svcHandler(void) {
     __asm("\n\
@@ -496,7 +497,7 @@ __asm void svcHandler(void) {
     pop     pc
 }
 #endif
-
+*/
 
 void svcHandlerInC(struct frame *framePtr) {
     void * minor_num; 

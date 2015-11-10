@@ -18,7 +18,8 @@
 #include "svc.h"
 #include "stdio.h"
 #include "uart.h"
-
+#define CHAR_EOF 4
+extern void svcHandler(void);
 
 #include "uartdriver.h"
 #define CHAR_EOF 4
@@ -105,6 +106,7 @@ void initialize_hardware(){
         SVCLcdcWrite(ch, 0); 
     }
 */
+
 
 
 //prompt a '$' and wait for user input
@@ -779,7 +781,8 @@ int cmd_cat(int argc, char *argv[]){
     unsigned fd = myopen(filename, FILE_CREATE); 
     myassert(fd >= 0, "" , "fd >=0"); 
     while((ch = myread(fd)) != EOF){ 
-        fputc(ch, mystdout); 
+        mywrite(ch, mystdout); 
+        //fputc(ch, mystdout); 
     }
     sprintf(print_string, "\n");
     write_string(print_string, mystdout); 
